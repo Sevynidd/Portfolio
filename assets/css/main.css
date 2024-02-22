@@ -1178,7 +1178,7 @@ input, select, textarea {
 			background-image: url("../../images/bg.jpg");
 			background-position: center;
 			background-repeat: no-repeat;
-			background: linear-gradient(-45deg, #ee7752, #e44b52, #57dc2f, #eecf52);
+			background: linear-gradient(-45deg, #ea8263, #e0595f, #87d86e, #e7cf6e);
 			background-size: 300% 300%;
 			animation: gradient 15s ease infinite;
 			height: 100vh;
