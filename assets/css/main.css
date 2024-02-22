@@ -168,6 +168,25 @@ input, select, textarea {
 		margin: 0 0 2rem 0;
 	}
 
+	.typed-out {
+		overflow: hidden;
+		border-right: .15em solid #e9363f;
+		white-space: nowrap;
+		animation: typing 1.5s steps(20, end) forwards,
+		blinking .8s infinite;
+		width: 0;
+	}
+
+	@keyframes typing {
+		from { width: 0 }
+		to { width: 100% }
+	  }
+
+	@keyframes blinking {
+	from { border-color: transparent }
+	to { border-color: #e9363f }
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
 		font-weight: 600;
