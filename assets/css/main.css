@@ -169,11 +169,12 @@ input, select, textarea {
 	}
 
 	.typed-out {
+		color: #ff3d47;
 		overflow: hidden;
-		border-right: .15em solid #e9363f;
+		border-right: .15em solid #ff3d47;
 		white-space: nowrap;
 		animation: typing 1.5s steps(20, end) forwards,
-		blinking .8s infinite;
+		blinking .9s infinite;
 		width: 0;
 	}
 
@@ -184,7 +185,7 @@ input, select, textarea {
 
 	@keyframes blinking {
 	from { border-color: transparent }
-	to { border-color: #e9363f }
+	to { border-color: #ff3d47 }
 	}
 
 	h1, h2, h3, h4, h5, h6 {
