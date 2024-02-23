@@ -736,6 +736,41 @@ input, select, textarea {
 
 		}
 
+/* Skill List */
+
+	.skill-list {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: center;
+		padding-bottom: 15px;
+	}
+
+	.skill-list .item {
+		border: 1px solid #ff3d47;
+		border-radius: 5px;
+		box-shadow: 4px 5px 4px 3px #3c2626;
+		font-size: 2rem;
+		margin: 15px;
+		opacity: .93;
+		overflow: hidden;
+		padding: 10px;
+		text-align: center;
+		transition: all .4s ease 0s;
+		vertical-align: middle;
+	}
+
+	.skill-list .item p {
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	.skill-list .item img {
+		width: 64px;
+		height: 64px;
+	}
+
+
 /* List */
 
 	ol {
