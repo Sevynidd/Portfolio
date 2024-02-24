@@ -1858,15 +1858,20 @@ body.is-preload #header .content .inner {
 @media screen and (min-width: 768px) {
 	.timeline {
 		display: grid;
-		grid-template-columns: 1fr 3px 1fr;
+		grid-template-columns: 3px 1fr;
 	}
 
 	.timeline-middle {
 		position: relative;
-		background-image: linear-gradient(45deg, #F27121, #E94057, #8A2387);
+		background-image: linear-gradient(45deg, #e7cf6e, #df714f, #e4343d);
 		width: 3px;
 		height: 100%;
-	}
+		border-radius: 25px;
+		-webkit-border-radius: 25px;
+		-moz-border-radius: 25px;
+		-ms-border-radius: 25px;
+		-o-border-radius: 25px;
+}
 
 	.main-middle {
 		opacity: 0;
@@ -1879,7 +1884,7 @@ body.is-preload #header .content .inner {
 		width: 15px;
 		height: 15px;
 		border-radius: 50%;
-		background-image: linear-gradient(45deg, #F27121, #E94057, #8A2387);
+		background-image: linear-gradient(45deg, #e7cf6e, #df714f, #e4343d);
 		-webkit-transform: translateX(-50%);
 		transform: translateX(-50%);
 	}
