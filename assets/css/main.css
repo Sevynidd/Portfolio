@@ -1398,7 +1398,7 @@ body.is-preload #bg:before {
 	position: relative;
 	min-height: 100vh;
 	width: 100%;
-	padding: 4rem 2rem;
+	padding: 2rem 1rem;
 	z-index: 3;
 }
 
@@ -1740,7 +1740,7 @@ body.is-preload #header .content .inner {
 	transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
 	padding: 4.5rem 2.5rem 1.5rem 2.5rem;
 	position: relative;
-	width: 40rem;
+	width: 60rem;
 	max-width: 100%;
 	background-color: rgba(27, 31, 34, 0.85);
 	border-radius: 4px;
@@ -1855,6 +1855,29 @@ body.is-preload #header .content .inner {
 	border-radius: 6px;
 }
 
+.timeline-content-title-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	gap: 8%;
+}
+
+.timeline-content-title-container h4 {
+	margin-bottom: .8rem;
+}
+
+.timeline-content-title-container h5 {
+	text-align: end;
+	min-width: fit-content;
+	color: #e7cf6e;
+}
+
+#techstack {
+	opacity: 50%;
+	margin: 0;
+}
+
 @media screen and (min-width: 768px) {
 	.timeline {
 		display: grid;
@@ -1871,7 +1894,7 @@ body.is-preload #header .content .inner {
 		-moz-border-radius: 25px;
 		-ms-border-radius: 25px;
 		-o-border-radius: 25px;
-}
+	}
 
 	.main-middle {
 		opacity: 0;
