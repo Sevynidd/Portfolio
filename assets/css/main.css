@@ -1873,9 +1873,27 @@ body.is-preload #header .content .inner {
 	color: #e7cf6e;
 }
 
-#techstack {
+#lebenslauf_techstack {
 	opacity: 50%;
 	margin: 0;
+}
+
+#lebenslauf_firma {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 4%;
+	margin-bottom: 4%;
+
+	img {
+		height: 30px;
+		width: auto;
+	}
+
+	h5 {
+		margin-bottom: 0;
+	}
 }
 
 @media screen and (min-width: 768px) {
