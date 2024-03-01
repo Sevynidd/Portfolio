@@ -1823,6 +1823,10 @@ body.is-preload #header .content .inner {
 	width: 50rem;
 }
 
+#main #projekte {
+	width: 60rem;
+}
+
 /* Timeline */
 .timeline-section {
 	display: flex;
@@ -1950,6 +1954,52 @@ body.is-preload #header .content .inner {
 	}
 }
 
+/* Project */
+
+.project {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	position: relative;
+}
+
+.project__number {
+	font-size: 4vw;
+	font-weight: 600;
+	padding: 10px 0;
+	position: sticky;
+	top: 0;
+	text-align: center;
+	height: calc(4vw + 20px);
+	transition: all 0.2s ease-in;
+}
+
+.project__content {
+	border-top: 1px solid #fff;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 10px;
+	padding: 15px 0;
+}
+
+.project__content .title {
+	font-weight: 600
+}
+
+.project__content .content {
+	line-height: 26px;
+}
+
+@media (max-width: 600px) {
+	.project__content {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 576px) {
+	.project__content .content {
+		font-size: 15px;
+	}
+}
 
 /* Footer */
 
