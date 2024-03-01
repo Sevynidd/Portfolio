@@ -872,13 +872,13 @@ input[type="radio"]+label:before {
 }
 
 .skill-list .item {
-	border: 1px solid #ff3d47;
+	border: 1px solid #9e3439;
 	border-radius: 5px;
-	box-shadow: 4px 5px 4px 3px #3c2626;
+	box-shadow: 4px 5px 4px 3px #462d2d;
 	font-size: 2rem;
 	margin: 15px;
-	opacity: .93;
 	overflow: hidden;
+	min-width: 150px;
 	padding: 10px;
 	text-align: center;
 	transition: all .4s ease 0s;
