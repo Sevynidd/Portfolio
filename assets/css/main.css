@@ -1740,7 +1740,7 @@ body.is-preload #header .content .inner {
 	transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
 	padding: 4.5rem 2.5rem 1.5rem 2.5rem;
 	position: relative;
-	width: 60rem;
+	width: 40rem;
 	max-width: 100%;
 	background-color: rgba(27, 31, 34, 0.85);
 	border-radius: 4px;
@@ -1819,6 +1819,10 @@ body.is-preload #header .content .inner {
 
 }
 
+#main #lebenslauf {
+	width: 50rem;
+}
+
 /* Timeline */
 .timeline-section {
 	display: flex;
@@ -1887,7 +1891,7 @@ body.is-preload #header .content .inner {
 	margin-bottom: 4%;
 
 	img {
-		height: 30px;
+		height: 40px;
 		width: auto;
 	}
 
@@ -1920,7 +1924,7 @@ body.is-preload #header .content .inner {
 
 	.timeline-circle {
 		position: absolute;
-		top: 0;
+		top: 0px;
 		left: 50%;
 		width: 15px;
 		height: 15px;
