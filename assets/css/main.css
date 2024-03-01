@@ -1958,31 +1958,30 @@ body.is-preload #header .content .inner {
 
 .project {
 	display: grid;
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: 1fr 2fr;
+	gap: 5%;
 	position: relative;
 }
 
-.project__number {
-	font-size: 4vw;
+.project__title {
+	/*font-size: 4vw;*/
 	font-weight: 600;
 	padding: 10px 0;
 	position: sticky;
 	top: 0;
-	text-align: center;
-	height: calc(4vw + 20px);
+	text-align: start;
+	height: fit-content;
 	transition: all 0.2s ease-in;
+}
+
+.project__title #firma {
+	font-size: .8vw;
+	padding: 10px 0;
 }
 
 .project__content {
 	border-top: 1px solid #fff;
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	grid-gap: 10px;
 	padding: 15px 0;
-}
-
-.project__content .title {
-	font-weight: 600
 }
 
 .project__content .content {
