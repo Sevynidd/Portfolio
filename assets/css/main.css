@@ -1863,7 +1863,7 @@ body.is-preload #header .content .inner {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	gap: 8%;
 }
 
@@ -1891,8 +1891,9 @@ body.is-preload #header .content .inner {
 	margin-bottom: 4%;
 
 	img {
-		height: 40px;
+		height: 30px;
 		width: auto;
+		display: none;
 	}
 
 	h5 {
@@ -1904,6 +1905,10 @@ body.is-preload #header .content .inner {
 	.timeline {
 		display: grid;
 		grid-template-columns: 3px 1fr;
+	}
+
+	.timeline-content-title-container {
+		flex-wrap: nowrap;
 	}
 
 	.timeline-middle {
@@ -1933,7 +1938,18 @@ body.is-preload #header .content .inner {
 		-webkit-transform: translateX(-50%);
 		transform: translateX(-50%);
 	}
+
+	#lebenslauf_firma img {
+		display: flex;
+	}
 }
+
+@media screen and (min-width: 1680px) {
+	#lebenslauf_firma img {
+		height: 40px;
+	}
+}
+
 
 /* Footer */
 
