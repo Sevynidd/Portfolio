@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Canvas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .display-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.2s, width 0.3s, height 0.3s;
+            transform: translate(-15px, -15px);
+        }
+    </style>
+</head>
+
+<body class="bg-[#F2F2F2] text-black cursor-none">
+
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <nav class="fixed top-0 w-full z-50 p-8 mix-blend-differece bg-[#F2F2F2]/80 backdrop-blur-sm">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="display-font text-2xl font-bold tracking-tighter hover:text-gray-500 transition"
+                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">PORTFOLIO</a>
+            <div class="flex gap-8 text-sm font-medium tracking-wide">
+                <a href="about.html" class="underline decoration-2 underline-offset-4 pointer-events-none">Über mich</a>
+                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4"
+                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Lebenslauf</a>
+                <a href="contact.html" class="hover:underline decoration-2 underline-offset-4"
+                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="display-font text-6xl md:text-8xl font-bold leading-none mb-20 text-center">
+                WE ARE <br> CREATORS <br> OF THE NEW
+            </h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div class="text-xl md:text-2xl font-light leading-relaxed">
+                    <p class="mb-8">
+                        Canvas is a digital design studio obsessed with quality. We don't just build websites; we create
+                        digital environments that evoke emotion and drive action.
+                    </p>
+                    <p>
+                        Our team consists of designers, developers, and strategists who share a common vision: to make
+                        the internet a more beautiful place.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-2 gap-8 text-sm uppercase tracking-widest font-bold border-t border-black pt-8">
+                    <div>
+                        <div class="mb-4 text-gray-400">Services</div>
+                        <ul class="space-y-2">
+                            <li>Art Direction</li>
+                            <li>Web Design</li>
+                            <li>Development</li>
+                            <li>Branding</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-4 text-gray-400">Awards</div>
+                        <ul class="space-y-2">
+                            <li>Awwwards SOTD</li>
+                            <li>FWA</li>
+                            <li>CSS Design</li>
+                            <li>Red Dot</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-32">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600"
+                    class="w-full grayscale hover:grayscale-0 transition duration-1000" onmouseenter="expandCursor()"
+                    onmouseleave="shrinkCursor()">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-300">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xs font-bold uppercase tracking-widest">
+                &copy; 2026 Karina Kock
+            </div>
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#" class="hover:line-through">GitHub</a>
+                <a href="#" class="hover:line-through">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.transform = `translate(${posX - 5}px, ${posY - 5}px)`;
+
+            outline.animate({
+                transform: `translate(${posX - 20}px, ${posY - 20}px)`
+            }, { duration: 500, fill: 'forwards' });
+        });
+
+        function expandCursor() {
+            outline.style.transform += ' scale(2)';
+            outline.style.backgroundColor = 'rgba(0,0,0,0.1)';
+            outline.style.borderColor = 'transparent';
+        }
+
+        function shrinkCursor() {
+            outline.style.transform = outline.style.transform.replace(' scale(2)', '');
+            outline.style.backgroundColor = 'transparent';
+            outline.style.borderColor = 'rgba(0,0,0,0.5)';
+        }
+    </script>
+</body>
+
+</html>

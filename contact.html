@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Canvas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .display-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.2s, width 0.3s, height 0.3s;
+            transform: translate(-15px, -15px);
+        }
+    </style>
+</head>
+
+<body class="bg-[#F2F2F2] text-black cursor-none">
+
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <nav class="fixed top-0 w-full z-50 p-8 mix-blend-differece bg-[#F2F2F2]/80 backdrop-blur-sm">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="display-font text-2xl font-bold tracking-tighter hover:text-gray-500 transition"
+                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">PORTFOLIO</a>
+            <div class="flex gap-8 text-sm font-medium tracking-wide">
+                 <a href="about.html" class="hover:underline decoration-2 underline-offset-4"
+                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Über mich</a>
+                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4"
+                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Lebenslauf</a>
+                <a href="contact.html" class="underline decoration-2 underline-offset-4 pointer-events-none">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="h-screen flex items-center justify-center px-4">
+        <div class="text-center w-full max-w-2xl">
+            <h1 class="display-font text-4xl md:text-5xl font-bold mb-12">SAY HELLO</h1>
+
+            <form class="space-y-12 text-left">
+                <div class="relative group">
+                    <input type="text"
+                        class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition"
+                        placeholder=" " required>
+                    <label
+                        class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Your
+                        Name</label>
+                </div>
+
+                <div class="relative group">
+                    <input type="email"
+                        class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition"
+                        placeholder=" " required>
+                    <label
+                        class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Your
+                        Email</label>
+                </div>
+
+                <div class="relative group">
+                    <textarea rows="1"
+                        class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition resize-none"
+                        placeholder=" " required></textarea>
+                    <label
+                        class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Tell
+                        us about your project</label>
+                </div>
+
+                <div class="text-center pt-8">
+                    <button
+                        class="inline-block border border-black px-12 py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-500"
+                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-20 flex justify-center gap-12 text-sm text-gray-500 font-medium">
+                <div>
+                    <p class="uppercase tracking-widest mb-2 text-black text-xs font-bold">Email</p>
+                    <a href="mailto:hello@canvas.com" class="hover:text-black transition cursor-none"
+                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">hello@canvas.com</a>
+                </div>
+                <div>
+                    <p class="uppercase tracking-widest mb-2 text-black text-xs font-bold">Phone</p>
+                    <a href="tel:+15550000000" class="hover:text-black transition cursor-none"
+                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">+1 (555) 000-0000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-gray-300">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xs font-bold uppercase tracking-widest">
+                &copy; 2026 Karina Kock
+            </div>
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#" class="hover:line-through">GitHub</a>
+                <a href="#" class="hover:line-through">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.transform = `translate(${posX - 5}px, ${posY - 5}px)`;
+
+            outline.animate({
+                transform: `translate(${posX - 20}px, ${posY - 20}px)`
+            }, { duration: 500, fill: 'forwards' });
+        });
+
+        function expandCursor() {
+            outline.style.transform += ' scale(2)';
+            outline.style.backgroundColor = 'rgba(0,0,0,0.1)';
+            outline.style.borderColor = 'transparent';
+        }
+
+        function shrinkCursor() {
+            outline.style.transform = outline.style.transform.replace(' scale(2)', '');
+            outline.style.backgroundColor = 'transparent';
+            outline.style.borderColor = 'rgba(0,0,0,0.5)';
+        }
+
+        // Input label animation fix when value exists
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value) input.classList.add('has-value');
+                else input.classList.remove('has-value');
+            })
+        });
+    </script>
+</body>
+
+</html>
