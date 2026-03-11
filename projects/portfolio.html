@@ -8,7 +8,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="main.css">
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+    <style>
+        /* Force Prism code block background to transparent */
+        pre[class*="language-"] {
+            background: transparent !important;
+        }
+        code[class*="language-"] {
+            background: transparent !important;
+        }
+    </style>
 </head>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
 
 <body class="bg-[#F2F2F2] text-black">
 
@@ -72,7 +86,7 @@
         </div>
 
         <div class="space-y-8">
-            <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>
+           <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code class="language-html">
 &lt;div class=&quot;pt-0 md:pt-24 hover-trigger&quot;&gt;
     &lt;a href=&quot;projects/portfolio.html&quot; class=&quot;block group&quot;&gt;
         &lt;div class=&quot;overflow-hidden mb-6 aspect-[4/5] relative&quot;&gt;
@@ -84,7 +98,7 @@
         &lt;p class=&quot;text-gray-500 text-sm uppercase tracking-widest font-medium&quot;&gt;HTML / CSS / JavaScript&lt;/p&gt;
     &lt;/a&gt;
 &lt;/div&gt;
-            </code></pre>
+</code></pre>
         </div>  
 
         <!--<div class="space-y-8">
