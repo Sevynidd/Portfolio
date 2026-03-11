@@ -10,20 +10,13 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="bg-[#F2F2F2] text-black cursor-none">
-
-    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
-    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
-
+<body class="bg-[#F2F2F2] text-black">
     <nav class="fixed top-0 w-full z-50 p-8 mix-blend-differece bg-[#F2F2F2]/80 backdrop-blur-sm">
         <div class="flex justify-between items-center">
-            <a href="index.html" class="display-font text-2xl font-bold tracking-tighter hover:text-gray-500 transition"
-                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">PORTFOLIO</a>
+            <a href="index.html" class="display-font text-2xl font-bold tracking-tighter hover:text-gray-500 transition">PORTFOLIO</a>
             <div class="flex gap-8 text-sm font-medium tracking-wide">
-                 <a href="about.html" class="hover:underline decoration-2 underline-offset-4"
-                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Über mich</a>
-                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4"
-                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Lebenslauf</a>
+                 <a href="about.html" class="hover:underline decoration-2 underline-offset-4">Über mich</a>
+                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4">Lebenslauf</a>
                 <a href="contact.html" class="underline decoration-2 underline-offset-4 pointer-events-none">Kontakt</a>
             </div>
         </div>
@@ -62,8 +55,7 @@
 
                 <div class="text-center pt-8">
                     <button
-                        class="inline-block border border-black px-12 py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-500"
-                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
+                        class="inline-block border border-black px-12 py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-500">
                         E-Mail versenden
                     </button>
                 </div>
@@ -72,13 +64,12 @@
             <div class="mt-20 flex justify-center gap-12 text-sm text-gray-500 font-medium">
                 <div>
                     <p class="uppercase tracking-widest mb-2 text-black text-xs font-bold">Email</p>
-                    <a href="mailto:maxmustermann@test.com" class="hover:text-black transition cursor-none"
-                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">maxmustermann@test.com</a>
+                    <a href="mailto:maxmustermann@test.com" class="hover:text-black transition">maxmustermann@test.com</a>
                 </div>
                 <!--<div>
                     <p class="uppercase tracking-widest mb-2 text-black text-xs font-bold"></p>
-                    <a href="tel:+15550000000" class="hover:text-black transition cursor-none"
-                        onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">+1 (555) 000-0000</a>
+                    <a href="tel:+15550000000" class="hover:text-black transition">
+                        +1 (555) 000-0000</a>
                 </div>-->
             </div>
         </div>
@@ -90,13 +81,12 @@
                 &copy; 2026 Karina Kock
             </div>
             <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#" class="hover:line-through">GitHub</a>
-                <a href="#" class="hover:line-through">LinkedIn</a>
+                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
             </div>
         </div>
     </footer>
 
-    <script src="cursor.js"></script>
     <script>
         // Input label animation fix when value exists
         const inputs = document.querySelectorAll('input, textarea');

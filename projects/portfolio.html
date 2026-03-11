@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt Portfolio - Karina Kock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="bg-[#F2F2F2] text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
+        <div class="flex justify-between items-center relative z-50">
+            <a href="../index.html"
+                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black" id="logo">PORTFOLIO</a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
+                <span class="w-8 h-0.5 bg-current"></span>
+                <span class="w-8 h-0.5 bg-current"></span>
+                <span class="w-8 h-0.5 bg-current"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Project -->
+    <div class="w-full h-[70vh] bg-black relative mb-20">
+        <img src="../images/Portfolio.png" alt="Portfolio Image" loading="eager"
+            class="w-full h-full object-cover opacity-80">
+        <div class="absolute bottom-10 left-4 md:left-10 text-white">
+            <h1 class="display-font text-5xl md:text-8xl font-bold mb-4">MEIN PORTFOLIO</h1>
+            <p class="text-sm uppercase tracking-widest opacity-70">HTML / CSS / JavaScript</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <section class="max-w-4xl mx-auto px-4 pb-20">
+        <!--<div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed text-gray-800">
+            <div class="md:w-1/3">
+                <h3 class="display-font text-xl font-bold mb-6">Brief</h3>
+                <p class="text-gray-600 text-sm">
+                    Reimagine the future of digital art through the lens of cyberpunk aesthetics, focusing on light,
+                    texture, and futuristic forms.
+                </p>
+            </div>
+            <div class="md:w-2/3 md:pl-12 border-l border-gray-300">
+                <p class="mb-6">
+                    We embarked on a journey to explore the boundaries between the physical and digital worlds. Using
+                    procedural generation and advanced rendering techniques, we created a series of abstract forms that
+                    feel both organic and synthetic.
+                </p>
+                <p>
+                    The use of neon lighting against dark, textured backgrounds creates a sense of depth and mystery,
+                    inviting the viewer to contemplate the nature of reality in a digital age.
+                </p>
+            </div>
+        </div>-->
+
+        <div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed text-gray-800">
+            <div class="md:w-3/3">
+                <h3 class="display-font text-xl font-bold mb-6">Wie kam dieses Projekt überhaupt zustande?</h3>
+                <p class="text-gray-600 text-sm">
+                    Dieses Portfolio entstand hobbymäßig aus dem Wunsch heraus, mir Webdesign und -entwicklung anzueignen. <br> 
+                    Webentwicklung ist allgemein ein super spannendes Thema.
+                    Vorallem die Unterstützung verschiedenster Bildschirmgrößen und die Beachtung von Barrierefreiheit für die Leute, die darauf angewiesen sind.
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>
+&lt;div class=&quot;pt-0 md:pt-24 hover-trigger&quot;&gt;
+    &lt;a href=&quot;projects/portfolio.html&quot; class=&quot;block group&quot;&gt;
+        &lt;div class=&quot;overflow-hidden mb-6 aspect-[4/5] relative&quot;&gt;
+            &lt;img src=&quot;../images/Portfolio.png&quot; alt=&quot;Portfolio Preview&quot; loading=&quot;lazy&quot;
+                class=&quot;w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0&quot;&gt;
+            &lt;div class=&quot;absolute inset-0 bg-black/0 group-hover:bg-black/10 transition&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;h2 class=&quot;display-font text-4xl font-bold mb-2&quot;&gt;Dieses Portfolio&lt;/h2&gt;
+        &lt;p class=&quot;text-gray-500 text-sm uppercase tracking-widest font-medium&quot;&gt;HTML / CSS / JavaScript&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+            </code></pre>
+        </div>  
+
+        <!--<div class="space-y-8">
+            <img src="https://images.unsplash.com/photo-1633511090164-b43840ea1607?w=1200" class="w-full h-auto">
+            <div class="grid grid-cols-2 gap-8">
+                <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800" class="w-full h-auto">
+                <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=800" class="w-full h-auto">
+            </div>
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200" class="w-full h-auto">
+        </div>-->
+    </section>
+
+    <!-- Next Project -->
+    <!--<section class="border-t border-gray-300 py-20 bg-black text-white text-center hover-trigger"
+        onclick="window.location.href='#'">
+        <p class="text-sm uppercase tracking-widest mb-4 opacity-50">Next Project</p>
+        <h2 class="display-font text-6xl md:text-8xl font-bold hover:text-gray-400 transition">URBAN FUTURE</h2>
+    </section>-->
+
+    <footer class="py-12 border-t border-gray-800 bg-[#F2F2F2] text-black">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xs font-bold uppercase tracking-widest">
+                &copy; 2026 Karina Kock
+            </div>
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

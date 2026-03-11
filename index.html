@@ -17,21 +17,17 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="bg-[#F2F2F2] text-black cursor-none">
-
-    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
-    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+<body class="bg-[#F2F2F2] text-black">
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
         <div class="flex justify-between items-center relative z-50">
             <a href="index.html"
                 class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black"
-                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()" id="logo">PORTFOLIO</a>
+                id="logo">PORTFOLIO</a>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()"
-                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
+            <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
                 <span class="w-8 h-0.5 bg-current"></span>
                 <span class="w-8 h-0.5 bg-current"></span>
                 <span class="w-8 h-0.5 bg-current"></span>
@@ -39,12 +35,9 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-black">
-				<a href="about.html" class="hover:underline decoration-2 underline-offset-4"
-                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Über mich</a>
-                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4"
-                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Lebenslauf</a>
-                <a href="contact.html" class="hover:underline decoration-2 underline-offset-4"
-                    onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">Kontakt</a>
+				<a href="about.html" class="hover:underline decoration-2 underline-offset-4">Über mich</a>
+                <a href="cv.html" class="hover:underline decoration-2 underline-offset-4">Lebenslauf</a>
+                <a href="contact.html" class="hover:underline decoration-2 underline-offset-4">Kontakt</a>
             </div>
         </div>
 
@@ -72,30 +65,27 @@
 				Wenn du Interesse an mir hast, zögere nicht mich zu kontaktieren!
             </p>
         </div>
-        <div class="absolute bottom-10 left-10 animate-bounce">
-            <i class="ph ph-arrow-down text-2xl"></i>
-        </div>
     </section>
 
     <!-- Portfolio Grid -->
     <section class="min-h-screen px-4 pb-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
-            <!-- Project 1 -->
-            <div class="pt-0 md:pt-24 hover-trigger" onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
-                <a href="project.html" class="block group">
+            <!-- Project Portfolio -->
+            <div class="pt-0 md:pt-24 hover-trigger">
+                <a href="projects/portfolio.html" class="block group">
                     <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800"
+                        <img src="images/Portfolio.png" alt="Portfolio Preview" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Neon Abstract</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Art Direction / 3D</p>
+                    <h2 class="display-font text-4xl font-bold mb-2">Dieses Portfolio</h2>
+                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">HTML / CSS / JavaScript</p>
                 </a>
             </div>
 
             <!-- Project 2 -->
-            <div class="hover-trigger" onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
-                <a href="project.html" class="block group">
+            <!--<div class="hover-trigger">
+                <a href="projects/portfolio.html" class="block group">
                     <div class="overflow-hidden mb-6 aspect-[4/5] relative">
                         <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
@@ -103,11 +93,11 @@
                     <h2 class="display-font text-4xl font-bold mb-2">Urban Future</h2>
                     <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Photography / Concept</p>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Project 3 -->
-            <div class="pt-0 md:pt-24 hover-trigger" onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
-                <a href="project.html" class="block group">
+            <!--<div class="pt-0 md:pt-24 hover-trigger">
+                <a href="projects/portfolio.html" class="block group">
                     <div class="overflow-hidden mb-6 aspect-[4/5] relative">
                         <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=800"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
@@ -115,11 +105,11 @@
                     <h2 class="display-font text-4xl font-bold mb-2">Fluid Motion</h2>
                     <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Motion Design</p>
                 </a>
-            </div>
+            </div>-->
 
             <!-- Project 4 -->
-            <div class="hover-trigger" onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">
-                <a href="project.html" class="block group">
+            <!--<div class="hover-trigger">
+                <a href="projects/portfolio.html" class="block group">
                     <div class="overflow-hidden mb-6 aspect-[4/5] relative">
                         <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
@@ -128,17 +118,16 @@
                     <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">UI / UX Design</p>
                 </a>
             </div>
-        </div>
+        </div>-->
     </section>
 
     <footer class="py-20 border-t border-gray-300">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="display-font text-6xl md:text-6xl font-bold mb-12 hover:text-gray-500 transition cursor-pointer"
-                onmouseenter="expandCursor()" onmouseleave="shrinkCursor()">INTERESSE GEWECKT?</h2>
+            <h2 class="display-font text-6xl md:text-6xl font-bold mb-12 hover:text-gray-500 transition">INTERESSE GEWECKT?</h2>
 
             <div class="flex justify-center gap-12 text-sm uppercase tracking-widest font-bold">
-                <a href="#" class="hover:line-through">GitHub</a>
-                <a href="#" class="hover:line-through">LinkedIn</a>
+                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
             </div>
 
             <div class="mt-20 text-xs text-gray-500 font-medium">
@@ -146,8 +135,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="cursor.js"></script>
 </body>
 
 </html>
