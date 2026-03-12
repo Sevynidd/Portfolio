@@ -11,19 +11,42 @@
 </head>
 
 <body class="bg-[#F2F2F2] text-black">
-    <nav class="fixed top-0 w-full z-50 p-8 mix-blend-differece bg-[#F2F2F2]/80 backdrop-blur-sm">
-        <div class="flex justify-between items-center">
-            <a href="index.html" class="display-font text-2xl font-bold tracking-tighter hover:text-gray-500 transition">PORTFOLIO</a>
-            <div class="flex gap-8 text-sm font-medium tracking-wide">
-                 <a href="about.html" class="hover:underline decoration-2 underline-offset-4">Über mich</a>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
+        <div class="flex justify-between items-center relative z-50">
+            <a href="index.html"
+                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black"
+                id="logo">PORTFOLIO</a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
+                <span class="w-8 h-0.5 bg-current"></span>
+                <span class="w-8 h-0.5 bg-current"></span>
+                <span class="w-8 h-0.5 bg-current"></span>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-black">
+				<a href="about.html" class="hover:underline decoration-2 underline-offset-4">Über mich</a>
                 <a href="cv.html" class="hover:underline decoration-2 underline-offset-4">Lebenslauf</a>
                 <a href="contact.html" class="underline decoration-2 underline-offset-4 pointer-events-none">Kontakt</a>
             </div>
         </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black text-white flex flex-col items-center justify-center gap-8 -translate-y-full transition-transform duration-500 ease-in-out md:hidden z-40">
+			<a href="about.html" class="display-font text-4xl font-bold hover:text-gray-300 transition"
+                onclick="toggleMenu()">Über mich</a>
+            <a href="cv.html" class="display-font text-4xl font-bold hover:text-gray-300 transition"
+                onclick="toggleMenu()">Lebenslauf</a>
+            <a href="contact.html" class="display-font text-4xl font-bold hover:text-gray-300 transition underline"
+                onclick="toggleMenu()">Kontakt</a>
+        </div>
     </nav>
 
-    <section class="h-screen flex items-center justify-center px-4">
-        <div class="text-center w-full max-w-2xl">
+    <section class="pt-40 pb-20 px-4">
+        <div class="max-w-6xl mx-auto text-center">
             <h1 class="display-font text-4xl md:text-5xl font-bold mb-12">ICH KONNTE DICH ÜBERZEUGEN?</h1>
 
             <form class="space-y-12 text-left">
@@ -96,6 +119,11 @@
                 else input.classList.remove('has-value');
             })
         });
+   
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-y-full');
+        }
     </script>
 </body>
 
