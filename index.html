@@ -17,14 +17,14 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="bg-[#F2F2F2] text-black">
+<body>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent" style="color: var(--fg); transition: color 0.2s;">
         <div class="flex justify-between items-center relative z-50">
             <a href="index.html"
-                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black"
-                id="logo">PORTFOLIO</a>
+                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition"
+                id="logo" style="color: var(--fg);">PORTFOLIO</a>
 
             <!-- Mobile Menu Button -->
             <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
@@ -34,7 +34,7 @@
             </button>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-black">
+            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide" style="color: var(--fg);">
 				<a href="about.html" class="hover:underline decoration-2 underline-offset-4">Über mich</a>
                 <a href="cv.html" class="hover:underline decoration-2 underline-offset-4">Lebenslauf</a>
                 <a href="contact.html" class="hover:underline decoration-2 underline-offset-4">Kontakt</a>
@@ -54,12 +54,12 @@
     </nav>
 
     <!-- Hero -->
-    <section class="h-screen flex items-center justify-center p-4">
+    <section class="h-screen flex items-center justify-center p-4" style="background: var(--bg); color: var(--fg);">
         <div class="text-center">
             <h1 class="display-font text-7xl md:text-9xl font-bold leading-[0.85] tracking-tight mb-8">
 				HEY! <br> ICH BIN KARINA.
             </h1>
-            <p class="max-w-md mx-auto text-gray-500 font-medium leading-relaxed">
+            <p class="max-w-md mx-auto font-medium leading-relaxed" style="color: var(--fg); opacity: 0.7;">
                 Schön das du deinen Weg auf mein Portfolio gefunden hast. 
 				Hier findest du meinen Lebenslauf und Projekte, die ich in den letzten Jahren umgesetzt habe. <br>
 				Wenn du Interesse an mir hast, zögere nicht mich zu kontaktieren!
@@ -68,10 +68,10 @@
     </section>
 
     <!-- Portfolio Grid -->
-    <section id="projects" class="min-h-screen px-4 pb-20">
+    <section id="projects" class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
         <div class="max-w-6xl mx-auto">
-            <h1 class="px-4 display-font text-5xl font-bold mb-2">Projekte</h1>
-            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6">Websites</h2>
+            <h1 class="px-4 display-font text-5xl font-bold mb-2" style="color: var(--fg);">Projekte</h1>
+            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Websites</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
             <!-- Project Portfolio -->
@@ -82,8 +82,8 @@
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">                    
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Dieses Portfolio</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">HTML / CSS / JavaScript</p>
+                    <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Dieses Portfolio</h2>
+                    <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">HTML / CSS / JavaScript</p>
                 </a>
             </div>
 
@@ -95,15 +95,15 @@
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Website eines Discordbots</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">HTML / SCSS / Typescript / Angular</p>
+                    <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Website eines Discordbots</h2>
+                    <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">HTML / SCSS / Typescript / Angular</p>
                 </a>
             </div>
     </section>
 
-    <section class="min-h-screen px-4 pb-20">
+    <section class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
         <div class="max-w-6xl mx-auto">
-            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6">Mobile Apps</h2>
+            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Mobile Apps</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
             <!-- Project Diabetes -->
@@ -114,8 +114,8 @@
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">                    
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Diabetes</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Kotlin / Jetpack Compose / Room</p>
+                    <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Diabetes</h2>
+                    <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Kotlin / Jetpack Compose / Room</p>
                 </a>
             </div>
 
@@ -130,14 +130,14 @@
                             <span class="text-center w-full">Noch kein Bild, sorry</span>
                         </div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Blutspende</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Kotlin / Jetpack Compose / Room</p>
+                    <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Blutspende</h2>
+                    <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Kotlin / Jetpack Compose / Room</p>
                 </a>
             </div>
     </section>
-    <section class="min-h-screen px-4 pb-20">
+    <section class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
         <div class="max-w-6xl mx-auto">
-            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6">Bots</h2>
+            <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Bots</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
             <!-- Project Pond Caretaker -->
@@ -151,27 +151,35 @@
                             <span class="text-center w-full">Noch kein Bild, sorry</span>
                         </div>
                     </div>
-                    <h2 class="display-font text-4xl font-bold mb-2">Pond Caretaker</h2>
-                    <p class="text-gray-500 text-sm uppercase tracking-widest font-medium">Python / PostgreSQL</p>
+                    <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Pond Caretaker</h2>
+                    <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Python / PostgreSQL</p>
                 </a>
             </div>
     </section>
 
 
-    <footer class="py-20 border-t border-gray-300">
+    <footer class="py-20 border-t" style="border-color: var(--fab-hover-bg); background: var(--bg); color: var(--fg);">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="display-font text-6xl md:text-6xl font-bold mb-12 hover:text-gray-500 transition">INTERESSE GEWECKT?</h2>
+            <h2 class="display-font text-6xl md:text-6xl font-bold mb-12 transition" style="color: var(--fg);">INTERESSE GEWECKT?</h2>
 
             <div class="flex justify-center gap-12 text-sm uppercase tracking-widest font-bold">
-                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
-                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
+                <a href="https://github.com/Sevynidd" class="hover:line-through" style="color: var(--accent);">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through" style="color: var(--accent);">LinkedIn</a>
             </div>
 
-            <div class="mt-20 text-xs text-gray-500 font-medium">
+            <div class="mt-20 text-xs font-medium" style="color: var(--fg); opacity: 0.7;">
                 &copy; 2026 Karina Kock
             </div>
         </div>
     </footer>
+
+    <!-- Floating Action Button for Dark/Light Mode -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+        </svg>
+    </button>
+    <script src="theme-toggle.js"></script>
 </body>
 
 <script>

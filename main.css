@@ -1,3 +1,60 @@
+/* Floating Action Button (FAB) for theme toggle */
+#theme-toggle {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--fab-bg, #fff);
+    color: var(--fab-fg, #222);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.2s, color 0.2s;
+}
+#theme-toggle:hover {
+    background: var(--fab-hover-bg, #eee);
+}
+
+/* Light and Dark Theme Variables */
+/* Updated Light Theme */
+:root {
+    --fab-bg: #f5f7fa;
+    --fab-fg: #1a202c;
+    --fab-hover-bg: #e2e8f0;
+    --bg: #f8fafc;
+    --fg: #1a202c;
+    --accent: #4f46e5;
+    --card-bg: #fff;
+    --card-shadow: 0 2px 16px rgba(60,60,100,0.07);
+}
+
+/* Updated Dark Theme */
+[data-theme="dark"] {
+    --fab-bg: #23263a;
+    --fab-fg: #f8fafc;
+    --fab-hover-bg: #2d3148;
+    --bg: #181a23;
+    --fg: #e0e7ef;
+    --accent: #a5b4fc;
+    --card-bg: #23263a;
+    --card-shadow: 0 2px 16px rgba(20,20,40,0.25);
+}
+body {
+    background: var(--bg);
+    color: var(--fg);
+    transition: background 0.2s, color 0.2s;
+}
+body {
+    background: var(--bg);
+    color: var(--fg);
+    transition: background 0.2s, color 0.2s;
+}
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 body {
     font-family: 'Inter', sans-serif;

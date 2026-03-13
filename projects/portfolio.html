@@ -7,16 +7,16 @@
     <title>Projekt Portfolio - Karina Kock</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../main.css">
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
     <style>
         /* Force Prism code block background to transparent */
         pre[class*="language-"] {
-            background: transparent !important;
+            background: #ffffff00 !important;
         }
         code[class*="language-"] {
-            background: transparent !important;
+            background: #ffffff00 !important;
         }
     </style>
 </head>
@@ -24,13 +24,13 @@
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
 
-<body class="bg-[#F2F2F2] text-black">
+<body style="background: var(--bg); color: var(--fg);">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent" style="color: var(--fg); transition: color 0.2s;">
         <div class="flex justify-between items-center relative z-50">
             <a href="../index.html"
-                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black bg-white px-4 py-2 rounded logo-btn" id="logo">PORTFOLIO</a>
+                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition bg-white px-4 py-2 rounded logo-btn text-black" id="logo">PORTFOLIO</a>
 
             <!-- Mobile Menu Button -->
             <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
@@ -74,10 +74,10 @@
             </div>
         </div>-->
 
-        <div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed text-gray-800">
+        <div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed" style="color: var(--fg); opacity: 0.85;">
             <div class="md:w-3/3">
                 <h3 class="display-font text-xl font-bold mb-6">Wie kam dieses Projekt überhaupt zustande?</h3>
-                <p class="text-gray-600 text-sm">
+                <p class="text-sm" style="color: var(--fg); opacity: 0.7;">
                     Dieses Portfolio entstand hobbymäßig aus dem Wunsch heraus, mir Webdesign und -entwicklung anzueignen. <br> 
                     Webentwicklung ist allgemein ein super spannendes Thema.
                     Vorallem die Unterstützung verschiedenster Bildschirmgrößen und die Beachtung von Barrierefreiheit für die Leute, die darauf angewiesen sind.
@@ -112,23 +112,30 @@
     </section>
 
     <!-- Next Project -->
-    <section class="border-t border-gray-300 py-16 bg-[#4b4b4b] text-white text-center hover-trigger"
-        onclick="window.location.href='discord-bot.html'">
+    <section class="border-t py-16 text-center hover-trigger" style="border-color: var(--fab-hover-bg); background: var(--fg); color: var(--bg);" onclick="window.location.href='discord-bot.html'">
         <p class="text-sm uppercase tracking-widest mb-4 opacity-70">Nächstes Projekt</p>
         <h2 class="display-font text-6xl md:text-5xl font-bold hover:text-gray-400 transition uppercase">Website eines Discordbots</h2>
     </section>
 
-    <footer class="py-12 border-t border-gray-800 bg-[#F2F2F2] text-black">
+    <footer class="py-12 border-t" style="border-color: var(--fab-hover-bg); background: var(--bg); color: var(--fg);">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="text-xs font-bold uppercase tracking-widest">
                 &copy; 2026 Karina Kock
             </div>
             <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
-                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
+                <a href="https://github.com/Sevynidd" class="hover:line-through" style="color: var(--accent);">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through" style="color: var(--accent);">LinkedIn</a>
             </div>
         </div>
     </footer>
+
+    <!-- Floating Action Button for Dark/Light Mode -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+        </svg>
+    </button>
+    <script src="../theme-toggle.js"></script>
 </body>
 
 </html>

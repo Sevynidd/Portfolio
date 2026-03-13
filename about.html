@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="bg-[#F2F2F2] text-black">
+<body style="background: var(--bg); color: var(--fg);">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent text-black transition-colors duration-300">
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 bg-transparent" style="color: var(--fg); transition: color 0.2s;">
         <div class="flex justify-between items-center relative z-50">
             <a href="index.html"
-                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition text-black"
-                id="logo">PORTFOLIO</a>
+                class="display-font text-2xl font-bold tracking-tighter hover:opacity-70 transition"
+                id="logo" style="color: var(--fg);">PORTFOLIO</a>
 
             <!-- Mobile Menu Button -->
             <button class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference text-white" onclick="toggleMenu()">
@@ -26,7 +26,7 @@
             </button>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-black">
+            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide" style="color: var(--fg);">
 				<a href="about.html" class="underline decoration-2 underline-offset-4 pointer-events-none">Über mich</a>
                 <a href="cv.html" class="hover:underline decoration-2 underline-offset-4">Lebenslauf</a>
                 <a href="contact.html" class="hover:underline decoration-2 underline-offset-4">Kontakt</a>
@@ -45,9 +45,9 @@
         </div>
     </nav>
 
-    <section class="pt-40 pb-20 px-4">
+    <section class="pt-40 pb-20 px-4" style="background: var(--bg); color: var(--fg);">
         <div class="max-w-6xl mx-auto">
-            <h1 class="display-font text-6xl md:text-8xl font-bold leading-none mb-20 text-center">
+            <h1 class="display-font text-6xl md:text-8xl font-bold leading-none mb-20 text-center" style="color: var(--fg);">
                 SCHÖN <br> DICH <br> KENNZULERNEN
             </h1>
 
@@ -193,10 +193,10 @@
             </div>
 
         <div class="mt-32">
-            <div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed text-gray-800">
+            <div class="flex flex-col md:flex-row gap-12 mb-20 text-lg leading-relaxed" style="color: var(--fg); opacity: 0.85;">
                 <div class="md:w-1/6">
-                    <h3 class="display-font text-xl font-bold mb-6">Hobbies</h3>
-                    <p class="text-gray-600 text-sm">
+                    <h3 class="display-font text-xl font-bold mb-6" style="color: var(--fg);">Hobbies</h3>
+                    <p class="text-sm" style="color: var(--fg); opacity: 0.7;">
                         Was mache ich eigentlich gerne in meiner Freizeit?    
                     </p>
                 </div>
@@ -220,17 +220,25 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-300">
+    <footer class="py-12 border-t" style="border-color: var(--fab-hover-bg); background: var(--bg); color: var(--fg);">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="text-xs font-bold uppercase tracking-widest">
+            <div class="text-xs font-bold uppercase tracking-widest" style="color: var(--fg);">
                 &copy; 2026 Karina Kock
             </div>
             <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="https://github.com/Sevynidd" class="hover:line-through">GitHub</a>
-                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through">LinkedIn</a>
+                <a href="https://github.com/Sevynidd" class="hover:line-through" style="color: var(--accent);">GitHub</a>
+                <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" class="hover:line-through" style="color: var(--accent);">LinkedIn</a>
             </div>
         </div>
     </footer>
+
+    <!-- Floating Action Button for Dark/Light Mode -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+        </svg>
+    </button>
+    <script src="theme-toggle.js"></script>
 </body>
 
 <script>
