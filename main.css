@@ -11,24 +11,3 @@ h6,
 .display-font {
     font-family: 'Syne', sans-serif;
 }
-.cursor-dot {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s;
-}
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.2s, width 0.3s, height 0.3s;
-    transform: translate(-15px, -15px);
-}
