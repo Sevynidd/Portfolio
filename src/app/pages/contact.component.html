@@ -1,0 +1,28 @@
+<section class="pt-40 pb-20 px-4" style="background: var(--bg); color: var(--fg);">
+	<div class="max-w-6xl mx-auto text-center">
+		<h1 class="display-font text-4xl md:text-5xl font-bold mb-12" style="color: var(--fg);">ICH KONNTE DICH ÜBERZEUGEN?</h1>
+		<form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-12 text-left max-w-xl mx-auto">
+			<div class="relative group">
+				<input name="name" [(ngModel)]="model.name" type="text" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition" placeholder=" " required>
+				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Dein Name</label>
+			</div>
+			<div class="relative group">
+				<input name="email" [(ngModel)]="model.email" type="email" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition" placeholder=" " required>
+				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Deine Email</label>
+			</div>
+			<div class="relative group">
+				<textarea name="message" [(ngModel)]="model.message" rows="4" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition resize-none" placeholder=" " required></textarea>
+				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Was möchtest du mir mitteilen?</label>
+			</div>
+			<div class="text-center pt-8">
+				<button [disabled]="!contactForm.form.valid" type="submit" class="inline-block border border-black px-12 py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-500">E-Mail versenden</button>
+			</div>
+		</form>
+		<div class="mt-20 flex justify-center gap-12 text-sm font-medium" style="color: var(--fg); opacity: 0.7;">
+			<div>
+				<p class="uppercase tracking-widest mb-2 text-xs font-bold" style="color: var(--fg);">Email</p>
+				<a href="mailto:maxmustermann@test.com" class="hover:underline transition" style="color: var(--accent);">maxmustermann@test.com</a>
+			</div>
+		</div>
+	</div>
+</section>
