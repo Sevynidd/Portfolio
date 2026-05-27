@@ -1,77 +1,155 @@
-<!-- ── Hero ── -->
-<div class="w-full relative overflow-hidden" style="height: 65vh; background: #000;">
-  <img
-    src="/images/projects/Portfolio.png"
-    alt="Portfolio"
-    loading="eager"
-    class="w-full h-full object-cover"
-    style="opacity: 0.72;"
-  >
-  <div class="absolute inset-0 flex flex-col justify-end px-6 py-10 md:px-16 md:py-14">
-    <p class="text-[10px] uppercase tracking-widest font-bold text-white mb-3" style="opacity: 0.55;">01 — Websites</p>
-    <h1 class="display-font text-5xl md:text-8xl font-bold text-white uppercase leading-none mb-4 tracking-tight">
-      Dieses Portfolio
-    </h1>
-    <p class="text-[11px] uppercase tracking-widest font-semibold text-white" style="opacity: 0.55;">
-      HTML / SCSS / TypeScript / Angular
-    </p>
+<section class="px-4 pt-28 pb-32" style="background: var(--bg); color: var(--fg);">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page heading -->
+    <div
+      class="flex items-baseline justify-between mb-20 pb-5 border-b"
+      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
+    >
+      <h1 class="display-font text-5xl md:text-7xl font-bold tracking-tight leading-none" style="color: var(--fg);">PROJEKTE</h1>
+      <span class="text-[10px] uppercase tracking-widest font-bold self-end" style="color: var(--fg); opacity: 0.35;">5 Projekte</span>
+    </div>
+
+    <!-- ── Websites ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Websites</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <!-- 01 Dieses Portfolio -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 mb-12 pb-12"
+        style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
+      >
+        <div class="project-placeholder aspect-[4/5]">
+          <span class="display-font font-bold select-none leading-none" style="font-size: 12rem; color: var(--fg); opacity: 0.05;">D</span>
+          <div class="absolute inset-0 flex items-end p-6">
+            <span class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;">Demnächst</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between py-2">
+          <div>
+            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">01</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Dieses Portfolio</h2>
+            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">HTML / SCSS / TypeScript / Angular</p>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+              Entstanden aus dem Wunsch heraus, Webdesign und -entwicklung zu erlernen.
+              Ein responsives Portfolio mit Dark Mode, Angular-Routing und modernem
+              Editorial-Design — mit Blick auf Zugänglichkeit und verschiedene Bildschirmgrößen.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Website eines Discordbots -->
+      <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
+        <div class="project-placeholder aspect-[4/5]">
+          <span class="display-font font-bold select-none leading-none" style="font-size: 12rem; color: var(--fg); opacity: 0.05;">W</span>
+          <div class="absolute inset-0 flex items-end p-6">
+            <span class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;">Demnächst</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between py-2">
+          <div>
+            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">02</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Website eines Discordbots</h2>
+            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">HTML / SCSS / TypeScript / Angular</p>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+              Eine Website zur Präsentation eines Discord-Bots mit Dokumentation,
+              Feature-Übersicht und Einrichtungsanleitung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Mobile Apps ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Mobile Apps</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <!-- 03 BolusManager -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 mb-12 pb-12"
+        style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
+      >
+        <div class="project-placeholder aspect-[4/5]">
+          <span class="display-font font-bold select-none leading-none" style="font-size: 12rem; color: var(--fg); opacity: 0.05;">B</span>
+          <div class="absolute inset-0 flex items-end p-6">
+            <span class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;">Demnächst</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between py-2">
+          <div>
+            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">03</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">BolusManager</h2>
+            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">Kotlin / Jetpack Compose / Room</p>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+              Eine Android-App zur Berechnung und Verwaltung von Insulin-Bolusdosen.
+              Entwickelt für Diabetiker, die ihre Insulindosen schnell und sicher verwalten möchten.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Blutspende -->
+      <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
+        <div class="project-placeholder aspect-[4/5]">
+          <span class="display-font font-bold select-none leading-none" style="font-size: 12rem; color: var(--fg); opacity: 0.05;">B</span>
+          <div class="absolute inset-0 flex items-end p-6">
+            <span class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;">Demnächst</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between py-2">
+          <div>
+            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">04</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Blutspende</h2>
+            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">Kotlin / Jetpack Compose / Room</p>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+              Eine Android-App zur Verwaltung von Blutspendeterminen.
+              Erinnert an anstehende Termine und hält die persönliche Spendehistorie fest.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bots ── -->
+    <div>
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Bots</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <!-- 05 Pond Caretaker -->
+      <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
+        <div class="project-placeholder aspect-[4/5]">
+          <span class="display-font font-bold select-none leading-none" style="font-size: 12rem; color: var(--fg); opacity: 0.05;">P</span>
+          <div class="absolute inset-0 flex items-end p-6">
+            <span class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;">Demnächst</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between py-2">
+          <div>
+            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">05</span>
+            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Pond Caretaker</h2>
+            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">Python / PostgreSQL</p>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+              Ein Discord-Bot zur Überwachung und Pflege von Teichwerten.
+              Verwaltet Messdaten, protokolliert Werte und sendet automatisierte Erinnerungen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-
-<!-- ── Content ── -->
-<section class="px-4 py-20 md:py-32" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-4xl mx-auto">
-
-    <!-- Über das Projekt -->
-    <div class="flex items-center gap-4 mb-12">
-      <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Über das Projekt</span>
-      <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
-    </div>
-
-    <div class="mb-20">
-      <h3 class="display-font text-xl font-bold mb-5" style="color: var(--fg);">Wie kam dieses Projekt überhaupt zustande?</h3>
-      <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-        Dieses Portfolio entstand hobbymäßig aus dem Wunsch heraus, mir Webdesign und -entwicklung anzueignen.
-        Webentwicklung ist allgemein ein super spannendes Thema —
-        vor allem die Unterstützung verschiedenster Bildschirmgrößen und die Beachtung von Barrierefreiheit
-        für die Leute, die darauf angewiesen sind.
-      </p>
-    </div>
-
-    <!-- Code-Beispiel -->
-    <div class="flex items-center gap-4 mb-8">
-      <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Code-Beispiel</span>
-      <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
-    </div>
-
-    <pre class="project-code p-6"><code>&lt;div class="md:mt-24"&gt;
-  &lt;a routerLink="/projects" class="block group"&gt;
-    &lt;div class="overflow-hidden mb-5 aspect-[4/5] relative"&gt;
-      &lt;img src="/images/projects/Portfolio.png" alt="Portfolio Vorschau"
-        class="w-full h-full object-cover transition duration-700
-               grayscale group-hover:grayscale-0 group-hover:scale-105"&gt;
-    &lt;/div&gt;
-    &lt;div class="flex items-start justify-between gap-4"&gt;
-      &lt;h3 class="display-font text-2xl font-bold"&gt;Dieses Portfolio&lt;/h3&gt;
-      &lt;span class="display-font text-sm font-bold opacity-20"&gt;01&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-&lt;/div&gt;</code></pre>
-
-  </div>
-</section>
-
-<!-- ── Next project ── -->
-<section
-  class="py-20 text-center"
-  style="border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent); background: var(--fg); color: var(--bg);"
->
-  <p class="text-[10px] uppercase tracking-widest font-bold mb-6" style="opacity: 0.45;">Nächstes Projekt</p>
-  <a
-    routerLink="/projects"
-    class="display-font text-4xl md:text-6xl font-bold uppercase tracking-tight transition"
-    style="color: var(--bg);"
-    onmouseover="this.style.opacity='0.55'"
-    onmouseout="this.style.opacity='1'"
-  >Website eines Discordbots</a>
 </section>
