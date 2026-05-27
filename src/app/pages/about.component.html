@@ -1,113 +1,138 @@
-<section class="pt-40 pb-20 px-4" style="background: var(--bg); color: var(--fg);">
-	<div class="max-w-6xl mx-auto">
-		<h1 class="display-font text-6xl md:text-8xl font-bold leading-none mb-20 text-center" style="color: var(--fg);">
-			SCHÖN <br> DICH <br> KENNZULERNEN
-		</h1>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-			<div>
-				<img src="/images/profilePic.png" class="h-auto rounded mb-8 border border-black" width="75%" height="auto" loading="lazy" alt="Profilbild">
-			</div>
-			<div class="text-xl md:text-2xl font-light leading-relaxed">
-				<p class="mb-8">
-					Ich bin Karina, eine Programmiererin, die immer nach etwas Neuem und Spannendem sucht.
-					Seit mittlerweile fast 5 Jahren bin ich als Softwareentwicklerin tätig und habe in dieser Zeit
-					viel gelernt. 
-				</p>
-				<p>
-					Neben meiner beruflichen Tätigkeit habe ich auch an vielen
-					vielen Hobby-Projekten gearbeitet, von kleinen Websites bis hin zu komplexen Anwendungen.
-					Ich liebe es, neue Technologien zu lernen und kreative Lösungen für komplexe Probleme zu finden, 
-					was sich in den Projekten widerspiegelt, die ich auch auf 
-					<a routerLink="/projects" class="underline underline-offset-4 text-blue-600 hover:text-blue-800">diesem Portfolio</a>
-					präsentiere. 
-				</p>
-			</div>
-			<div>
-				<div class="mb-4 text-gray-400 text-l uppercase tracking-widest font-bold">Hard Skills</div>
-				<div class="grid grid-cols-2 md:grid-cols-2 gap-8 text-sm uppercase tracking-widest font-bold border-t border-black pt-8">
-					<div>
-						<div class="mb-4 text-gray-400">Programmiersprachen</div>
-						<ul class="space-y-2">
-							<li>Delphi / Pascal</li>
-							<li>Python</li>
-							<li>Kotlin</li>
-							<li>Java</li>
-						</ul>
-					</div>
-					<div>
-						<div class="mb-4 text-gray-400">Frameworks</div>
-						<ul class="space-y-2">
-							<li>Mobile</li>
-							<ul class="space-y-2 ml-4">
-								<li>Jetpack Compose</li>
-								<li>Room</li>
-							</ul>
-							<li>Web</li>
-							<ul class="space-y-2 ml-4">
-								<li>Angular</li>
-							</ul>
-						</ul>
-					</div>
-					<div>
-						<div class="mb-4 text-gray-400">Datenbanken</div>
-						<ul class="space-y-2">
-							<li>Microsoft SQL Server</li>
-							<li>MySQL</li>
-							<li>PostgreSQL</li>
-						</ul>
-					</div>
-					<div>
-						<div class="mb-4 text-gray-400">Tools</div>
-						<ul class="space-y-2">
-							<li>TortoiseSVN</li>
-							<li>Git</li>
-							<li>Jira</li>
-						</ul>
-					</div>
-					<div></div>
-					<div>
-						<div class="mb-4 text-gray-400">Sprachen</div>
-						<ul class="space-y-2">
-							<li>Deutsch</li>
-							<li>Englisch</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div>
-				<div class="mb-4 text-gray-400 text-l uppercase tracking-widest font-bold">Soft Skills</div>
-				<div class="grid grid-cols-2 md:grid-cols-2 gap-8 text-sm uppercase tracking-widest font-bold border-t border-black pt-8">
-					<div>
-						<div class="flex items-center gap-4 mb-4">
-							<svg viewBox="0 0 64 64" width="64" height="64" class="rounded-full bg-[#e3e3e3] md:w-1/6" xmlns="http://www.w3.org/2000/svg">
-								<circle cx="32" cy="32" r="30" fill="#e3e3e3" />
-								<image href="https://www.svgrepo.com/show/433924/board.svg" alt="Agiles Arbeiten Icon" x="8" y="8" width="48" height="48" />
-							</svg>
-							<div class="md:w-5/6">
-								<div class="mb-2 text-gray-400">Agiles Arbeiten</div>
-								<ul class="space-y-2">
-									<li>Scrum</li>
-									<li>Kanban</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="flex items-center gap-4 mb-4">
-							<svg viewBox="0 0 64 64" width="64" height="64" class="rounded-full bg-[#e3e3e3] md:w-1/6" xmlns="http://www.w3.org/2000/svg">
-								<circle cx="32" cy="32" r="30" fill="#e3e3e3" />
-								<image href="https://www.svgrepo.com/show/448490/learn.svg" alt="Lernbereitschaft Icon" x="8" y="8" width="48" height="48" />
-							</svg>
-							<div class="md:w-5/6">
-								<div class="mb-2 text-gray-400">Lernbereitschaft</div>
-								<ul class="space-y-2">
-									<li>Neue Technologien und Frameworks</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<section class="px-4 pt-28 pb-32" style="background: var(--bg); color: var(--fg);">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page heading -->
+    <div
+      class="flex items-baseline justify-between mb-20 pb-5 border-b"
+      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
+    >
+      <h1 class="display-font text-5xl md:text-7xl font-bold tracking-tight leading-none" style="color: var(--fg);">
+        SCHÖN<br>DICH<br>KENNZULERNEN
+      </h1>
+      <span class="text-[10px] uppercase tracking-widest font-bold self-end" style="color: var(--fg); opacity: 0.35;">Über mich</span>
+    </div>
+
+    <!-- ── Bio ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Vorstellung</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div>
+          <img
+            src="/images/profilePic.png"
+            alt="Profilbild"
+            loading="lazy"
+            class="w-3/4 h-auto"
+            style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);"
+          >
+        </div>
+        <div class="font-light leading-relaxed" style="color: var(--fg);">
+          <p class="mb-8">
+            Ich bin Karina, eine Programmiererin, die immer nach etwas Neuem und Spannendem sucht.
+            Seit mittlerweile fast 5 Jahren bin ich als Softwareentwicklerin tätig und habe in dieser Zeit
+            viel gelernt.
+          </p>
+          <p>
+            Neben meiner beruflichen Tätigkeit habe ich auch an vielen Hobby-Projekten gearbeitet,
+            von kleinen Websites bis hin zu komplexen Anwendungen.
+            Ich liebe es, neue Technologien zu lernen und kreative Lösungen für komplexe Probleme zu finden,
+            was sich in den Projekten widerspiegelt, die ich auch auf
+            <a routerLink="/projects" class="underline underline-offset-4 transition" style="color: var(--accent);">diesem Portfolio</a>
+            präsentiere.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Hard Skills ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Hard Skills</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12">
+
+        <div>
+          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Programmiersprachen</div>
+          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+            <li>Delphi / Pascal</li>
+            <li>Python</li>
+            <li>Kotlin</li>
+            <li>Java</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Frameworks</div>
+          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+            <li class="text-[10px] uppercase tracking-widest" style="opacity: 0.4;">Mobile</li>
+            <li>Jetpack Compose</li>
+            <li>Room</li>
+            <li class="text-[10px] uppercase tracking-widest pt-2" style="opacity: 0.4;">Web</li>
+            <li>Angular</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Datenbanken</div>
+          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+            <li>MS SQL Server</li>
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+          </ul>
+        </div>
+
+        <div class="space-y-10">
+          <div>
+            <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Tools</div>
+            <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+              <li>TortoiseSVN</li>
+              <li>Git</li>
+              <li>Jira</li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Sprachen</div>
+            <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+              <li>Deutsch</li>
+              <li>Englisch</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Soft Skills ── -->
+    <div>
+      <div class="flex items-center gap-4 mb-14">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Soft Skills</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
+
+        <div>
+          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Agiles Arbeiten</div>
+          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+            <li>Scrum</li>
+            <li>Kanban</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Lernbereitschaft</div>
+          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
+            <li>Neue Technologien und Frameworks</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </section>

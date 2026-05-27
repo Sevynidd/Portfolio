@@ -1,28 +1,85 @@
-<section class="pt-40 pb-20 px-4" style="background: var(--bg); color: var(--fg);">
-	<div class="max-w-6xl mx-auto text-center">
-		<h1 class="display-font text-4xl md:text-5xl font-bold mb-12" style="color: var(--fg);">ICH KONNTE DICH ÜBERZEUGEN?</h1>
-		<form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-12 text-left max-w-xl mx-auto">
-			<div class="relative group">
-				<input name="name" [(ngModel)]="model.name" type="text" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition" placeholder=" " required>
-				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Dein Name</label>
-			</div>
-			<div class="relative group">
-				<input name="email" [(ngModel)]="model.email" type="email" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition" placeholder=" " required>
-				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Deine Email</label>
-			</div>
-			<div class="relative group">
-				<textarea name="message" [(ngModel)]="model.message" rows="4" class="w-full bg-transparent border-b-2 border-black/10 py-4 text-xl focus:outline-none focus:border-black transition resize-none" placeholder=" " required></textarea>
-				<label class="absolute left-0 top-4 text-gray-400 text-xl pointer-events-none transition-all group-focus-within:-top-6 group-focus-within:text-xs group-focus-within:text-black">Was möchtest du mir mitteilen?</label>
-			</div>
-			<div class="text-center pt-8">
-				<button [disabled]="!contactForm.form.valid" type="submit" class="inline-block border border-black px-12 py-4 text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-500">E-Mail versenden</button>
-			</div>
-		</form>
-		<div class="mt-20 flex justify-center gap-12 text-sm font-medium" style="color: var(--fg); opacity: 0.7;">
-			<div>
-				<p class="uppercase tracking-widest mb-2 text-xs font-bold" style="color: var(--fg);">Email</p>
-				<a href="mailto:maxmustermann@test.com" class="hover:underline transition" style="color: var(--accent);">maxmustermann@test.com</a>
-			</div>
-		</div>
-	</div>
+<section class="px-4 pt-28 pb-32" style="background: var(--bg); color: var(--fg);">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page heading -->
+    <div
+      class="flex items-baseline justify-between mb-20 pb-5 border-b"
+      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
+    >
+      <h1 class="display-font text-5xl md:text-7xl font-bold tracking-tight leading-none" style="color: var(--fg);">
+        ICH KONNTE<br>DICH ÜBERZEUGEN?
+      </h1>
+    </div>
+
+    <!-- ── Form ── -->
+    <div class="flex items-center gap-4 mb-14">
+      <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Kontaktformular</span>
+      <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="max-w-xl space-y-10">
+
+      <div class="contact-field">
+        <input
+          name="name"
+          [(ngModel)]="model.name"
+          type="text"
+          class="contact-input"
+          placeholder=" "
+          required
+        >
+        <label class="contact-label">Dein Name</label>
+      </div>
+
+      <div class="contact-field">
+        <input
+          name="email"
+          [(ngModel)]="model.email"
+          type="email"
+          class="contact-input"
+          placeholder=" "
+          required
+        >
+        <label class="contact-label">Deine E-Mail</label>
+      </div>
+
+      <div class="contact-field">
+        <textarea
+          name="message"
+          [(ngModel)]="model.message"
+          rows="5"
+          class="contact-input"
+          placeholder=" "
+          required
+        ></textarea>
+        <label class="contact-label">Was möchtest du mir mitteilen?</label>
+      </div>
+
+      <div class="pt-4">
+        <button
+          type="submit"
+          [disabled]="!contactForm.form.valid"
+          class="btn-outline"
+        >E-Mail versenden</button>
+      </div>
+
+    </form>
+
+    <!-- ── Direct contact ── -->
+    <div class="mt-24">
+      <div class="flex items-center gap-4 mb-10">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Direkt</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest font-bold mb-2" style="color: var(--fg); opacity: 0.4;">E-Mail</p>
+        <a
+          href="mailto:maxmustermann@test.com"
+          class="text-sm font-semibold hover:underline underline-offset-4 transition"
+          style="color: var(--accent);"
+        >maxmustermann@test.com</a>
+      </div>
+    </div>
+
+  </div>
 </section>

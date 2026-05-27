@@ -1,91 +1,209 @@
-<section class="flex items-center justify-center p-4" style="min-height: calc(100vh - var(--nav-height)); background: var(--bg); color: var(--fg);">
+<!-- ── Hero ── -->
+<section
+  class="relative flex flex-col items-center justify-center p-6"
+  style="min-height: calc(100vh - var(--nav-height)); background: var(--bg); color: var(--fg);"
+>
   <div class="text-center">
+    <!-- Status badge -->
+    <div
+      class="inline-flex items-center gap-2 mb-10 px-4 py-2 text-[10px] uppercase tracking-[0.15em] font-bold"
+      style="border: 1px solid color-mix(in srgb, var(--fg) 18%, transparent); color: var(--fg); opacity: 0.65;"
+    >
+      <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+      Full-Stack Softwareentwicklerin · SP_Data GmbH
+    </div>
+
     <h1 class="display-font text-7xl md:text-9xl font-bold leading-[0.85] tracking-tight mb-8">
       HEY! <br> ICH BIN KARINA.
     </h1>
-    <p class="max-w-md mx-auto font-medium leading-relaxed" style="color: var(--fg); opacity: 0.7;">
+
+    <p class="max-w-md mx-auto font-medium leading-relaxed" style="color: var(--fg); opacity: 0.65;">
       Schön das du deinen Weg auf mein Portfolio gefunden hast. <br>
       Hier findest du meinen Lebenslauf und Projekte, die ich in den letzten Jahren umgesetzt habe. <br>
       Wenn du Interesse an mir hast, zögere nicht mich zu kontaktieren!
     </p>
   </div>
-</section>
-<section id="projects" class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-6xl mx-auto">
-    <h1 class="px-4 display-font text-5xl font-bold mb-2" style="color: var(--fg);">Projekte</h1>
-    <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Websites</h2>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
-    <div class="pt-0 md:pt-24 hover-trigger">
-      <a routerLink="/projects" class="block group">
-        <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-          <img src="/images/projects/Portfolio.png" alt="Portfolio Preview" loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-        </div>
-        <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Dieses Portfolio</h2>
-        <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">HTML / CSS / JavaScript</p>
-      </a>
-    </div>
-    <div class="hover-trigger">
-      <a routerLink="/projects" class="block group">
-        <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-          <img src="/images/projects/WebsiteDiscordBot.png" alt="Discord Bot Website Preview" loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-        </div>
-        <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Website eines Discordbots</h2>
-        <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">HTML / SCSS / Typescript / Angular</p>
-      </a>
-    </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 flex flex-col items-center gap-2" style="color: var(--fg); opacity: 0.3;">
+    <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Scroll</span>
+    <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+      <line x1="7" y1="0" x2="7" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <polyline points="1,10 7,16 13,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
   </div>
 </section>
-<section class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Mobile Apps</h2>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
-    <div class="pt-0 md:pt-24 hover-trigger">
-      <a routerLink="/projects" class="block group">
-        <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-          <img src="/images/projects/BolusManager.png" alt="BolusManager App Preview" loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out grayscale group-hover:grayscale-0">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-        </div>
-        <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">BolusManager</h2>
-        <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Kotlin / Jetpack Compose / Room</p>
-      </a>
+
+<!-- ── Projects ── -->
+<section id="projects" class="px-4 py-24 md:py-36" style="background: var(--bg); color: var(--fg);">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section header -->
+    <div
+      class="flex items-baseline justify-between mb-16 pb-5 border-b"
+      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
+    >
+      <h2 class="display-font text-5xl md:text-7xl font-bold tracking-tight" style="color: var(--fg);">Projekte</h2>
+      <span class="text-[10px] uppercase tracking-widest font-bold" style="color: var(--fg); opacity: 0.35;">5 Arbeiten</span>
     </div>
-    <div class="hover-trigger">
-      <a routerLink="/projects" class="block group">
-        <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-          <div class="absolute inset-0 flex items-center justify-center text-4xl" style="transform: rotate(-45deg); pointer-events:none;">
-            <span class="text-center w-full">Noch kein Bild, sorry</span>
-          </div>
+
+    <!-- ── Websites ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-12">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Websites</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+        <span class="text-[10px] font-bold tabular-nums" style="color: var(--fg); opacity: 0.25;">01 — 02</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+        <!-- 01 Portfolio -->
+        <div class="md:mt-24">
+          <a routerLink="/projects" class="block group">
+            <div class="project-placeholder mb-5 aspect-[4/5]">
+              <span
+                class="display-font font-bold select-none leading-none"
+                style="font-size: 12rem; color: var(--fg); opacity: 0.05;"
+              >P</span>
+              <div class="absolute inset-0 flex items-end p-6">
+                <span
+                  class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+                  style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;"
+                >Demnächst</span>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Dieses Portfolio</h3>
+                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">HTML / SCSS / TypeScript / Angular</p>
+              </div>
+              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">01</span>
+            </div>
+          </a>
         </div>
-        <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Blutspende</h2>
-        <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Kotlin / Jetpack Compose / Room</p>
-      </a>
-    </div>
-  </div>
-</section>
-<section class="min-h-screen px-4 pb-20" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="px-4 display-font text-4xl font-bold mb-2 pt-6" style="color: var(--fg);">Bots</h2>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 max-w-7xl mx-auto">
-    <div class="pt-0 md:pt-24 hover-trigger">
-      <a routerLink="/projects" class="block group">
-        <div class="overflow-hidden mb-6 aspect-[4/5] relative">
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-          <div class="absolute inset-0 flex items-center justify-center text-4xl" style="transform: rotate(-45deg); pointer-events:none;">
-            <span class="text-center w-full">Noch kein Bild, sorry</span>
-          </div>
+
+        <!-- 02 Website eines Discord-Bots -->
+        <div>
+          <a routerLink="/projects" class="block group">
+            <div class="project-placeholder mb-5 aspect-[4/5]">
+              <span
+                class="display-font font-bold select-none leading-none"
+                style="font-size: 12rem; color: var(--fg); opacity: 0.05;"
+              >W</span>
+              <div class="absolute inset-0 flex items-end p-6">
+                <span
+                  class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+                  style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;"
+                >Demnächst</span>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Website eines Discord-Bots</h3>
+                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">HTML / SCSS / TypeScript / Angular</p>
+              </div>
+              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">02</span>
+            </div>
+          </a>
         </div>
-        <h2 class="display-font text-4xl font-bold mb-2" style="color: var(--fg);">Pond Caretaker</h2>
-        <p class="text-sm uppercase tracking-widest font-medium" style="color: var(--fg); opacity: 0.7;">Python / PostgreSQL</p>
-      </a>
+      </div>
     </div>
+
+    <!-- ── Mobile Apps ── -->
+    <div class="mb-24">
+      <div class="flex items-center gap-4 mb-12">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Mobile Apps</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+        <span class="text-[10px] font-bold tabular-nums" style="color: var(--fg); opacity: 0.25;">03 — 04</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+        <!-- 03 BolusManager -->
+        <div class="md:mt-24">
+          <a routerLink="/projects" class="block group">
+            <div class="project-placeholder mb-5 aspect-[4/5]">
+              <span
+                class="display-font font-bold select-none leading-none"
+                style="font-size: 12rem; color: var(--fg); opacity: 0.05;"
+              >B</span>
+              <div class="absolute inset-0 flex items-end p-6">
+                <span
+                  class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+                  style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;"
+                >Demnächst</span>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">BolusManager</h3>
+                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">Kotlin / Jetpack Compose / Room</p>
+              </div>
+              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">03</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 04 Blutspende (placeholder) -->
+        <div>
+          <a routerLink="/projects" class="block group">
+            <div class="project-placeholder mb-5 aspect-[4/5]">
+              <span
+                class="display-font font-bold select-none leading-none"
+                style="font-size: 12rem; color: var(--fg); opacity: 0.05;"
+              >B</span>
+              <div class="absolute inset-0 flex items-end p-6">
+                <span
+                  class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+                  style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;"
+                >Demnächst</span>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Blutspende</h3>
+                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">Kotlin / Jetpack Compose / Room</p>
+              </div>
+              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">04</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bots ── -->
+    <div>
+      <div class="flex items-center gap-4 mb-12">
+        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Bots</span>
+        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+        <span class="text-[10px] font-bold tabular-nums" style="color: var(--fg); opacity: 0.25;">05</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+        <!-- 05 Pond Caretaker (placeholder) -->
+        <div class="md:mt-24">
+          <a routerLink="/projects" class="block group">
+            <div class="project-placeholder mb-5 aspect-[4/5]">
+              <span
+                class="display-font font-bold select-none leading-none"
+                style="font-size: 12rem; color: var(--fg); opacity: 0.05;"
+              >P</span>
+              <div class="absolute inset-0 flex items-end p-6">
+                <span
+                  class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5"
+                  style="border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); color: var(--fg); opacity: 0.45;"
+                >Demnächst</span>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Pond Caretaker</h3>
+                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">Python / PostgreSQL</p>
+              </div>
+              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">05</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>

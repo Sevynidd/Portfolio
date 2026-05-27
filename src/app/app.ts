@@ -11,6 +11,17 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('angular-portfolio');
   protected isMenuOpen = signal(false);
+  protected isDark = signal(
+    document.documentElement.getAttribute('data-theme') === 'dark'
+  );
+
+  toggleTheme() {
+    const next = !this.isDark();
+    this.isDark.set(next);
+    const mode = next ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('theme', mode);
+  }
 
   toggleMenu() {
     this.isMenuOpen.update(v => !v);

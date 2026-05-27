@@ -1,7 +1,21 @@
-<section class="min-h-screen flex items-center justify-center px-4 py-20" style="background: var(--bg); color: var(--fg);">
-  <div class="text-center max-w-3xl mx-auto">
-    <h1 class="display-font text-6xl font-bold mb-6" style="color: var(--fg);">404</h1>
-    <p class="text-xl mb-10" style="color: var(--fg); opacity: 0.8;">Die Seite wurde nicht gefunden.</p>
-    <a routerLink="/" class="inline-block border border-black px-8 py-4 text-sm uppercase tracking-widest hover:bg-black hover:text-white transition">Zur Startseite</a>
+<section
+  class="flex flex-col items-center justify-center px-4 text-center"
+  style="min-height: calc(100vh - var(--nav-height)); background: var(--bg); color: var(--fg);"
+>
+  <p class="text-[10px] uppercase tracking-widest font-bold mb-6" style="color: var(--fg); opacity: 0.4;">Fehler</p>
+
+  <h1
+    class="display-font font-bold leading-none tracking-tight mb-0"
+    style="font-size: clamp(8rem, 22vw, 18rem); color: var(--fg); line-height: 0.9;"
+  >404</h1>
+
+  <div
+    class="w-full max-w-xs mt-10 pt-10"
+    style="border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);"
+  >
+    <p class="text-base font-light mb-10" style="color: var(--fg); opacity: 0.6;">
+      Diese Seite wurde nicht gefunden.
+    </p>
+    <a routerLink="/" class="btn-outline">Zur Startseite</a>
   </div>
 </section>
