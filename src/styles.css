@@ -257,6 +257,11 @@ h1, h2, h3, h4, h5, h6, .display-font {
   }
 }
 
+/* ── Project anchor scroll offset (accounts for sticky nav) ── */
+.project-anchor {
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+
 /* ── Project placeholder card ── */
 .project-placeholder {
   position: relative;
