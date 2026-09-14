@@ -16,6 +16,7 @@ interface ImmichAsset {
 }
 
 interface ImmichSharedLinkResponse {
+  assets?: ImmichAsset[];
   album?: { id: string };
 }
 
@@ -29,19 +30,32 @@ export class ImmichService {
 
   /**
    * Fetches the assets behind a public Immich shared-link key.
-   * Shared links of type ALBUM don't include assets inline, so this first
-   * resolves the album id, then queries search/metadata for its assets.
+   * INDIVIDUAL-type links include their assets inline; ALBUM-type links
+   * don't, so those are resolved via a second search/metadata call.
    * Resolves to [] on any error (missing key, CORS not configured, etc.).
    */
-  getSharedAlbumImages(shareKey: string, fallbackAlt: string): Observable<ImmichImage[]> {
+  getSharedImages(
+    shareKey: string,
+    fallbackAlt: string,
+    size: 'thumbnail' | 'preview' = 'thumbnail'
+  ): Observable<ImmichImage[]> {
     if (!shareKey) {
       return of([]);
     }
 
     const keyParam = `key=${encodeURIComponent(shareKey)}`;
+    const toImage = (asset: ImmichAsset): ImmichImage => ({
+      id: asset.id,
+      thumbUrl: `${IMMICH_BASE_URL}/api/assets/${asset.id}/thumbnail?${keyParam}&size=${size}`,
+      altText: asset.originalFileName ?? fallbackAlt
+    });
 
     return this.http.get<ImmichSharedLinkResponse>(`${IMMICH_BASE_URL}/api/shared-links/me?${keyParam}`).pipe(
       switchMap((sharedLink) => {
+        if (sharedLink.assets?.length) {
+          return of(sharedLink.assets.map(toImage));
+        }
+
         const albumId = sharedLink.album?.id;
         if (!albumId) {
           return of([]);
@@ -51,15 +65,7 @@ export class ImmichService {
           .post<ImmichSearchMetadataResponse>(`${IMMICH_BASE_URL}/api/search/metadata?${keyParam}`, {
             albumIds: [albumId]
           })
-          .pipe(
-            map((result) =>
-              (result.assets?.items ?? []).map((asset) => ({
-                id: asset.id,
-                thumbUrl: `${IMMICH_BASE_URL}/api/assets/${asset.id}/thumbnail?${keyParam}&size=thumbnail`,
-                altText: asset.originalFileName ?? fallbackAlt
-              }))
-            )
-          );
+          .pipe(map((result) => (result.assets?.items ?? []).map(toImage)));
       }),
       catchError(() => of([]))
     );

@@ -40,9 +40,18 @@ export class AboutComponent implements OnInit {
   readonly haekelnImages = signal<ImmichImage[]>([]);
   readonly zeichnenImages = signal<ImmichImage[]>([]);
 
+  /** Defaults to the committed local image; swapped for the Immich photo once it loads. */
+  readonly profilePicUrl = signal<string>('assets/images/cv/profile.png');
+
   ngOnInit(): void {
     this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);
     this.loadGallery(IMMICH_SHARE_KEYS.zeichnen, 'Zeichnung', this.zeichnenImages);
+
+    this.immich.getSharedImages(IMMICH_SHARE_KEYS.profilePic, 'Profilbild', 'preview').subscribe((images) => {
+      if (images.length > 0) {
+        this.profilePicUrl.set(images[0].thumbUrl);
+      }
+    });
   }
 
   private loadGallery(
@@ -50,7 +59,7 @@ export class AboutComponent implements OnInit {
     label: string,
     target: ReturnType<typeof signal<ImmichImage[]>>
   ): void {
-    this.immich.getSharedAlbumImages(shareKey, label).subscribe((images) => {
+    this.immich.getSharedImages(shareKey, label).subscribe((images) => {
       if (images.length === 0 && isDevMode()) {
         target.set(createMockImages(8, label));
       } else {

@@ -22,7 +22,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <img
-            src="assets/images/cv/profile.png"
+            [src]="profilePicUrl()"
             alt="Profilbild"
             loading="lazy"
             class="w-3/4 h-auto"
@@ -142,14 +142,22 @@
         <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
       </div>
 
-      <ul class="flex flex-wrap gap-x-12 gap-y-4 text-sm font-semibold mb-10" style="color: var(--fg);">
-        <li>Gaming</li>
-        <li>Musik</li>
-      </ul>
+      <!-- Gaming -->
+      <div class="mb-10">
+        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Gaming</p>
+        <p class="text-sm font-light" style="color: var(--fg); opacity: 0.65;">Von Indie-Perlen bis großen Open-World-Abenteuern – am liebsten mit gutem Storytelling.</p>
+      </div>
+
+      <!-- Musik -->
+      <div class="mb-10">
+        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Musik</p>
+        <p class="text-sm font-light" style="color: var(--fg); opacity: 0.65;">Begleitet mich beim Programmieren genauso wie beim Entspannen – quer durch die Genres.</p>
+      </div>
 
       <!-- Häkeln -->
       <div class="mb-10">
-        <p class="text-sm font-semibold mb-4" style="color: var(--fg);">Häkeln</p>
+        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Häkeln</p>
+        <p class="text-sm font-light mb-4" style="color: var(--fg); opacity: 0.65;">Kleine Projekte zum Abschalten – von Amigurumi bis Deko für Zuhause.</p>
         @if (haekelnImages().length > 0) {
           <div class="flex gap-3 overflow-x-auto pb-2 hobby-scroll">
             @for (image of haekelnImages(); track image.id) {
@@ -172,7 +180,8 @@
 
       <!-- Zeichnen -->
       <div>
-        <p class="text-sm font-semibold mb-4" style="color: var(--fg);">Zeichnen</p>
+        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Zeichnen</p>
+        <p class="text-sm font-light mb-4" style="color: var(--fg); opacity: 0.65;">Skizzieren als kreativer Ausgleich zum Code – meist digital, manchmal analog.</p>
         @if (zeichnenImages().length > 0) {
           <div class="flex gap-3 overflow-x-auto pb-2 hobby-scroll">
             @for (image of zeichnenImages(); track image.id) {
