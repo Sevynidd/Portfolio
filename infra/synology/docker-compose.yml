@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  portfolio:
+    container_name: portfolio
+    labels:
+      glance.name: Portfolio
+      glance.icon: si:personio
+      glance.url: https://portfolio.sevynidd.org/
+      glance.description: Portfolio
+      glance.id: portfolio
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - portfolio_data:/app     # Docker Volume statt lokales Verzeichnis
+      - portfolio_status:/status # geteilter Status mit dem Watcher (letzter gebauter Commit)
+    ports:
+      - "4200:4200"
+    command: |
+      sh -c "
+      apk add --no-cache git &&
+      find /app -mindepth 1 -delete &&
+      git clone https://github.com/Sevynidd/Portfolio.git /app &&
+      git -C /app rev-parse HEAD > /status/commit &&
+      npm install &&
+      npm run build &&
+      npx http-server dist/angular-portfolio/browser -p 4200 -g
+      "
+    restart: always
+
+  portfolio-watcher:
+    container_name: portfolio-watcher
+    image: docker:cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # damit der Watcher den Container neu starten darf
+      - portfolio_status:/status
+    environment:
+      REPO_URL: https://github.com/Sevynidd/Portfolio.git
+      BRANCH: main
+      CHECK_INTERVAL: "60"
+      TARGET_CONTAINER: portfolio
+    entrypoint: |
+      sh -c '
+      apk add --no-cache git >/dev/null 2>&1
+      while true; do
+        REMOTE_COMMIT=$$(git ls-remote "$$REPO_URL" "refs/heads/$$BRANCH" 2>/dev/null | cut -f1)
+        LOCAL_COMMIT=$$(cat /status/commit 2>/dev/null || echo none)
+        if [ -n "$$REMOTE_COMMIT" ] && [ "$$REMOTE_COMMIT" != "$$LOCAL_COMMIT" ]; then
+          echo "Neuer Commit erkannt ($$REMOTE_COMMIT) - starte $$TARGET_CONTAINER neu"
+          docker restart "$$TARGET_CONTAINER"
+        fi
+        sleep "$$CHECK_INTERVAL"
+      done
+      '
+    restart: always
+
+volumes:
+  portfolio_data:
+  portfolio_status:
