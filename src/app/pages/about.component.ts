@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, isDevMode, signal } from '@angular/core';
+import { Component, HostListener, OnInit, inject, isDevMode, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ImmichImage, ImmichService } from '../services/immich.service';
@@ -19,9 +19,12 @@ function createMockImages(count: number, label: string): ImmichImage[] {
       <text x="50%" y="50%" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif">#${i + 1}</text>
     </svg>`;
 
+    const dataUrl = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+
     return {
       id: `mock-${label}-${i}`,
-      thumbUrl: `data:image/svg+xml,${encodeURIComponent(svg)}`,
+      thumbUrl: dataUrl,
+      fullUrl: dataUrl,
       altText: `Platzhalter ${label} ${i + 1}`
     };
   });
@@ -41,6 +44,21 @@ export class AboutComponent implements OnInit {
   readonly zeichnenImages = signal<ImmichImage[]>([]);
 
   readonly profilePicUrl = signal<string | null>(null);
+
+  readonly lightboxImage = signal<{ src: string; alt: string } | null>(null);
+
+  openLightbox(src: string, alt: string): void {
+    this.lightboxImage.set({ src, alt });
+  }
+
+  closeLightbox(): void {
+    this.lightboxImage.set(null);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeLightbox();
+  }
 
   ngOnInit(): void {
     this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);

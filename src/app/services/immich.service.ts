@@ -7,6 +7,7 @@ import { IMMICH_BASE_URL } from './immich.config';
 export interface ImmichImage {
   id: string;
   thumbUrl: string;
+  fullUrl: string;
   altText: string;
 }
 
@@ -47,6 +48,7 @@ export class ImmichService {
     const toImage = (asset: ImmichAsset): ImmichImage => ({
       id: asset.id,
       thumbUrl: `${IMMICH_BASE_URL}/api/assets/${asset.id}/thumbnail?${keyParam}&size=${size}`,
+      fullUrl: `${IMMICH_BASE_URL}/api/assets/${asset.id}/thumbnail?${keyParam}&size=preview`,
       altText: asset.originalFileName ?? fallbackAlt
     });
 
