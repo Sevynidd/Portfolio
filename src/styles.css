@@ -246,16 +246,6 @@ h1, h2, h3, h4, h5, h6, .display-font {
   letter-spacing: 0.1em;
 }
 
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
 .footer-social a {
   display: inline-flex;
   align-items: center;
@@ -294,6 +284,71 @@ h1, h2, h3, h4, h5, h6, .display-font {
     gap: 0.5rem;
     text-align: center;
   }
+}
+
+/* ── Shared page heading (cv / projects / about / contact) ── */
+.page-shell {
+  padding: 7rem 1rem 8rem;
+}
+
+.page-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.page-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.page-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--fg);
+}
+
+@media (min-width: 768px) {
+  .page-heading {
+    font-size: 3.75rem;
+  }
+}
+
+.page-heading-label {
+  align-self: flex-end;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg);
+  opacity: 0.35;
+}
+
+/* ── Shared section label row (sub-section headers) ── */
+.section-label-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg);
+  opacity: 0.4;
+}
+
+.section-label-divider {
+  flex: 1 1 0%;
+  height: 1px;
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
 }
 
 /* ── Project anchor scroll offset (accounts for sticky nav) ── */

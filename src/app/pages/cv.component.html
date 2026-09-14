@@ -1,19 +1,16 @@
-<section class="px-4 pt-28 pb-32" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-7xl mx-auto">
+<section class="page-shell" style="background: var(--bg); color: var(--fg);">
+  <div class="page-container">
 
     <!-- Page heading -->
-    <div
-      class="flex items-baseline justify-between mb-20 pb-5 border-b"
-      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
-    >
-      <h1 class="display-font text-5xl md:text-6xl font-bold tracking-tight leading-none" style="color: var(--fg);">LEBENSLAUF</h1>
+    <div class="page-heading-row">
+      <h1 class="display-font page-heading">LEBENSLAUF</h1>
     </div>
 
     <!-- ── Berufserfahrung ── -->
     <div class="mb-20">
-      <div class="flex items-center gap-4 mb-14">
-        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Berufserfahrung</span>
-        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      <div class="section-label-row mb-14">
+        <span class="section-label">Berufserfahrung</span>
+        <div class="section-label-divider"></div>
       </div>
 
       @for (entry of berufserfahrung; track entry.title; let last = $last) {
@@ -39,9 +36,9 @@
 
     <!-- ── Ausbildung ── -->
     <div>
-      <div class="flex items-center gap-4 mb-14">
-        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Schulausbildung</span>
-        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
+      <div class="section-label-row mb-14">
+        <span class="section-label">Schulausbildung</span>
+        <div class="section-label-divider"></div>
       </div>
 
       @for (entry of schulausbildung; track entry.title; let last = $last) {
