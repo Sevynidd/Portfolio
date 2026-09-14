@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -10,11 +10,37 @@ import { FormsModule } from '@angular/forms';
 })
 export class ContactComponent {
   model = { name: '', email: '', message: '' };
+  status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
 
-  onSubmit() {
-    const to = 'maxmustermann@test.com';
-    const subject = encodeURIComponent('Kontakt via Portfolio');
-    const body = encodeURIComponent(`Name: ${this.model.name}\nEmail: ${this.model.email}\n\n${this.model.message}`);
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  private readonly web3formsAccessKey = '61c35104-e0aa-4584-a311-0fb68c323610';
+
+  async onSubmit(form: NgForm) {
+    if (form.invalid || !this.model.name.trim() || !this.model.email.trim() || !this.model.message.trim()) {
+      form.form.markAllAsTouched();
+      return;
+    }
+
+    this.status = 'sending';
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: this.web3formsAccessKey,
+          subject: 'Kontakt via Portfolio',
+          name: this.model.name,
+          email: this.model.email,
+          message: this.model.message,
+        }),
+      });
+      const result = await response.json();
+      this.status = result.success ? 'success' : 'error';
+      if (result.success) {
+        this.model = { name: '', email: '', message: '' };
+        form.resetForm();
+      }
+    } catch {
+      this.status = 'error';
+    }
   }
 }

@@ -378,6 +378,10 @@ h1, h2, h3, h4, h5, h6, .display-font {
   border-bottom-color: var(--fg);
 }
 
+.contact-input.ng-invalid.ng-touched {
+  border-bottom-color: #e05252;
+}
+
 .contact-input::placeholder {
   color: transparent;
 }

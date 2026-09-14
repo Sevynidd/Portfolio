@@ -17,7 +17,7 @@
       <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="max-w-xl space-y-10">
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="max-w-xl space-y-10">
 
       <div class="contact-field">
         <input
@@ -58,28 +58,19 @@
       <div class="pt-4">
         <button
           type="submit"
-          [disabled]="!contactForm.form.valid"
+          [disabled]="!contactForm.form.valid || status === 'sending'"
           class="btn-outline"
-        >E-Mail versenden</button>
+        >{{ status === 'sending' ? 'Wird gesendet …' : 'E-Mail versenden' }}</button>
+
+        @if (status === 'success') {
+          <p class="text-sm mt-4" style="color: var(--accent);">Danke! Deine Nachricht wurde versendet.</p>
+        }
+        @if (status === 'error') {
+          <p class="text-sm mt-4" style="color: #e05252;">Da ist leider etwas schiefgelaufen. Bitte versuch es erneut.</p>
+        }
       </div>
 
     </form>
-
-    <!-- ── Direct contact ── -->
-    <div class="mt-24">
-      <div class="flex items-center gap-4 mb-10">
-        <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Direkt</span>
-        <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
-      </div>
-      <div>
-        <p class="text-[10px] uppercase tracking-widest font-bold mb-2" style="color: var(--fg); opacity: 0.4;">E-Mail</p>
-        <a
-          href="mailto:maxmustermann@test.com"
-          class="text-sm font-semibold hover:underline underline-offset-4 transition"
-          style="color: var(--accent);"
-        >maxmustermann@test.com</a>
-      </div>
-    </div>
 
   </div>
 </section>
