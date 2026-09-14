@@ -1,8 +1,9 @@
-import { Component, HostListener, OnInit, inject, isDevMode, signal } from '@angular/core';
+import { Component, OnInit, inject, isDevMode, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ImmichImage, ImmichService } from '../services/immich.service';
 import { IMMICH_SHARE_KEYS } from '../services/immich.config';
+import { LightboxService } from '../services/lightbox.service';
 
 /**
  * Local placeholder photos shown only in dev builds when the real Immich
@@ -39,26 +40,12 @@ function createMockImages(count: number, label: string): ImmichImage[] {
 })
 export class AboutComponent implements OnInit {
   private readonly immich = inject(ImmichService);
+  protected readonly lightbox = inject(LightboxService);
 
   readonly haekelnImages = signal<ImmichImage[]>([]);
   readonly zeichnenImages = signal<ImmichImage[]>([]);
 
   readonly profilePicUrl = signal<string | null>(null);
-
-  readonly lightboxImage = signal<{ src: string; alt: string } | null>(null);
-
-  openLightbox(src: string, alt: string): void {
-    this.lightboxImage.set({ src, alt });
-  }
-
-  closeLightbox(): void {
-    this.lightboxImage.set(null);
-  }
-
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
-    this.closeLightbox();
-  }
 
   ngOnInit(): void {
     this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);

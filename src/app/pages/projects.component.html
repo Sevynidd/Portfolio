@@ -23,9 +23,9 @@
         class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 mb-12 pb-12"
         style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
       >
-        <div class="project-placeholder aspect-[4/5]">
-          <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light w-full h-full object-cover object-top">
-          <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark w-full h-full object-cover object-top">
+        <div class="project-placeholder aspect-[4/5] cursor-zoom-in">
+          <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Portfolio_light.png', 'Screenshot dieses Portfolios')">
+          <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Portfolio_dark.png', 'Screenshot dieses Portfolios')">
         </div>
         <div class="flex flex-col justify-between py-2">
           <div>
@@ -48,9 +48,9 @@
 
       <!-- 02 Lumi Dashboard -->
       <div id="project-discordbot" class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
-        <div class="project-placeholder aspect-[4/5]">
-          <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light w-full h-full object-cover object-top">
-          <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark w-full h-full object-cover object-top">
+        <div class="project-placeholder aspect-[4/5] cursor-zoom-in">
+          <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Lumi_light.png', 'Screenshot des Lumi Dashboards')">
+          <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Lumi_dark.png', 'Screenshot des Lumi Dashboards')">
         </div>
         <div class="flex flex-col justify-between py-2">
           <div>
@@ -89,9 +89,9 @@
 
       <!-- 03 BolusManager -->
       <div id="project-bolusmanager" class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
-        <div class="project-placeholder aspect-[4/5] p-8">
-          <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light max-h-full max-w-full object-contain">
-          <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark max-h-full max-w-full object-contain">
+        <div class="project-placeholder aspect-[4/5] p-8 cursor-zoom-in">
+          <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light max-h-full max-w-full object-contain" (click)="lightbox.open('assets/images/projects/Bolusmanager_light.png', 'Screenshot der BolusManager-App')">
+          <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark max-h-full max-w-full object-contain" (click)="lightbox.open('assets/images/projects/Bolusmanager_dark.png', 'Screenshot der BolusManager-App')">
         </div>
         <div class="flex flex-col justify-between py-2">
           <div>

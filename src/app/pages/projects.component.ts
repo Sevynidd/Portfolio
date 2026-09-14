@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { LightboxService } from '../services/lightbox.service';
 
 @Component({
   selector: 'app-projects',
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent {}
+export class ProjectsComponent {
+  protected readonly lightbox = inject(LightboxService);
+}
