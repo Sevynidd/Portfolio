@@ -3,7 +3,15 @@
   <!-- Navigation -->
   <header class="site-header">
     <div class="nav-inner">
-      <a routerLink="/" class="nav-logo">PORTFOLIO</a>
+      <a routerLink="/" class="nav-logo">
+        <svg class="nav-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" fill="var(--accent)"/>
+          <rect x="16" y="20" width="11" height="52" fill="var(--bg)"/>
+          <path d="M58 22 L27 48 L58 74" fill="none" stroke="var(--bg)" stroke-width="11" stroke-linejoin="miter" stroke-linecap="butt"/>
+          <rect class="nav-mark-cursor" x="62" y="72" width="22" height="9" fill="var(--bg)"/>
+        </svg>
+        <span>PORTFOLIO</span>
+      </a>
 
       <nav class="nav-links" aria-label="Hauptnavigation">
         <a routerLink="/about" routerLinkActive="nav-active">Über mich</a>
