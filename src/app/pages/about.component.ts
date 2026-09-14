@@ -10,7 +10,7 @@ import { IMMICH_SHARE_KEYS } from '../services/immich.config';
  * the production origin) - lets the gallery layout be checked without a
  * live connection to Immich.
  */
-function createMockHaekelnImages(count: number): ImmichImage[] {
+function createMockImages(count: number, label: string): ImmichImage[] {
   const colors = ['#e879f9', '#60a5fa', '#34d399', '#fbbf24', '#f87171', '#a78bfa'];
 
   return Array.from({ length: count }, (_, i) => {
@@ -20,9 +20,9 @@ function createMockHaekelnImages(count: number): ImmichImage[] {
     </svg>`;
 
     return {
-      id: `mock-${i}`,
+      id: `mock-${label}-${i}`,
       thumbUrl: `data:image/svg+xml,${encodeURIComponent(svg)}`,
-      altText: `Platzhalter Häkelbild ${i + 1}`
+      altText: `Platzhalter ${label} ${i + 1}`
     };
   });
 }
@@ -38,16 +38,24 @@ export class AboutComponent implements OnInit {
   private readonly immich = inject(ImmichService);
 
   readonly haekelnImages = signal<ImmichImage[]>([]);
+  readonly zeichnenImages = signal<ImmichImage[]>([]);
 
   ngOnInit(): void {
-    this.immich
-      .getSharedAlbumImages(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit')
-      .subscribe((images) => {
-        if (images.length === 0 && isDevMode()) {
-          this.haekelnImages.set(createMockHaekelnImages(8));
-        } else {
-          this.haekelnImages.set(images);
-        }
-      });
+    this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);
+    this.loadGallery(IMMICH_SHARE_KEYS.zeichnen, 'Zeichnung', this.zeichnenImages);
+  }
+
+  private loadGallery(
+    shareKey: string,
+    label: string,
+    target: ReturnType<typeof signal<ImmichImage[]>>
+  ): void {
+    this.immich.getSharedAlbumImages(shareKey, label).subscribe((images) => {
+      if (images.length === 0 && isDevMode()) {
+        target.set(createMockImages(8, label));
+      } else {
+        target.set(images);
+      }
+    });
   }
 }
