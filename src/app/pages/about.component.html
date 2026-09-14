@@ -150,10 +150,24 @@
       <div class="grid grid-cols-2 gap-8 max-w-md">
 
         <div>
-          <div class="project-placeholder aspect-square mb-4">
-            <!-- Bild optional: <img src="assets/images/hobbies/haekeln.png" alt="Häkeln" class="w-full h-full object-cover"> -->
-            <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
-          </div>
+          @if (haekelnImages().length > 0) {
+            <div class="grid grid-cols-2 gap-2 mb-4">
+              @for (image of haekelnImages(); track image.id) {
+                <div class="aspect-square overflow-hidden" style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);">
+                  <img
+                    [src]="image.thumbUrl"
+                    [alt]="image.altText"
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                  >
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="project-placeholder aspect-square mb-4">
+              <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
+            </div>
+          }
           <p class="text-sm font-semibold" style="color: var(--fg);">Häkeln</p>
         </div>
 
