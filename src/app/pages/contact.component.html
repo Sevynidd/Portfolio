@@ -12,35 +12,52 @@
     </div>
 
     <!-- ── Form ── -->
-    <div class="flex items-center gap-4 mb-14">
+    <div class="flex items-center gap-4 mb-6">
       <span class="text-[10px] uppercase tracking-[0.18em] font-bold" style="color: var(--fg); opacity: 0.4;">Kontaktformular</span>
       <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
     </div>
 
-    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="max-w-xl space-y-10">
+    <p class="text-[11px] font-semibold mb-10" style="color: var(--fg); opacity: 0.4;">
+      <span class="required-asterisk">*</span> Pflichtfeld
+    </p>
 
-      <div class="contact-field">
-        <input
-          name="name"
-          [(ngModel)]="model.name"
-          type="text"
-          class="contact-input"
-          placeholder=" "
-          required
-        >
-        <label class="contact-label">Dein Name</label>
-      </div>
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="max-w-2xl space-y-10">
 
-      <div class="contact-field">
-        <input
-          name="email"
-          [(ngModel)]="model.email"
-          type="email"
-          class="contact-input"
-          placeholder=" "
-          required
-        >
-        <label class="contact-label">Deine E-Mail</label>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+        <div class="contact-field">
+          <input
+            name="name"
+            [(ngModel)]="model.name"
+            type="text"
+            class="contact-input"
+            placeholder=" "
+            required
+          >
+          <label class="contact-label">Dein Name<span class="required-asterisk">*</span></label>
+        </div>
+
+        <div class="contact-field">
+          <input
+            name="email"
+            [(ngModel)]="model.email"
+            type="email"
+            class="contact-input"
+            placeholder=" "
+            required
+          >
+          <label class="contact-label">Deine E-Mail<span class="required-asterisk">*</span></label>
+        </div>
+
+        <div class="contact-field">
+          <input
+            name="phone"
+            [(ngModel)]="model.phone"
+            type="tel"
+            class="contact-input"
+            placeholder=" "
+          >
+          <label class="contact-label">Telefonnummer</label>
+        </div>
       </div>
 
       <div class="contact-field">
@@ -52,21 +69,26 @@
           placeholder=" "
           required
         ></textarea>
-        <label class="contact-label">Was möchtest du mir mitteilen?</label>
+        <label class="contact-label">Was möchtest du mir mitteilen?<span class="required-asterisk">*</span></label>
       </div>
 
       <div class="pt-4">
         <button
           type="submit"
-          [disabled]="!contactForm.form.valid || status === 'sending'"
-          class="btn-outline"
-        >{{ status === 'sending' ? 'Wird gesendet …' : 'E-Mail versenden' }}</button>
+          [disabled]="!contactForm.form.valid || status() === 'sending'"
+          class="btn-outline contact-submit"
+        >
+          @if (status() === 'sending') {
+            <span class="contact-spinner" aria-hidden="true"></span>
+          }
+          {{ status() === 'sending' ? 'Wird gesendet …' : 'E-Mail versenden' }}
+        </button>
 
-        @if (status === 'success') {
-          <p class="text-sm mt-4" style="color: var(--accent);">Danke! Deine Nachricht wurde versendet.</p>
+        @if (status() === 'success') {
+          <p class="status-message status-success">Danke! Deine Nachricht wurde versendet.</p>
         }
-        @if (status === 'error') {
-          <p class="text-sm mt-4" style="color: #e05252;">Da ist leider etwas schiefgelaufen. Bitte versuch es erneut.</p>
+        @if (status() === 'error') {
+          <p class="status-message status-error">Da ist leider etwas schiefgelaufen. Bitte versuch es erneut.</p>
         }
       </div>
 
