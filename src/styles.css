@@ -300,12 +300,13 @@ h1, h2, h3, h4, h5, h6, .display-font {
 [data-theme="dark"] .project-placeholder .theme-light { display: none; }
 [data-theme="dark"] .project-placeholder .theme-dark { display: block; }
 
-/* ── Project GitHub link ── */
-.project-github-link {
+/* ── Project links (GitHub, live site, …) ── */
+.project-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1.5rem;
+  margin-right: 0.75rem;
   padding: 0.5rem 0.9rem;
   border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent);
   color: var(--fg);
@@ -318,7 +319,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
   transition: opacity 0.3s, border-color 0.3s;
 }
 
-.project-github-link:hover {
+.project-link:hover {
   opacity: 1;
   border-color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
