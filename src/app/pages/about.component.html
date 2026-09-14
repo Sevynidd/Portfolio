@@ -147,38 +147,36 @@
         <li>Musik</li>
       </ul>
 
-      <div class="grid grid-cols-2 gap-8 max-w-md">
-
-        <div>
-          @if (haekelnImages().length > 0) {
-            <div class="grid grid-cols-2 gap-2 mb-4">
-              @for (image of haekelnImages(); track image.id) {
-                <div class="aspect-square overflow-hidden" style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);">
-                  <img
-                    [src]="image.thumbUrl"
-                    [alt]="image.altText"
-                    loading="lazy"
-                    class="w-full h-full object-cover"
-                  >
-                </div>
-              }
-            </div>
-          } @else {
-            <div class="project-placeholder aspect-square mb-4">
-              <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
-            </div>
-          }
-          <p class="text-sm font-semibold" style="color: var(--fg);">Häkeln</p>
-        </div>
-
-        <div>
-          <div class="project-placeholder aspect-square mb-4">
-            <!-- Bild optional: <img src="assets/images/hobbies/zeichnen.png" alt="Zeichnen" class="w-full h-full object-cover"> -->
+      <!-- Häkeln -->
+      <div class="mb-10">
+        <p class="text-sm font-semibold mb-4" style="color: var(--fg);">Häkeln</p>
+        @if (haekelnImages().length > 0) {
+          <div class="flex gap-3 overflow-x-auto pb-2 hobby-scroll">
+            @for (image of haekelnImages(); track image.id) {
+              <div class="shrink-0 w-36 aspect-square overflow-hidden" style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);">
+                <img
+                  [src]="image.thumbUrl"
+                  [alt]="image.altText"
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                >
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="project-placeholder aspect-square w-36">
             <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
           </div>
-          <p class="text-sm font-semibold" style="color: var(--fg);">Zeichnen</p>
-        </div>
+        }
+      </div>
 
+      <!-- Zeichnen -->
+      <div>
+        <p class="text-sm font-semibold mb-4" style="color: var(--fg);">Zeichnen</p>
+        <div class="project-placeholder aspect-square w-36">
+          <!-- Bild optional: <img src="assets/images/hobbies/zeichnen.png" alt="Zeichnen" class="w-full h-full object-cover"> -->
+          <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
+        </div>
       </div>
     </div>
 

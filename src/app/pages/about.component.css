@@ -1,1 +1,19 @@
 /* About page styles */
+
+.hobby-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fg) 25%, transparent) transparent;
+}
+
+.hobby-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.hobby-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--fg) 25%, transparent);
+  border-radius: 3px;
+}
+
+.hobby-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
