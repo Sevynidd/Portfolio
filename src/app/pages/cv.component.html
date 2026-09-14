@@ -16,38 +16,25 @@
         <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
       </div>
 
-      <!-- Entry 01 -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 mb-12 pb-12"
-        style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
-      >
-        <div>
-          <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">Jul. 2024 — Heute</p>
-          <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">SP_Data GmbH</p>
+      @for (entry of berufserfahrung; track entry.title; let last = $last) {
+        <div
+          class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6"
+          [class.mb-12]="!last"
+          [class.pb-12]="!last"
+          [class.border-b]="!last"
+          style="border-color: color-mix(in srgb, var(--fg) 8%, transparent);"
+        >
+          <div>
+            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ formatRange(entry) }}</p>
+            <p class="text-[10px] uppercase tracking-widest font-semibold mb-1" style="color: var(--fg); opacity: 0.3;">{{ formatDuration(entry) }}</p>
+            <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">{{ entry.company }}</p>
+          </div>
+          <div class="timeline-content">
+            <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">{{ entry.title }}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">{{ entry.description }}</p>
+          </div>
         </div>
-        <div class="timeline-content">
-          <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">Full-Stack Softwaredeveloper</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-            Zuständig für die Pflege und Weiterentwicklung der Personalabrechnungssoftware
-            mit dem Schwerpunkt gesetzlicher Änderungen.
-          </p>
-        </div>
-      </div>
-
-      <!-- Entry 02 -->
-      <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-        <div>
-          <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">Aug. 2021 — Jun. 2024</p>
-          <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">SP_Data GmbH</p>
-        </div>
-        <div class="timeline-content">
-          <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">Ausbildung: Fachinformatiker Anwendungsentwicklung</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-            Zuständig für die Pflege und Weiterentwicklung der Personalabrechnungs‑ und
-            Zeitwirtschaftssoftware mit einem Fokus auf der Umsetzung gesetzlicher Änderungen.
-          </p>
-        </div>
-      </div>
+      }
     </div>
 
     <!-- ── Ausbildung ── -->
@@ -57,21 +44,25 @@
         <div class="flex-1 h-px" style="background: color-mix(in srgb, var(--fg) 10%, transparent);"></div>
       </div>
 
-      <!-- Entry 03 -->
-      <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-        <div>
-          <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">Aug. 2018 — Jun. 2021</p>
-          <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">August-Griese-Berufskolleg</p>
+      @for (entry of schulausbildung; track entry.title; let last = $last) {
+        <div
+          class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6"
+          [class.mb-12]="!last"
+          [class.pb-12]="!last"
+          [class.border-b]="!last"
+          style="border-color: color-mix(in srgb, var(--fg) 8%, transparent);"
+        >
+          <div>
+            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ formatRange(entry) }}</p>
+            <p class="text-[10px] uppercase tracking-widest font-semibold mb-1" style="color: var(--fg); opacity: 0.3;">{{ formatDuration(entry) }}</p>
+            <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">{{ entry.company }}</p>
+          </div>
+          <div class="timeline-content">
+            <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">{{ entry.title }}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">{{ entry.description }}</p>
+          </div>
         </div>
-        <div class="timeline-content">
-          <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">Allgemeine Hochschulreife: Schwerpunkt Informatik</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-            Abitur mit Schwerpunkt auf Informatik und Mathematik, einschließlich vertiefter
-            Kenntnisse in Technischer Informatik (Datenbanken, Betriebssysteme/Netzwerke,
-            Mikrocontrollertechnik) und Elektrotechnik.
-          </p>
-        </div>
-      </div>
+      }
     </div>
 
   </div>
