@@ -40,8 +40,7 @@ export class AboutComponent implements OnInit {
   readonly haekelnImages = signal<ImmichImage[]>([]);
   readonly zeichnenImages = signal<ImmichImage[]>([]);
 
-  /** Defaults to the committed local image; swapped for the Immich photo once it loads. */
-  readonly profilePicUrl = signal<string>('assets/images/cv/profile.png');
+  readonly profilePicUrl = signal<string | null>(null);
 
   ngOnInit(): void {
     this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);

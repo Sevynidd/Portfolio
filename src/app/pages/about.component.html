@@ -21,13 +21,19 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
-          <img
-            [src]="profilePicUrl()"
-            alt="Profilbild"
-            loading="lazy"
-            class="w-3/4 h-auto"
-            style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);"
-          >
+          @if (profilePicUrl(); as pic) {
+            <img
+              [src]="pic"
+              alt="Profilbild"
+              loading="lazy"
+              class="w-3/4 h-auto"
+              style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);"
+            >
+          } @else {
+            <div class="project-placeholder w-3/4 aspect-square">
+              <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
+            </div>
+          }
         </div>
         <div class="font-light leading-relaxed" style="color: var(--fg);">
           <p class="mb-8">
