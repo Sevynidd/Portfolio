@@ -295,6 +295,11 @@ h1, h2, h3, h4, h5, h6, .display-font {
   border-color: color-mix(in srgb, var(--fg) 20%, transparent);
 }
 
+.project-placeholder .theme-light { display: block; }
+.project-placeholder .theme-dark { display: none; }
+[data-theme="dark"] .project-placeholder .theme-light { display: none; }
+[data-theme="dark"] .project-placeholder .theme-dark { display: block; }
+
 /* ── Shared outline button ── */
 .btn-outline {
   display: inline-block;
