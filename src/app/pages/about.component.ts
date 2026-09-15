@@ -31,6 +31,25 @@ function createMockImages(count: number, label: string): ImmichImage[] {
   });
 }
 
+interface SkillEra {
+  range: string;
+  context: string;
+  title: string;
+  skills: string[];
+}
+
+interface WorkingPrinciple {
+  title: string;
+  description: string;
+}
+
+interface ReadingItem {
+  type: string;
+  title: string;
+  description: string;
+  url?: string;
+}
+
 @Component({
   selector: 'app-about',
   standalone: true,
@@ -46,6 +65,66 @@ export class AboutComponent implements OnInit {
   readonly zeichnenImages = signal<ImmichImage[]>([]);
 
   readonly profilePicUrl = signal<string | null>(null);
+
+  readonly workingPrinciples: WorkingPrinciple[] = [
+    {
+      title: 'Pragmatisch statt perfekt',
+      description: 'Ich liefere lieber eine funktionierende Lösung, die ich danach iterativ verbessere, als lange auf die perfekte Architektur zu warten.',
+    },
+    {
+      title: 'Code für Menschen',
+      description: 'Lesbarer, klar strukturierter Code ist mir wichtiger als clevere Einzeiler — vor allem, wenn andere ihn später warten müssen.',
+    },
+    {
+      title: 'Neugier als Werkzeug',
+      description: 'Neue Frameworks und Sprachen probiere ich am liebsten direkt an einem kleinen Hobby-Projekt aus, bevor ich sie produktiv einsetze.',
+    },
+    {
+      title: 'Kommunikation zählt',
+      description: 'Ob im Scrum-Team oder in der Zusammenarbeit an Lumi — kurze Feedbackschleifen sparen am Ende allen Beteiligten Zeit.',
+    },
+  ];
+
+  readonly skillsTimeline: SkillEra[] = [
+    {
+      range: '2018 – 2021',
+      context: 'August-Griese-Berufskolleg',
+      title: 'Grundlagen',
+      skills: ['Informatik-Grundlagen', 'Datenbanken', 'Mikrocontrollertechnik'],
+    },
+    {
+      range: '2021 – 2024',
+      context: 'SP_Data GmbH · Ausbildung',
+      title: 'Fachinformatikerin Anwendungsentwicklung',
+      skills: ['Delphi / Pascal', 'MS SQL Server', 'Software-Wartung'],
+    },
+    {
+      range: 'Seit 2024',
+      context: 'SP_Data GmbH',
+      title: 'Full-Stack Softwareentwicklerin',
+      skills: ['Python', 'Kotlin', 'Angular', 'Tailwind CSS'],
+    },
+  ];
+
+  readonly readingList: ReadingItem[] = [
+    {
+      type: 'Doku',
+      title: 'Angular Signals & Zoneless Change Detection',
+      description: 'Vertiefung in den reaktiven Ansatz von Angular, um ihn in kommenden Projekten konsequenter zu nutzen.',
+      url: 'https://angular.dev/guide/signals',
+    },
+    {
+      type: 'Praxis',
+      title: 'Kotlin Coroutines',
+      description: 'Asynchrone Datenverarbeitung abseits von Jetpack Compose — relevant für den nächsten BolusManager-Ausbau.',
+      url: 'https://kotlinlang.org/docs/coroutines-overview.html',
+    },
+    {
+      type: 'Konzept',
+      title: 'Clean Architecture in kleinen Projekten',
+      description: 'Wie viel Struktur sich für Hobby-Projekte lohnt, ohne sie zu überladen.',
+    },
+  ];
 
   ngOnInit(): void {
     this.loadGallery(IMMICH_SHARE_KEYS.haekeln, 'Häkelarbeit', this.haekelnImages);

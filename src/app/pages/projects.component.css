@@ -1,1 +1,173 @@
 /* Projects page styles */
+
+.case-study-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.case-study-toggle:hover {
+  opacity: 1;
+}
+
+.case-study {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  animation: case-study-in 0.3s ease-out;
+}
+
+@keyframes case-study-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.case-study-label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.case-study-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--fg);
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.case-study-text code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8em;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+/* ── Interactive demo boxes ── */
+.demo-box {
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  padding: 2rem;
+}
+
+.demo-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.demo-hint {
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.55;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  max-width: 42rem;
+}
+
+/* Theming swatch demo (Portfolio case study) */
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 4rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Embed builder demo (Lumi case study) */
+.color-input {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+.discord-embed {
+  background: color-mix(in srgb, var(--fg) 5%, transparent);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+}
+
+.discord-embed-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--fg);
+  margin: 0 0 0.4rem;
+  word-break: break-word;
+}
+
+.discord-embed-desc {
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.7;
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Bolus calculator demo (BolusManager case study) */
+.bolus-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.bolus-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.65;
+}
+
+.bolus-result-row strong {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  color: var(--fg);
+  opacity: 1;
+}
+
+.bolus-result-total {
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  opacity: 1;
+  font-weight: 700;
+}
+
+.bolus-result-total strong {
+  font-size: 1.35rem;
+  color: var(--accent);
+}

@@ -8,88 +8,140 @@
       </h1>
     </div>
 
-    <!-- ── Form ── -->
-    <div class="section-label-row mb-6">
-      <span class="section-label">Kontaktformular</span>
-      <div class="section-label-divider"></div>
-    </div>
-
-    <p class="text-[11px] font-semibold mb-10" style="color: var(--fg); opacity: 0.4;">
-      <span class="required-asterisk">*</span> Pflichtfeld
+    <p class="max-w-xl text-sm font-light leading-relaxed mb-16" style="color: var(--fg); opacity: 0.65;">
+      Ob Jobangebot, ein gemeinsames Projekt oder einfach eine Frage zu einer meiner Arbeiten —
+      schreib mir gern über das Formular. Ich melde mich in der Regel innerhalb weniger Werktage zurück.
     </p>
 
-    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="max-w-2xl space-y-10">
+    <div class="grid grid-cols-1 md:grid-cols-[7fr_5fr] gap-16">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-        <div class="contact-field">
-          <input
-            name="name"
-            [(ngModel)]="model.name"
-            type="text"
-            class="contact-input"
-            placeholder=" "
-            required
-          >
-          <label class="contact-label">Dein Name<span class="required-asterisk">*</span></label>
+      <!-- ── Form ── -->
+      <div>
+        <div class="section-label-row mb-6">
+          <span class="section-label">Kontaktformular</span>
+          <div class="section-label-divider"></div>
         </div>
 
-        <div class="contact-field">
-          <input
-            name="email"
-            [(ngModel)]="model.email"
-            type="email"
-            class="contact-input"
-            placeholder=" "
-            required
-          >
-          <label class="contact-label">Deine E-Mail<span class="required-asterisk">*</span></label>
+        <p class="text-[11px] font-semibold mb-10" style="color: var(--fg); opacity: 0.4;">
+          <span class="required-asterisk">*</span> Pflichtfeld
+        </p>
+
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="space-y-10">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+            <div class="contact-field">
+              <input
+                name="name"
+                [(ngModel)]="model.name"
+                type="text"
+                class="contact-input"
+                placeholder=" "
+                required
+              >
+              <label class="contact-label">Dein Name<span class="required-asterisk">*</span></label>
+            </div>
+
+            <div class="contact-field">
+              <input
+                name="email"
+                [(ngModel)]="model.email"
+                type="email"
+                class="contact-input"
+                placeholder=" "
+                required
+              >
+              <label class="contact-label">Deine E-Mail<span class="required-asterisk">*</span></label>
+            </div>
+
+            <div class="contact-field">
+              <input
+                name="phone"
+                [(ngModel)]="model.phone"
+                type="tel"
+                class="contact-input"
+                placeholder=" "
+              >
+              <label class="contact-label">Telefonnummer</label>
+            </div>
+
+            <div class="contact-select-field">
+              <label class="contact-select-label">Anfrageart</label>
+              <select name="inquiryType" [(ngModel)]="model.inquiryType" class="contact-select">
+                @for (type of inquiryTypes; track type) {
+                  <option [value]="type">{{ type }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-field">
+            <textarea
+              name="message"
+              [(ngModel)]="model.message"
+              rows="5"
+              class="contact-input"
+              placeholder=" "
+              required
+            ></textarea>
+            <label class="contact-label">Was möchtest du mir mitteilen?<span class="required-asterisk">*</span></label>
+          </div>
+
+          <div class="pt-4">
+            <button
+              type="submit"
+              [disabled]="!contactForm.form.valid || status() === 'sending'"
+              class="btn-outline contact-submit"
+            >
+              @if (status() === 'sending') {
+                <span class="contact-spinner" aria-hidden="true"></span>
+              }
+              {{ status() === 'sending' ? 'Wird gesendet …' : 'E-Mail versenden' }}
+            </button>
+
+            @if (status() === 'success') {
+              <p class="status-message status-success">Danke! Deine Nachricht wurde versendet.</p>
+            }
+            @if (status() === 'error') {
+              <p class="status-message status-error">Da ist leider etwas schiefgelaufen. Bitte versuch es erneut.</p>
+            }
+          </div>
+
+        </form>
+      </div>
+
+      <!-- ── Sidebar: direkter Kontakt ── -->
+      <div>
+        <div class="section-label-row mb-6">
+          <span class="section-label">Direkt</span>
+          <div class="section-label-divider"></div>
         </div>
 
-        <div class="contact-field">
-          <input
-            name="phone"
-            [(ngModel)]="model.phone"
-            type="tel"
-            class="contact-input"
-            placeholder=" "
-          >
-          <label class="contact-label">Telefonnummer</label>
+        <div class="contact-sidebar-card mb-6">
+          <div class="inline-flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--fg); opacity: 0.65;">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+            Offen für neue Projekte
+          </div>
+          <p class="text-sm font-light leading-relaxed" style="color: var(--fg); opacity: 0.65;">
+            Am meisten freue ich mich über Anfragen rund um Web- und App-Entwicklung mit Angular, Kotlin oder Python —
+            aber auch für alles andere bin ich offen.
+          </p>
+        </div>
+
+        <div class="contact-sidebar-links">
+          <a href="https://github.com/Sevynidd" target="_blank" rel="noopener noreferrer" class="contact-sidebar-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <span>GitHub</span>
+            <span class="contact-sidebar-link-sub">@Sevynidd</span>
+          </a>
+          <a href="https://www.linkedin.com/in/karina-kock-ab272821a/" target="_blank" rel="noopener noreferrer" class="contact-sidebar-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LinkedIn</span>
+            <span class="contact-sidebar-link-sub">Karina Kock</span>
+          </a>
         </div>
       </div>
 
-      <div class="contact-field">
-        <textarea
-          name="message"
-          [(ngModel)]="model.message"
-          rows="5"
-          class="contact-input"
-          placeholder=" "
-          required
-        ></textarea>
-        <label class="contact-label">Was möchtest du mir mitteilen?<span class="required-asterisk">*</span></label>
-      </div>
-
-      <div class="pt-4">
-        <button
-          type="submit"
-          [disabled]="!contactForm.form.valid || status() === 'sending'"
-          class="btn-outline contact-submit"
-        >
-          @if (status() === 'sending') {
-            <span class="contact-spinner" aria-hidden="true"></span>
-          }
-          {{ status() === 'sending' ? 'Wird gesendet …' : 'E-Mail versenden' }}
-        </button>
-
-        @if (status() === 'success') {
-          <p class="status-message status-success">Danke! Deine Nachricht wurde versendet.</p>
-        }
-        @if (status() === 'error') {
-          <p class="status-message status-error">Da ist leider etwas schiefgelaufen. Bitte versuch es erneut.</p>
-        }
-      </div>
-
-    </form>
+    </div>
 
   </div>
 </section>

@@ -1,5 +1,36 @@
 /* About page styles */
 
+.skills-era {
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  transition: border-color 0.3s;
+}
+
+.skills-era:hover {
+  border-color: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+.skill-chip {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--fg);
+  opacity: 0.7;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  border-radius: 999px;
+}
+
+.reading-card {
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  transition: border-color 0.3s;
+}
+
+.reading-card:hover {
+  border-color: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
 .hobby-scroll {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--fg) 25%, transparent) transparent;

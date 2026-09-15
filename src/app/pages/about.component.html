@@ -39,7 +39,7 @@
             Seit fast fünf Jahren arbeite ich in diesem Feld und habe in dieser Zeit ein breites
             Verständnis für unterschiedlichste Technologien und Arbeitsweisen entwickelt.
           </p>
-          <p>
+          <p class="mb-8">
             Neben meiner beruflichen Tätigkeit arbeite ich an eigenen Hobby-Projekten — von kleinen
             Websites bis hin zu vollständigen Anwendungen. Dabei lerne ich gerne neue Technologien
             kennen und suche nach kreativen Lösungen, was sich auch in den Projekten zeigt, die ich
@@ -47,7 +47,31 @@
             <a routerLink="/projects" fragment="project-portfolio" class="underline underline-offset-4 transition" style="color: var(--accent);">diesem Portfolio</a>
             vorstelle.
           </p>
+          <p>
+            Den Einstieg in die Softwareentwicklung fand ich über das Ausprobieren — kleine Skripte,
+            die einen Alltagsablauf automatisieren, oder eine App, die es in der Form noch nicht gab.
+            Dieser Antrieb ist geblieben: Am liebsten löse ich Probleme, die mir oder Menschen in
+            meinem Umfeld tatsächlich begegnen, so wie bei
+            <a routerLink="/projects" fragment="project-bolusmanager" class="underline underline-offset-4 transition" style="color: var(--accent);">BolusManager</a>.
+          </p>
         </div>
+      </div>
+    </div>
+
+    <!-- ── Wie ich arbeite ── -->
+    <div class="mb-24">
+      <div class="section-label-row mb-14">
+        <span class="section-label">Wie ich arbeite</span>
+        <div class="section-label-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
+        @for (principle of workingPrinciples; track principle.title) {
+          <div>
+            <h3 class="display-font text-lg font-bold mb-2" style="color: var(--fg);">{{ principle.title }}</h3>
+            <p class="text-sm leading-relaxed font-light" style="color: var(--fg); opacity: 0.65;">{{ principle.description }}</p>
+          </div>
+        }
       </div>
     </div>
 
@@ -112,6 +136,29 @@
       </div>
     </div>
 
+    <!-- ── Skills-Timeline ── -->
+    <div class="mb-24">
+      <div class="section-label-row mb-14">
+        <span class="section-label">Skills-Timeline</span>
+        <div class="section-label-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @for (era of skillsTimeline; track era.title) {
+          <div class="skills-era">
+            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ era.range }}</p>
+            <p class="text-[10px] uppercase tracking-widest font-semibold mb-4" style="color: var(--fg); opacity: 0.4;">{{ era.context }}</p>
+            <h3 class="text-base font-bold mb-4" style="color: var(--fg);">{{ era.title }}</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (skill of era.skills; track skill) {
+                <span class="skill-chip">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
     <!-- ── Soft Skills ── -->
     <div class="mb-24">
       <div class="section-label-row mb-14">
@@ -136,6 +183,30 @@
           </ul>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ── Aktuell am Lernen ── -->
+    <div class="mb-24">
+      <div class="section-label-row mb-14">
+        <span class="section-label">Aktuell am Lernen</span>
+        <div class="section-label-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @for (item of readingList; track item.title) {
+          <div class="reading-card">
+            <span class="text-[10px] uppercase tracking-widest font-bold mb-3 inline-block" style="color: var(--accent);">{{ item.type }}</span>
+            <h3 class="text-base font-bold mb-2 leading-snug" style="color: var(--fg);">{{ item.title }}</h3>
+            <p class="text-sm font-light leading-relaxed mb-3" style="color: var(--fg); opacity: 0.65;">{{ item.description }}</p>
+            @if (item.url) {
+              <a [href]="item.url" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top: 0;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Ansehen
+              </a>
+            }
+          </div>
+        }
       </div>
     </div>
 
