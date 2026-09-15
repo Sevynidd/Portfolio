@@ -1,5 +1,116 @@
 /* Projects page styles */
 
+/* ── Filter & Suche ── */
+.project-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.project-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.filter-chip {
+  padding: 0.5rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  background: transparent;
+  color: var(--fg);
+  opacity: 0.6;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.2s, border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.filter-chip:hover {
+  opacity: 1;
+}
+
+.filter-chip-active {
+  opacity: 1;
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.project-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--fg);
+  opacity: 0.5;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  padding: 0.4rem 0.2rem;
+  min-width: 220px;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.project-search:focus-within {
+  opacity: 1;
+  border-bottom-color: var(--fg);
+}
+
+.project-search-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.project-empty-state {
+  font-size: 0.85rem;
+  color: var(--fg);
+  opacity: 0.5;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+/* ── GitHub repo cards ── */
+.github-repo-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.github-repo-card:hover {
+  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+  transform: translateY(-2px);
+}
+
+.github-repo-stars {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.skill-chip {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--fg);
+  opacity: 0.7;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  border-radius: 999px;
+}
+
 .toggle-row {
   display: flex;
   align-items: center;

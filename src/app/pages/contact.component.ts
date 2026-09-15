@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,6 +11,14 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  constructor() {
+    inject(SeoService).update({
+      title: 'Kontakt',
+      description: 'Interesse an einer Zusammenarbeit oder eine Frage? Kontaktiere Karina Kock direkt über das Kontaktformular.',
+      path: '/contact'
+    });
+  }
+
   readonly inquiryTypes = ['Jobangebot', 'Projekt / Kollaboration', 'Frage', 'Sonstiges'];
 
   model = { name: '', email: '', phone: '', inquiryType: this.inquiryTypes[0], message: '' };

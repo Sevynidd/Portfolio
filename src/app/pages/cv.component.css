@@ -1,1 +1,30 @@
 /* CV page styles */
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-end;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cv-download-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (max-width: 640px) {
+  .page-heading-row {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+}

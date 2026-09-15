@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { SeoService } from '../services/seo.service';
 
 interface CvEntry {
   start: Date;
@@ -17,6 +19,14 @@ const MONTH_NAMES = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Au
   styleUrls: ['./cv.component.css']
 })
 export class CvComponent {
+  constructor() {
+    inject(SeoService).update({
+      title: 'Lebenslauf',
+      description: 'Beruflicher Werdegang von Karina Kock — Full-Stack Softwareentwicklerin bei SP_Data GmbH. Lebenslauf als PDF verfügbar.',
+      path: '/cv'
+    });
+  }
+
   readonly berufserfahrung: CvEntry[] = [
     {
       start: new Date(2024, 6, 1),

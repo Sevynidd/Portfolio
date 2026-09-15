@@ -1,7 +1,23 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 
+import { GithubService } from '../services/github.service';
 import { LightboxService } from '../services/lightbox.service';
+import { SeoService } from '../services/seo.service';
+
+interface ProjectMeta {
+  id: string;
+  title: string;
+  category: string;
+  tags: string[];
+}
+
+const PROJECTS_META: ProjectMeta[] = [
+  { id: 'portfolio', title: 'Dieses Portfolio', category: 'Websites', tags: ['TypeScript', 'Angular', 'Tailwind CSS'] },
+  { id: 'lumi', title: 'Lumi Dashboard', category: 'Websites', tags: ['HTML', 'SCSS', 'TypeScript', 'Angular'] },
+  { id: 'bolus', title: 'BolusManager', category: 'Mobile Apps', tags: ['Kotlin', 'Jetpack Compose', 'Room'] }
+];
 
 @Component({
   selector: 'app-projects',
@@ -12,6 +28,57 @@ import { LightboxService } from '../services/lightbox.service';
 })
 export class ProjectsComponent {
   protected readonly lightbox = inject(LightboxService);
+  private readonly githubService = inject(GithubService);
+
+  constructor() {
+    inject(SeoService).update({
+      title: 'Projekte',
+      description: 'Ausgewählte Projekte von Karina Kock — von Web-Dashboards bis zu nativen Android-Apps, mit Case Studies und interaktiven Demos.',
+      path: '/projects'
+    });
+  }
+
+  // ── GitHub-Repositories ──
+  protected readonly github = toSignal(this.githubService.getData(), { initialValue: undefined });
+
+  // ── Filter & Suche ──
+  protected readonly categories = ['Alle', 'Websites', 'Mobile Apps'];
+  protected readonly activeCategory = signal('Alle');
+  protected readonly searchTerm = signal('');
+
+  private readonly visibleIds = computed(() => {
+    const category = this.activeCategory();
+    const term = this.searchTerm().trim().toLowerCase();
+
+    return new Set(
+      PROJECTS_META.filter((project) => category === 'Alle' || project.category === category)
+        .filter(
+          (project) =>
+            !term ||
+            project.title.toLowerCase().includes(term) ||
+            project.tags.some((tag) => tag.toLowerCase().includes(term))
+        )
+        .map((project) => project.id)
+    );
+  });
+
+  protected readonly resultCount = computed(() => this.visibleIds().size);
+  protected readonly hasResults = computed(() => this.resultCount() > 0);
+
+  protected readonly visibleWebsitesCount = computed(
+    () => PROJECTS_META.filter((p) => p.category === 'Websites' && this.visibleIds().has(p.id)).length
+  );
+  protected readonly visibleMobileCount = computed(
+    () => PROJECTS_META.filter((p) => p.category === 'Mobile Apps' && this.visibleIds().has(p.id)).length
+  );
+
+  isVisible(id: string): boolean {
+    return this.visibleIds().has(id);
+  }
+
+  setCategory(category: string): void {
+    this.activeCategory.set(category);
+  }
 
   private readonly expanded = signal<Set<string>>(new Set());
   private readonly expandedDemo = signal<Set<string>>(new Set());

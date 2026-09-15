@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ImmichImage, ImmichService } from '../services/immich.service';
 import { IMMICH_SHARE_KEYS } from '../services/immich.config';
 import { LightboxService } from '../services/lightbox.service';
+import { SeoService } from '../services/seo.service';
 
 /**
  * Local placeholder photos shown only in dev builds when the real Immich
@@ -60,6 +61,14 @@ interface ReadingItem {
 export class AboutComponent implements OnInit {
   private readonly immich = inject(ImmichService);
   protected readonly lightbox = inject(LightboxService);
+
+  constructor() {
+    inject(SeoService).update({
+      title: 'Über mich',
+      description: 'Softwareentwicklerin mit Fokus auf Angular, Kotlin und pragmatische Lösungen — mehr über meinen Werdegang, meine Skills und Hobbies.',
+      path: '/about'
+    });
+  }
 
   readonly haekelnImages = signal<ImmichImage[]>([]);
   readonly zeichnenImages = signal<ImmichImage[]>([]);
