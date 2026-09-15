@@ -89,8 +89,8 @@ export class AboutComponent implements OnInit {
     {
       range: '2018 – 2021',
       context: 'August-Griese-Berufskolleg',
-      title: 'Grundlagen',
-      skills: ['Informatik-Grundlagen', 'Datenbanken', 'Mikrocontrollertechnik'],
+      title: 'Abitur - Schwerpunkt Informatik',
+      skills: ['Informatik-Grundlagen', 'Datenbanken', 'Java'],
     },
     {
       range: '2021 – 2024',
@@ -102,7 +102,7 @@ export class AboutComponent implements OnInit {
       range: 'Seit 2024',
       context: 'SP_Data GmbH',
       title: 'Full-Stack Softwareentwicklerin',
-      skills: ['Python', 'Kotlin', 'Angular', 'Tailwind CSS'],
+      skills: ['Delphi / Pascal', 'MS SQL Server'],
     },
   ];
 
