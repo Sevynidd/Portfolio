@@ -39,40 +39,50 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               GitHub
             </a>
-            <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('portfolio')" [attr.aria-expanded]="isExpanded('portfolio')">
-              {{ isExpanded('portfolio') ? 'Case Study schließen' : 'Case Study ansehen' }}
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('portfolio') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <div class="toggle-row">
+              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('portfolio')" [attr.aria-expanded]="isExpanded('portfolio')">
+                {{ isExpanded('portfolio') ? 'Case Study schließen' : 'Case Study' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('portfolio') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button type="button" class="case-study-toggle" (click)="toggleDemo('portfolio')" [attr.aria-expanded]="isDemoExpanded('portfolio')">
+                {{ isDemoExpanded('portfolio') ? 'Demo schließen' : 'Demo' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('portfolio') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        @if (isExpanded('portfolio')) {
+        @if (isExpanded('portfolio') || isDemoExpanded('portfolio')) {
           <div class="case-study md:col-span-2">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-              <div>
-                <span class="case-study-label">Herausforderung</span>
-                <p class="case-study-text">Bestehende Vorlagen wirkten generisch. Ziel war eine eigenständige, editorial wirkende Seite mit klarer Typografie und einem echten Light-/Dark-Modus statt reiner Farbinvertierung.</p>
+            @if (isExpanded('portfolio')) {
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('portfolio')">
+                <div>
+                  <span class="case-study-label">Herausforderung</span>
+                  <p class="case-study-text">Bestehende Vorlagen wirkten generisch. Ziel war eine eigenständige, editorial wirkende Seite mit klarer Typografie und einem echten Light-/Dark-Modus statt reiner Farbinvertierung.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ansatz</span>
+                  <p class="case-study-text">Aufbau mit Angular (Standalone Components, Signals) und Tailwind CSS. Theming läuft über CSS-Variablen wie <code>--bg</code>, <code>--fg</code> und <code>--accent</code>, sodass jede Komponente automatisch auf den Modus reagiert.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ergebnis</span>
+                  <p class="case-study-text">Eine vollständig responsive Seite mit Lightbox, Kontaktformular und Case Studies wie dieser — berufsbegleitend als eigenständiges Projekt umgesetzt.</p>
+                </div>
               </div>
-              <div>
-                <span class="case-study-label">Ansatz</span>
-                <p class="case-study-text">Aufbau mit Angular (Standalone Components, Signals) und Tailwind CSS. Theming läuft über CSS-Variablen wie <code>--bg</code>, <code>--fg</code> und <code>--accent</code>, sodass jede Komponente automatisch auf den Modus reagiert.</p>
-              </div>
-              <div>
-                <span class="case-study-label">Ergebnis</span>
-                <p class="case-study-text">Eine vollständig responsive Seite mit Lightbox, Kontaktformular und Case Studies wie dieser — berufsbegleitend als eigenständiges Projekt umgesetzt.</p>
-              </div>
-            </div>
+            }
 
-            <div class="demo-box">
-              <p class="demo-label">Live-Demo · Theming über CSS-Variablen</p>
-              <p class="demo-hint">Wechsle oben rechts den Theme-Toggle — diese Kacheln greifen live auf dieselben CSS-Variablen zu wie die gesamte Seite.</p>
-              <div class="flex gap-3 flex-wrap">
-                <div class="swatch" style="background: var(--bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--bg</div>
-                <div class="swatch" style="background: var(--fg); color: var(--bg);">--fg</div>
-                <div class="swatch" style="background: var(--accent); color: var(--bg);">--accent</div>
-                <div class="swatch" style="background: var(--card-bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--card-bg</div>
+            @if (isDemoExpanded('portfolio')) {
+              <div class="demo-box">
+                <p class="demo-label">Live-Demo · Theming über CSS-Variablen</p>
+                <p class="demo-hint">Wechsle oben rechts den Theme-Toggle — diese Kacheln greifen live auf dieselben CSS-Variablen zu wie die gesamte Seite.</p>
+                <div class="flex gap-3 flex-wrap">
+                  <div class="swatch" style="background: var(--bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--bg</div>
+                  <div class="swatch" style="background: var(--fg); color: var(--bg);">--fg</div>
+                  <div class="swatch" style="background: var(--accent); color: var(--bg);">--accent</div>
+                  <div class="swatch" style="background: var(--card-bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--card-bg</div>
+                </div>
               </div>
-            </div>
+            }
           </div>
         }
       </div>
@@ -106,74 +116,84 @@
                 kontakt@luminanetwork.de
               </a>
             </div>
-            <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('lumi')" [attr.aria-expanded]="isExpanded('lumi')">
-              {{ isExpanded('lumi') ? 'Case Study schließen' : 'Case Study ansehen' }}
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('lumi') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <div class="toggle-row">
+              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('lumi')" [attr.aria-expanded]="isExpanded('lumi')">
+                {{ isExpanded('lumi') ? 'Case Study schließen' : 'Case Study' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('lumi') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button type="button" class="case-study-toggle" (click)="toggleDemo('lumi')" [attr.aria-expanded]="isDemoExpanded('lumi')">
+                {{ isDemoExpanded('lumi') ? 'Demo schließen' : 'Demo' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('lumi') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        @if (isExpanded('lumi')) {
+        @if (isExpanded('lumi') || isDemoExpanded('lumi')) {
           <div class="case-study md:col-span-2">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-              <div>
-                <span class="case-study-label">Herausforderung</span>
-                <p class="case-study-text">Serverbetreiber sollten komplexe Embeds und Panels bauen und Rechte feingranular vergeben können — ohne Discord-Entwicklerkenntnisse und ohne vom Funktionsumfang erschlagen zu werden.</p>
+            @if (isExpanded('lumi')) {
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('lumi')">
+                <div>
+                  <span class="case-study-label">Herausforderung</span>
+                  <p class="case-study-text">Serverbetreiber sollten komplexe Embeds und Panels bauen und Rechte feingranular vergeben können — ohne Discord-Entwicklerkenntnisse und ohne vom Funktionsumfang erschlagen zu werden.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ansatz</span>
+                  <p class="case-study-text">Ein modulares Berechtigungssystem macht einzelne Features wie Tickets, Tutorials oder Geburtstage unabhängig voneinander aktivierbar, ergänzt durch einen visuellen Embed-Editor mit Live-Vorschau — gemeinsam mit Norman Höhn entwickelt.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ergebnis</span>
+                  <p class="case-study-text">Serverbetreiber der Lumina Network Community verwalten ihre komplette Konfiguration direkt im Browser statt über Slash-Commands im Discord-Client.</p>
+                </div>
               </div>
-              <div>
-                <span class="case-study-label">Ansatz</span>
-                <p class="case-study-text">Ein modulares Berechtigungssystem macht einzelne Features wie Tickets, Tutorials oder Geburtstage unabhängig voneinander aktivierbar, ergänzt durch einen visuellen Embed-Editor mit Live-Vorschau — gemeinsam mit Norman Höhn entwickelt.</p>
-              </div>
-              <div>
-                <span class="case-study-label">Ergebnis</span>
-                <p class="case-study-text">Serverbetreiber der Lumina Network Community verwalten ihre komplette Konfiguration direkt im Browser statt über Slash-Commands im Discord-Client.</p>
-              </div>
-            </div>
+            }
 
-            <div class="demo-box">
-              <p class="demo-label">Live-Demo · Embed-Vorschau</p>
-              <p class="demo-hint">So gestalten Serverbetreiber im Lumi Dashboard ein Embed — tippe, um die Vorschau rechts live zu aktualisieren.</p>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="space-y-1">
-                  <div class="contact-field">
-                    <input
-                      name="embedTitle"
-                      [ngModel]="embedTitle()"
-                      (ngModelChange)="embedTitle.set($event)"
-                      type="text"
-                      class="contact-input"
-                      placeholder=" "
-                    >
-                    <label class="contact-label">Titel</label>
+            @if (isDemoExpanded('lumi')) {
+              <div class="demo-box">
+                <p class="demo-label">Live-Demo · Embed-Vorschau</p>
+                <p class="demo-hint">So gestalten Serverbetreiber im Lumi Dashboard ein Embed — tippe, um die Vorschau rechts live zu aktualisieren.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                  <div class="space-y-1">
+                    <div class="contact-field">
+                      <input
+                        name="embedTitle"
+                        [ngModel]="embedTitle()"
+                        (ngModelChange)="embedTitle.set($event)"
+                        type="text"
+                        class="contact-input"
+                        placeholder=" "
+                      >
+                      <label class="contact-label">Titel</label>
+                    </div>
+                    <div class="contact-field">
+                      <textarea
+                        name="embedDescription"
+                        [ngModel]="embedDescription()"
+                        (ngModelChange)="embedDescription.set($event)"
+                        rows="3"
+                        class="contact-input"
+                        placeholder=" "
+                      ></textarea>
+                      <label class="contact-label">Beschreibung</label>
+                    </div>
+                    <div class="flex items-center gap-3 pt-5">
+                      <label class="text-[10px] uppercase tracking-widest font-bold" style="color: var(--fg); opacity: 0.4;">Akzentfarbe</label>
+                      <input
+                        type="color"
+                        name="embedColor"
+                        [ngModel]="embedColor()"
+                        (ngModelChange)="embedColor.set($event)"
+                        class="color-input"
+                      >
+                    </div>
                   </div>
-                  <div class="contact-field">
-                    <textarea
-                      name="embedDescription"
-                      [ngModel]="embedDescription()"
-                      (ngModelChange)="embedDescription.set($event)"
-                      rows="3"
-                      class="contact-input"
-                      placeholder=" "
-                    ></textarea>
-                    <label class="contact-label">Beschreibung</label>
+                  <div class="discord-embed" [style.border-left-color]="embedColor()">
+                    <p class="discord-embed-title">{{ embedTitle() || 'Titel' }}</p>
+                    <p class="discord-embed-desc">{{ embedDescription() || 'Beschreibung' }}</p>
                   </div>
-                  <div class="flex items-center gap-3 pt-5">
-                    <label class="text-[10px] uppercase tracking-widest font-bold" style="color: var(--fg); opacity: 0.4;">Akzentfarbe</label>
-                    <input
-                      type="color"
-                      name="embedColor"
-                      [ngModel]="embedColor()"
-                      (ngModelChange)="embedColor.set($event)"
-                      class="color-input"
-                    >
-                  </div>
-                </div>
-                <div class="discord-embed" [style.border-left-color]="embedColor()">
-                  <p class="discord-embed-title">{{ embedTitle() || 'Titel' }}</p>
-                  <p class="discord-embed-desc">{{ embedDescription() || 'Beschreibung' }}</p>
                 </div>
               </div>
-            </div>
+            }
           </div>
         }
       </div>
@@ -207,105 +227,115 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               GitHub
             </a>
-            <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('bolus')" [attr.aria-expanded]="isExpanded('bolus')">
-              {{ isExpanded('bolus') ? 'Case Study schließen' : 'Case Study ansehen' }}
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('bolus') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <div class="toggle-row">
+              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('bolus')" [attr.aria-expanded]="isExpanded('bolus')">
+                {{ isExpanded('bolus') ? 'Case Study schließen' : 'Case Study' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('bolus') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button type="button" class="case-study-toggle" (click)="toggleDemo('bolus')" [attr.aria-expanded]="isDemoExpanded('bolus')">
+                {{ isDemoExpanded('bolus') ? 'Demo schließen' : 'Demo' }}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('bolus') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        @if (isExpanded('bolus')) {
+        @if (isExpanded('bolus') || isDemoExpanded('bolus')) {
           <div class="case-study md:col-span-2">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-              <div>
-                <span class="case-study-label">Herausforderung</span>
-                <p class="case-study-text">Bestehende Insulin-Rechner waren entweder zu simpel — keine aufgeteilten Boli — oder zu unübersichtlich für den schnellen Alltagseinsatz.</p>
+            @if (isExpanded('bolus')) {
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('bolus')">
+                <div>
+                  <span class="case-study-label">Herausforderung</span>
+                  <p class="case-study-text">Bestehende Insulin-Rechner waren entweder zu simpel — keine aufgeteilten Boli — oder zu unübersichtlich für den schnellen Alltagseinsatz.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ansatz</span>
+                  <p class="case-study-text">Native Android-App mit Kotlin und Jetpack Compose (Material 3), lokale Datenhaltung über Room für volle Offline-Fähigkeit. Die Berechnung basiert auf individuellen Korrekturfaktoren und Tageszeitplänen.</p>
+                </div>
+                <div>
+                  <span class="case-study-label">Ergebnis</span>
+                  <p class="case-study-text">Die Zeit für eine Bolus-Berechnung im Alltag reduziert sich auf wenige Sekunden. Die Demo unten zeigt vereinfacht, wie die App aus Kohlenhydraten und Blutzuckerwert eine Dosis ableitet.</p>
+                </div>
               </div>
-              <div>
-                <span class="case-study-label">Ansatz</span>
-                <p class="case-study-text">Native Android-App mit Kotlin und Jetpack Compose (Material 3), lokale Datenhaltung über Room für volle Offline-Fähigkeit. Die Berechnung basiert auf individuellen Korrekturfaktoren und Tageszeitplänen.</p>
-              </div>
-              <div>
-                <span class="case-study-label">Ergebnis</span>
-                <p class="case-study-text">Die Zeit für eine Bolus-Berechnung im Alltag reduziert sich auf wenige Sekunden. Die Demo unten zeigt vereinfacht, wie die App aus Kohlenhydraten und Blutzuckerwert eine Dosis ableitet.</p>
-              </div>
-            </div>
+            }
 
-            <div class="demo-box">
-              <p class="demo-label">Live-Demo · Wie BolusManager eine Insulin-Dosis berechnet</p>
-              <p class="demo-hint">
-                Menschen mit Diabetes berechnen vor jeder Mahlzeit, wie viel Insulin sie spritzen müssen — abhängig davon,
-                wie viele Kohlenhydrate sie essen und wie hoch ihr Blutzucker gerade ist. Diese Demo bildet die
-                Rechenlogik von BolusManager vereinfacht nach: Ändere die Werte und beobachte, wie sich die Dosis anpasst.
-                Reine Demo, keine medizinische Beratung.
-              </p>
-              <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 items-start">
-                <div class="space-y-6">
-                  <div class="demo-field">
-                    <label class="demo-field-label">Kohlenhydrate der Mahlzeit</label>
-                    <p class="demo-field-hint">Wie viel isst du gerade, in Gramm?</p>
-                    <div class="demo-field-input-row">
-                      <input name="carbs" [ngModel]="carbs()" (ngModelChange)="carbs.set($event)" type="number" class="demo-input">
-                      <span class="demo-field-unit">Gramm</span>
+            @if (isDemoExpanded('bolus')) {
+              <div class="demo-box">
+                <p class="demo-label">Live-Demo · Wie BolusManager eine Insulin-Dosis berechnet</p>
+                <p class="demo-hint">
+                  Menschen mit Diabetes berechnen vor jeder Mahlzeit, wie viel Insulin sie spritzen müssen — abhängig davon,
+                  wie viele Kohlenhydrate sie essen und wie hoch ihr Blutzucker gerade ist. Diese Demo bildet die
+                  Rechenlogik von BolusManager vereinfacht nach: Ändere die Werte und beobachte, wie sich die Dosis anpasst.
+                  Reine Demo, keine medizinische Beratung.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 items-start">
+                  <div class="space-y-6">
+                    <div class="demo-field">
+                      <label class="demo-field-label">Kohlenhydrate der Mahlzeit</label>
+                      <p class="demo-field-hint">Wie viel isst du gerade, in Gramm?</p>
+                      <div class="demo-field-input-row">
+                        <input name="carbs" [ngModel]="carbs()" (ngModelChange)="carbs.set($event)" type="number" class="demo-input">
+                        <span class="demo-field-unit">Gramm</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">Broteinheit</label>
+                      <p class="demo-field-hint">Wie viele Gramm Kohlenhydrate einer Broteinheit (BE) entsprechen — in Deutschland meist 12 Gramm.</p>
+                      <div class="demo-field-input-row">
+                        <input name="breadUnit" [ngModel]="breadUnit()" (ngModelChange)="breadUnit.set($event)" type="number" class="demo-input">
+                        <span class="demo-field-unit">Gramm pro BE</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">Faktor</label>
+                      <p class="demo-field-hint">Wird mit den Broteinheiten multipliziert, um das Insulin für die Mahlzeit zu berechnen.</p>
+                      <div class="demo-field-input-row">
+                        <input name="carbMultiplier" [ngModel]="carbMultiplier()" (ngModelChange)="carbMultiplier.set($event)" type="number" step="0.01" class="demo-input">
+                        <span class="demo-field-unit">Einheiten pro BE</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">Aktueller Blutzuckerwert</label>
+                      <p class="demo-field-hint">Der Messwert gerade eben.</p>
+                      <div class="demo-field-input-row">
+                        <input name="currentBg" [ngModel]="currentBg()" (ngModelChange)="currentBg.set($event)" type="number" class="demo-input">
+                        <span class="demo-field-unit">mg/dl</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">Ziel-Blutzuckerwert</label>
+                      <p class="demo-field-hint">Der Wert, den du erreichen möchtest.</p>
+                      <div class="demo-field-input-row">
+                        <input name="targetBg" [ngModel]="targetBg()" (ngModelChange)="targetBg.set($event)" type="number" class="demo-input">
+                        <span class="demo-field-unit">mg/dl</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">Blutzuckersenkung pro Einheit</label>
+                      <p class="demo-field-hint">Um wie viel eine Einheit Insulin den Blutzucker senkt.</p>
+                      <div class="demo-field-input-row">
+                        <input name="correctionFactor" [ngModel]="correctionFactor()" (ngModelChange)="correctionFactor.set($event)" type="number" class="demo-input">
+                        <span class="demo-field-unit">mg/dl / Einheit</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="demo-field">
-                    <label class="demo-field-label">Broteinheit</label>
-                    <p class="demo-field-hint">Wie viele Gramm Kohlenhydrate einer Broteinheit (BE) entsprechen — in Deutschland meist 12 Gramm.</p>
-                    <div class="demo-field-input-row">
-                      <input name="breadUnit" [ngModel]="breadUnit()" (ngModelChange)="breadUnit.set($event)" type="number" class="demo-input">
-                      <span class="demo-field-unit">Gramm pro BE</span>
+                  <div class="bolus-result">
+                    <div class="bolus-result-row">
+                      <span>Insulin für die Mahlzeit</span>
+                      <strong>{{ mealBolus().toFixed(1) }} Einheiten</strong>
                     </div>
-                  </div>
-                  <div class="demo-field">
-                    <label class="demo-field-label">Faktor</label>
-                    <p class="demo-field-hint">Wird mit den Broteinheiten multipliziert, um das Insulin für die Mahlzeit zu berechnen.</p>
-                    <div class="demo-field-input-row">
-                      <input name="carbMultiplier" [ngModel]="carbMultiplier()" (ngModelChange)="carbMultiplier.set($event)" type="number" step="0.01" class="demo-input">
-                      <span class="demo-field-unit">Einheiten pro BE</span>
+                    <div class="bolus-result-row">
+                      <span>Insulin zur Blutzucker-Korrektur</span>
+                      <strong>{{ correctionBolus().toFixed(1) }} Einheiten</strong>
                     </div>
-                  </div>
-                  <div class="demo-field">
-                    <label class="demo-field-label">Aktueller Blutzuckerwert</label>
-                    <p class="demo-field-hint">Der Messwert gerade eben.</p>
-                    <div class="demo-field-input-row">
-                      <input name="currentBg" [ngModel]="currentBg()" (ngModelChange)="currentBg.set($event)" type="number" class="demo-input">
-                      <span class="demo-field-unit">mg/dl</span>
+                    <div class="bolus-result-row bolus-result-total">
+                      <span>Insulin insgesamt</span>
+                      <strong>{{ totalBolus().toFixed(1) }} Einheiten</strong>
                     </div>
-                  </div>
-                  <div class="demo-field">
-                    <label class="demo-field-label">Ziel-Blutzuckerwert</label>
-                    <p class="demo-field-hint">Der Wert, den du erreichen möchtest.</p>
-                    <div class="demo-field-input-row">
-                      <input name="targetBg" [ngModel]="targetBg()" (ngModelChange)="targetBg.set($event)" type="number" class="demo-input">
-                      <span class="demo-field-unit">mg/dl</span>
-                    </div>
-                  </div>
-                  <div class="demo-field">
-                    <label class="demo-field-label">Blutzuckersenkung pro Einheit</label>
-                    <p class="demo-field-hint">Um wie viel eine Einheit Insulin den Blutzucker senkt.</p>
-                    <div class="demo-field-input-row">
-                      <input name="correctionFactor" [ngModel]="correctionFactor()" (ngModelChange)="correctionFactor.set($event)" type="number" class="demo-input">
-                      <span class="demo-field-unit">mg/dl / Einheit</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="bolus-result">
-                  <div class="bolus-result-row">
-                    <span>Insulin für die Mahlzeit</span>
-                    <strong>{{ mealBolus().toFixed(1) }} Einheiten</strong>
-                  </div>
-                  <div class="bolus-result-row">
-                    <span>Insulin zur Blutzucker-Korrektur</span>
-                    <strong>{{ correctionBolus().toFixed(1) }} Einheiten</strong>
-                  </div>
-                  <div class="bolus-result-row bolus-result-total">
-                    <span>Insulin insgesamt</span>
-                    <strong>{{ totalBolus().toFixed(1) }} Einheiten</strong>
                   </div>
                 </div>
               </div>
-            </div>
+            }
           </div>
         }
       </div>

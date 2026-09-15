@@ -14,6 +14,7 @@ export class ProjectsComponent {
   protected readonly lightbox = inject(LightboxService);
 
   private readonly expanded = signal<Set<string>>(new Set());
+  private readonly expandedDemo = signal<Set<string>>(new Set());
 
   isExpanded(id: string): boolean {
     return this.expanded().has(id);
@@ -27,6 +28,20 @@ export class ProjectsComponent {
       next.add(id);
     }
     this.expanded.set(next);
+  }
+
+  isDemoExpanded(id: string): boolean {
+    return this.expandedDemo().has(id);
+  }
+
+  toggleDemo(id: string): void {
+    const next = new Set(this.expandedDemo());
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
+    this.expandedDemo.set(next);
   }
 
   // ── BolusManager: interaktiver Bolus-Rechner (vereinfachte Demo-Logik) ──

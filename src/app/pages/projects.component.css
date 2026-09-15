@@ -1,10 +1,18 @@
 /* Projects page styles */
 
+.toggle-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
 .case-study-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
+  margin-top: 0;
   padding: 0;
   background: none;
   border: none;
