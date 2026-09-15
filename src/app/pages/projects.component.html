@@ -232,43 +232,76 @@
             </div>
 
             <div class="demo-box">
-              <p class="demo-label">Live-Demo · Bolus-Rechner (vereinfacht)</p>
-              <p class="demo-hint">Nachbildung der Kernlogik aus BolusManager zum Ausprobieren — reine Demo, keine medizinische Beratung.</p>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="grid grid-cols-2 gap-x-6">
-                  <div class="contact-field">
-                    <input name="carbs" [ngModel]="carbs()" (ngModelChange)="carbs.set($event)" type="number" class="contact-input" placeholder=" ">
-                    <label class="contact-label">KH (g)</label>
+              <p class="demo-label">Live-Demo · Wie BolusManager eine Insulin-Dosis berechnet</p>
+              <p class="demo-hint">
+                Menschen mit Diabetes berechnen vor jeder Mahlzeit, wie viel Insulin sie spritzen müssen — abhängig davon,
+                wie viele Kohlenhydrate sie essen und wie hoch ihr Blutzucker gerade ist. Diese Demo bildet die
+                Rechenlogik von BolusManager vereinfacht nach: Ändere die Werte und beobachte, wie sich die Dosis anpasst.
+                Reine Demo, keine medizinische Beratung.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 items-start">
+                <div class="space-y-6">
+                  <div class="demo-field">
+                    <label class="demo-field-label">Kohlenhydrate der Mahlzeit</label>
+                    <p class="demo-field-hint">Wie viel isst du gerade, in Gramm?</p>
+                    <div class="demo-field-input-row">
+                      <input name="carbs" [ngModel]="carbs()" (ngModelChange)="carbs.set($event)" type="number" class="demo-input">
+                      <span class="demo-field-unit">Gramm</span>
+                    </div>
                   </div>
-                  <div class="contact-field">
-                    <input name="carbRatio" [ngModel]="carbRatio()" (ngModelChange)="carbRatio.set($event)" type="number" class="contact-input" placeholder=" ">
-                    <label class="contact-label">KE-Faktor (g/E)</label>
+                  <div class="demo-field">
+                    <label class="demo-field-label">Broteinheit</label>
+                    <p class="demo-field-hint">Wie viele Gramm Kohlenhydrate einer Broteinheit (BE) entsprechen — in Deutschland meist 12 Gramm.</p>
+                    <div class="demo-field-input-row">
+                      <input name="breadUnit" [ngModel]="breadUnit()" (ngModelChange)="breadUnit.set($event)" type="number" class="demo-input">
+                      <span class="demo-field-unit">Gramm pro BE</span>
+                    </div>
                   </div>
-                  <div class="contact-field">
-                    <input name="currentBg" [ngModel]="currentBg()" (ngModelChange)="currentBg.set($event)" type="number" class="contact-input" placeholder=" ">
-                    <label class="contact-label">Aktueller BZ</label>
+                  <div class="demo-field">
+                    <label class="demo-field-label">Faktor</label>
+                    <p class="demo-field-hint">Wird mit den Broteinheiten multipliziert, um das Insulin für die Mahlzeit zu berechnen.</p>
+                    <div class="demo-field-input-row">
+                      <input name="carbMultiplier" [ngModel]="carbMultiplier()" (ngModelChange)="carbMultiplier.set($event)" type="number" step="0.01" class="demo-input">
+                      <span class="demo-field-unit">Einheiten pro BE</span>
+                    </div>
                   </div>
-                  <div class="contact-field">
-                    <input name="targetBg" [ngModel]="targetBg()" (ngModelChange)="targetBg.set($event)" type="number" class="contact-input" placeholder=" ">
-                    <label class="contact-label">Ziel-BZ</label>
+                  <div class="demo-field">
+                    <label class="demo-field-label">Aktueller Blutzuckerwert</label>
+                    <p class="demo-field-hint">Der Messwert gerade eben.</p>
+                    <div class="demo-field-input-row">
+                      <input name="currentBg" [ngModel]="currentBg()" (ngModelChange)="currentBg.set($event)" type="number" class="demo-input">
+                      <span class="demo-field-unit">mg/dl</span>
+                    </div>
                   </div>
-                  <div class="contact-field">
-                    <input name="correctionFactor" [ngModel]="correctionFactor()" (ngModelChange)="correctionFactor.set($event)" type="number" class="contact-input" placeholder=" ">
-                    <label class="contact-label">Korrekturfaktor</label>
+                  <div class="demo-field">
+                    <label class="demo-field-label">Ziel-Blutzuckerwert</label>
+                    <p class="demo-field-hint">Der Wert, den du erreichen möchtest.</p>
+                    <div class="demo-field-input-row">
+                      <input name="targetBg" [ngModel]="targetBg()" (ngModelChange)="targetBg.set($event)" type="number" class="demo-input">
+                      <span class="demo-field-unit">mg/dl</span>
+                    </div>
+                  </div>
+                  <div class="demo-field">
+                    <label class="demo-field-label">Blutzuckersenkung pro Einheit</label>
+                    <p class="demo-field-hint">Um wie viel eine Einheit Insulin den Blutzucker senkt.</p>
+                    <div class="demo-field-input-row">
+                      <input name="correctionFactor" [ngModel]="correctionFactor()" (ngModelChange)="correctionFactor.set($event)" type="number" class="demo-input">
+                      <span class="demo-field-unit">mg/dl / Einheit</span>
+                    </div>
                   </div>
                 </div>
                 <div class="bolus-result">
                   <div class="bolus-result-row">
-                    <span>Mahlzeiten-Bolus</span>
-                    <strong>{{ mealBolus().toFixed(1) }} E</strong>
+                    <span>Insulin für die Mahlzeit</span>
+                    <strong>{{ mealBolus().toFixed(1) }} Einheiten</strong>
                   </div>
                   <div class="bolus-result-row">
-                    <span>Korrektur-Bolus</span>
-                    <strong>{{ correctionBolus().toFixed(1) }} E</strong>
+                    <span>Insulin zur Blutzucker-Korrektur</span>
+                    <strong>{{ correctionBolus().toFixed(1) }} Einheiten</strong>
                   </div>
                   <div class="bolus-result-row bolus-result-total">
-                    <span>Gesamtdosis</span>
-                    <strong>{{ totalBolus().toFixed(1) }} E</strong>
+                    <span>Insulin insgesamt</span>
+                    <strong>{{ totalBolus().toFixed(1) }} Einheiten</strong>
                   </div>
                 </div>
               </div>

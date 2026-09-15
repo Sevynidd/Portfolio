@@ -31,12 +31,13 @@ export class ProjectsComponent {
 
   // ── BolusManager: interaktiver Bolus-Rechner (vereinfachte Demo-Logik) ──
   readonly carbs = signal(60);
-  readonly carbRatio = signal(10);
-  readonly currentBg = signal(180);
+  readonly breadUnit = signal(12);
+  readonly carbMultiplier = signal(2.5);
+  readonly currentBg = signal(225);
   readonly targetBg = signal(100);
   readonly correctionFactor = signal(40);
 
-  readonly mealBolus = computed(() => this.carbs() / this.carbRatio());
+  readonly mealBolus = computed(() => (this.carbs() / this.breadUnit()) * this.carbMultiplier());
 
   readonly correctionBolus = computed(() => {
     const diff = this.currentBg() - this.targetBg();

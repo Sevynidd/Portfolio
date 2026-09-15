@@ -134,6 +134,54 @@
   word-break: break-word;
 }
 
+.demo-field-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+}
+
+.demo-field-hint {
+  font-size: 0.72rem;
+  color: var(--fg);
+  opacity: 0.5;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.demo-field-input-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.demo-input {
+  width: 6rem;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.demo-input:focus {
+  border-bottom-color: var(--fg);
+}
+
+.demo-field-unit {
+  font-size: 0.72rem;
+  color: var(--fg);
+  opacity: 0.45;
+  white-space: nowrap;
+}
+
 /* Bolus calculator demo (BolusManager case study) */
 .bolus-result {
   display: flex;
