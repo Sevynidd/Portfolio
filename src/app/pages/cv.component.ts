@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
+import { CertificatesService } from '../services/certificates.service';
 import { SeoService } from '../services/seo.service';
 
 interface CvEntry {
@@ -19,12 +21,27 @@ const MONTH_NAMES = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Au
   styleUrls: ['./cv.component.css']
 })
 export class CvComponent {
+  private readonly certificatesService = inject(CertificatesService);
+
+  protected readonly certificates = toSignal(this.certificatesService.getCertificates(), { initialValue: undefined });
+
   constructor() {
     inject(SeoService).update({
       title: 'Lebenslauf',
       description: 'Beruflicher Werdegang von Karina Kock — Full-Stack Softwareentwicklerin bei SP_Data GmbH. Lebenslauf als PDF verfügbar.',
       path: '/cv'
     });
+  }
+
+  certificateUrl(name: string): string {
+    return this.certificatesService.downloadUrl(name);
+  }
+
+  formatSize(bytes: number): string {
+    if (!bytes) return '';
+    const kb = bytes / 1024;
+    if (kb < 1024) return `${Math.round(kb)} KB`;
+    return `${(kb / 1024).toFixed(1)} MB`;
   }
 
   readonly berufserfahrung: CvEntry[] = [
