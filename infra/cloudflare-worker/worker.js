@@ -17,7 +17,7 @@ const RETRYABLE_STATUSES = new Set([502, 503, 504]);
  * so this fetch sees a normal, publicly-trusted TLS cert regardless of the
  * tunnel's internal noTLSVerify setting for the cloudflared -> NAS hop.
  */
-const CERTIFICATES_WEBDAV_URL = 'https://certs.sevynidd.org/certificates';
+const CERTIFICATES_WEBDAV_URL = 'https://certs.sevynidd.org/Certificates';
 
 export default {
   async fetch(request, env) {
