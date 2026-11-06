@@ -21,10 +21,31 @@ export class ContactComponent {
 
   readonly inquiryTypes = ['Jobangebot', 'Projekt / Kollaboration', 'Frage', 'Sonstiges'];
 
-  model = { name: '', email: '', phone: '', inquiryType: this.inquiryTypes[0], message: '' };
+  /** CSS modifier per inquiry type, used for the GitHub-style label colours. */
+  readonly labelKeys: Record<string, string> = {
+    'Jobangebot': 'job',
+    'Projekt / Kollaboration': 'project',
+    'Frage': 'question',
+    'Sonstiges': 'other'
+  };
+
+  /** Write / preview tab of the message editor. */
+  readonly tab = signal<'write' | 'preview'>('write');
+
+  model = this.emptyModel();
   status = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   private readonly web3formsAccessKey = '61c35104-e0aa-4584-a311-0fb68c323610';
+
+  private emptyModel() {
+    return { subject: '', name: '', email: '', phone: '', inquiryType: this.inquiryTypes[0], message: '' };
+  }
+
+  /** Subject line of the resulting e-mail, also shown in the preview. */
+  mailSubject(): string {
+    const subject = this.model.subject.trim();
+    return `Kontakt via Portfolio — ${this.model.inquiryType}${subject ? ': ' + subject : ''}`;
+  }
 
   async onSubmit(form: NgForm) {
     if (form.invalid || !this.model.name.trim() || !this.model.email.trim() || !this.model.message.trim()) {
@@ -39,7 +60,7 @@ export class ContactComponent {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: this.web3formsAccessKey,
-          subject: `Kontakt via Portfolio — ${this.model.inquiryType}`,
+          subject: this.mailSubject(),
           name: this.model.name,
           email: this.model.email,
           phone: this.model.phone,
@@ -50,8 +71,9 @@ export class ContactComponent {
       const result = await response.json();
       this.status.set(result.success ? 'success' : 'error');
       if (result.success) {
-        this.model = { name: '', email: '', phone: '', inquiryType: this.inquiryTypes[0], message: '' };
+        this.model = this.emptyModel();
         form.resetForm({ inquiryType: this.inquiryTypes[0] });
+        this.tab.set('write');
       }
     } catch {
       this.status.set('error');

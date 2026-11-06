@@ -4,12 +4,26 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CertificatesService } from '../services/certificates.service';
 import { SeoService } from '../services/seo.service';
 
+/**
+ * Shape of a row in the git-style graph:
+ * - 'head-merge': newest entry on main, the side branch merges into it
+ * - 'branch':     entry on the side branch, main runs past it
+ * - 'root-fork':  oldest entry on main, the side branch starts here
+ * - 'main':       plain entry on main
+ */
+type GraphShape = 'head-merge' | 'branch' | 'root-fork' | 'main';
+
 interface CvEntry {
   start: Date;
   end: Date | null;
   company: string;
   title: string;
   description: string;
+  /** Conventional-commit style prefix shown before the title. */
+  type: string;
+  /** Optional ref label, e.g. "HEAD → main". */
+  ref?: string;
+  graph: GraphShape;
 }
 
 const MONTH_NAMES = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'];
@@ -44,37 +58,43 @@ export class CvComponent {
     return `${(kb / 1024).toFixed(1)} MB`;
   }
 
-  readonly berufserfahrung: CvEntry[] = [
+  /** Career and education as one log, newest first. */
+  readonly log: CvEntry[] = [
     {
       start: new Date(2024, 6, 1),
       end: null,
       company: 'SP_Data GmbH',
-      title: 'Full-Stack Softwaredeveloper',
+      title: 'Full-Stack Softwareentwicklerin',
       description: 'Zuständig für die Pflege und Weiterentwicklung der Personalabrechnungssoftware mit dem Schwerpunkt gesetzlicher Änderungen.',
+      type: 'feat',
+      ref: 'HEAD → main',
+      graph: 'head-merge',
     },
     {
       start: new Date(2021, 7, 1),
       end: new Date(2024, 5, 1),
       company: 'SP_Data GmbH',
-      title: 'Ausbildung: Fachinformatiker Anwendungsentwicklung',
+      title: 'Ausbildung zur Fachinformatikerin Anwendungsentwicklung',
       description: 'Zuständig für die Pflege und Weiterentwicklung der Personalabrechnungs‑ und Zeitwirtschaftssoftware mit einem Fokus auf der Umsetzung gesetzlicher Änderungen.',
+      type: 'build',
+      ref: 'ausbildung',
+      graph: 'branch',
     },
-  ];
-
-  readonly schulausbildung: CvEntry[] = [
     {
       start: new Date(2018, 7, 1),
       end: new Date(2021, 5, 1),
       company: 'August-Griese-Berufskolleg',
-      title: 'Allgemeine Hochschulreife: Schwerpunkt Informatik',
+      title: 'Allgemeine Hochschulreife, Schwerpunkt Informatik',
       description: 'Abitur mit Schwerpunkt auf Informatik und Mathematik, einschließlich vertiefter Kenntnisse in Technischer Informatik (Datenbanken, Betriebssysteme/Netzwerke, Mikrocontrollertechnik) und Elektrotechnik.',
+      type: 'init',
+      graph: 'root-fork',
     },
   ];
 
   formatRange(entry: CvEntry): string {
     const start = `${MONTH_NAMES[entry.start.getMonth()]} ${entry.start.getFullYear()}`;
     const end = entry.end ? `${MONTH_NAMES[entry.end.getMonth()]} ${entry.end.getFullYear()}` : 'Heute';
-    return `${start} — ${end}`;
+    return `${start} – ${end}`;
   }
 
   formatDuration(entry: CvEntry): string {

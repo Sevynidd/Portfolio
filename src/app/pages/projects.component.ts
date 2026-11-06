@@ -19,6 +19,20 @@ const PROJECTS_META: ProjectMeta[] = [
   { id: 'bolus', title: 'BolusManager', category: 'Mobile Apps', tags: ['Kotlin', 'Jetpack Compose', 'Room'] }
 ];
 
+const LANGUAGE_COLORS: Record<string, string> = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  HTML: '#e34c26',
+  CSS: '#663399',
+  SCSS: '#c6538c',
+  Kotlin: '#a97bff',
+  Java: '#b07219',
+  Python: '#3572a5',
+  Pascal: '#e3f171',
+  'C#': '#178600',
+  Shell: '#89e051'
+};
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -65,15 +79,25 @@ export class ProjectsComponent {
   protected readonly resultCount = computed(() => this.visibleIds().size);
   protected readonly hasResults = computed(() => this.resultCount() > 0);
 
-  protected readonly visibleWebsitesCount = computed(
-    () => PROJECTS_META.filter((p) => p.category === 'Websites' && this.visibleIds().has(p.id)).length
-  );
-  protected readonly visibleMobileCount = computed(
-    () => PROJECTS_META.filter((p) => p.category === 'Mobile Apps' && this.visibleIds().has(p.id)).length
-  );
 
   isVisible(id: string): boolean {
     return this.visibleIds().has(id);
+  }
+
+  /** Number of projects in a category, independent of the active filter. */
+  categoryCount(category: string): number {
+    return category === 'Alle' ? PROJECTS_META.length : PROJECTS_META.filter((p) => p.category === category).length;
+  }
+
+  /** GitHub-style dot colour for a language name from the GitHub API. */
+  languageColor(language: string | null): string {
+    return LANGUAGE_COLORS[language ?? ''] ?? '#8b93a7';
+  }
+
+  /** Opens the screenshot matching the active theme in the lightbox. */
+  openShot(base: string, alt: string): void {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    this.lightbox.open(`assets/images/projects/${base}_${dark ? 'dark' : 'light'}.png`, alt);
   }
 
   setCategory(category: string): void {
