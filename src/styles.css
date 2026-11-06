@@ -225,77 +225,6 @@ h1, h2, h3, h4, h5, h6, .display-font {
   .nav-hamburger { display: flex; }
 }
 
-/* ── Footer ── */
-.site-footer {
-  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: var(--bg);
-}
-
-.footer-cta {
-  text-align: center;
-  padding: 5rem 1.5rem 4rem;
-}
-
-.footer-cta-headline {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1;
-  margin: 0 0 2.5rem;
-  color: var(--fg);
-  letter-spacing: -0.02em;
-}
-
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--accent);
-  text-decoration: none;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.footer-social a:hover {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.footer-bottom {
-  border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--fg);
-  opacity: 0.5;
-}
-
-@media (max-width: 640px) {
-  .footer-bottom {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-}
-
 /* ── Shared page heading (cv / projects / about / contact) ── */
 .page-shell {
   padding: 7rem 1rem 8rem;
@@ -603,8 +532,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
 }
 
 /* ── Commit-Log direction: shared terminal styling ── */
-.page-prompt,
-.footer-prompt {
+.page-prompt {
   margin: 0 0 0.9rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -622,8 +550,6 @@ h1, h2, h3, h4, h5, h6, .display-font {
 .section-label,
 .project-link,
 .btn-outline,
-.footer-social,
-.footer-bottom,
 .nav-mobile a,
 .uppercase.tracking-widest {
   font-family: var(--font-mono);
@@ -654,12 +580,3 @@ h1, h2, h3, h4, h5, h6, .display-font {
   opacity: 0.5;
 }
 
-.footer-cta-headline {
-  font-weight: 800;
-  letter-spacing: -0.045em;
-}
-
-.footer-social a {
-  border-radius: 0;
-  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-}
