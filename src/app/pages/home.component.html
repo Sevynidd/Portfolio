@@ -1,124 +1,110 @@
-<!-- ── Hero ── -->
-<section
-  class="flex flex-col items-center p-6"
-  style="min-height: calc(100vh - var(--nav-height)); background: var(--bg); color: var(--fg);"
->
-  <div class="flex-1 flex flex-col items-center justify-center text-center">
-    <!-- Status badge -->
-    <div
-      class="inline-flex items-center gap-2 mb-10 px-4 py-2 text-[10px] uppercase tracking-[0.15em] font-bold"
-      style="border: 1px solid color-mix(in srgb, var(--fg) 18%, transparent); color: var(--fg); opacity: 0.65;"
-    >
-      <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
-      Full-Stack Softwareentwicklerin · SP_Data GmbH
+<!-- ── Hero: whoami + Karriere als Git-Log ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-intro">
+      <p class="hero-prompt"><span aria-hidden="true">$</span> whoami</p>
+
+      <h1 class="hero-title">
+        Karina Kock.<br>
+        <span class="hero-role">Full-Stack bei SP_Data<span class="hero-cursor" aria-hidden="true"></span></span>
+      </h1>
+
+      <p class="hero-text">
+        Schön, dass du hier bist. Im Job baue ich Fachsoftware mit Delphi und MS SQL Server,
+        nach Feierabend Angular-Dashboards und Android-Apps mit Kotlin.
+      </p>
+
+      <div class="hero-cta">
+        <a href="assets/cv/Karina-Kock-Lebenslauf.pdf" target="_blank" rel="noopener" class="cmd-btn cmd-btn-primary">./lebenslauf.pdf</a>
+        <a routerLink="/contact" class="cmd-btn">kontakt --nachricht</a>
+      </div>
     </div>
 
-    <h1 class="display-font text-6xl md:text-7xl font-bold leading-[0.85] tracking-tight mb-8">
-      HEY! <br> ICH BIN KARINA.
-    </h1>
-
-    <p class="max-w-md mx-auto font-medium leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-      Schön das du deinen Weg auf mein Portfolio gefunden hast. <br>
-      Hier findest du meinen Lebenslauf und Projekte, die ich in den letzten Jahren umgesetzt habe. <br>
-      Wenn du Interesse an mir hast, zögere nicht mich zu kontaktieren!
-    </p>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="flex flex-col items-center gap-2 pt-10 pb-4" style="color: var(--fg); opacity: 0.3;">
-    <span class="text-[10px] uppercase tracking-[0.2em] font-bold" style="margin-right: -0.2em;">Scroll</span>
-    <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
-      <line x1="7" y1="0" x2="7" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <polyline points="1,10 7,16 13,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
+    <ol class="git-log" aria-label="Werdegang">
+      <li class="git-commit git-head">
+        <p class="git-meta"><span class="git-hash">seit 2024</span> <span class="git-ref">HEAD → main</span></p>
+        <p class="git-msg"><span class="git-type">feat:</span> Full-Stack Softwareentwicklerin @ SP_Data GmbH</p>
+      </li>
+      <li class="git-commit">
+        <p class="git-meta"><span class="git-hash">2021 – 2024</span></p>
+        <p class="git-msg"><span class="git-type">build:</span> Ausbildung Fachinformatikerin Anwendungsentwicklung</p>
+      </li>
+      <li class="git-commit">
+        <p class="git-meta"><span class="git-hash">2018 – 2021</span></p>
+        <p class="git-msg"><span class="git-type">init:</span> Abitur mit Schwerpunkt Informatik</p>
+      </li>
+      <li class="git-more">
+        <a routerLink="/cv">git log --all <span aria-hidden="true">→</span> Lebenslauf</a>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- ── Projects ── -->
-<section id="projects" class="px-4 py-24 md:py-36" style="background: var(--bg); color: var(--fg);">
-  <div class="max-w-7xl mx-auto">
-
-    <!-- Section header -->
-    <div
-      class="flex items-baseline justify-between mb-16 pb-5 border-b"
-      style="border-color: color-mix(in srgb, var(--fg) 12%, transparent);"
-    >
-      <h2 class="display-font text-5xl md:text-6xl font-bold tracking-tight" style="color: var(--fg);">Projekte</h2>
-      <span class="text-[10px] uppercase tracking-widest font-bold" style="color: var(--fg); opacity: 0.35;">3 Arbeiten</span>
+<!-- ── Projekte als Repos ── -->
+<section id="projects" class="repos-section">
+  <div class="repos-inner">
+    <div class="repos-head">
+      <h2 class="repos-title"><span class="repos-prompt" aria-hidden="true">$</span> ls projekte/</h2>
+      <a routerLink="/projects" class="repos-all">Alle Projekte <span aria-hidden="true">→</span></a>
     </div>
 
-    <!-- ── Websites ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-12">
-        <span class="section-label">Websites</span>
-        <div class="section-label-divider"></div>
-        <span class="text-[10px] font-bold tabular-nums" style="color: var(--fg); opacity: 0.25;">01 — 02</span>
-      </div>
+    <ul class="repo-grid">
+      <li>
+        <a routerLink="/projects" fragment="project-discordbot" class="repo-card">
+          <div class="repo-shot project-placeholder">
+            <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light">
+            <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark">
+          </div>
+          <div class="repo-body">
+            <p class="repo-kind">web</p>
+            <h3 class="repo-name">lumi-dashboard</h3>
+            <p class="repo-desc">Web-Dashboard für den Discord-Bot „Lumi“: Moderation, Embeds und Berechtigungen direkt im Browser.</p>
+            <ul class="repo-langs" aria-label="Technologien">
+              <li><i style="background:#dd0031"></i>Angular</li>
+              <li><i style="background:#3178c6"></i>TypeScript</li>
+              <li><i style="background:#c6538c"></i>SCSS</li>
+            </ul>
+          </div>
+        </a>
+      </li>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <!-- 01 Portfolio -->
-        <div class="md:mt-24">
-          <a routerLink="/projects" fragment="project-portfolio" class="block group">
-            <div class="project-placeholder mb-5 aspect-[4/5]">
-              <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light w-full h-full object-cover object-top">
-              <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark w-full h-full object-cover object-top">
-            </div>
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Dieses Portfolio</h3>
-                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">TypeScript / Angular / Tailwind CSS</p>
-              </div>
-              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">01</span>
-            </div>
-          </a>
-        </div>
+      <li>
+        <a routerLink="/projects" fragment="project-bolusmanager" class="repo-card">
+          <div class="repo-shot repo-shot-phone project-placeholder">
+            <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light">
+            <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark">
+          </div>
+          <div class="repo-body">
+            <p class="repo-kind">android</p>
+            <h3 class="repo-name">bolus-manager</h3>
+            <p class="repo-desc">Native Android-App zur Planung von Insulin-Bolusdosen, mit lokaler Datenhaltung.</p>
+            <ul class="repo-langs" aria-label="Technologien">
+              <li><i style="background:#a97bff"></i>Kotlin</li>
+              <li><i style="background:#4285f4"></i>Jetpack Compose</li>
+              <li><i style="background:#3ddc84"></i>Room</li>
+            </ul>
+          </div>
+        </a>
+      </li>
 
-        <!-- 02 Website eines Discord-Bots -->
-        <div>
-          <a routerLink="/projects" fragment="project-discordbot" class="block group">
-            <div class="project-placeholder mb-5 aspect-[4/5]">
-              <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light w-full h-full object-cover object-top">
-              <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark w-full h-full object-cover object-top">
-            </div>
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">Lumi Dashboard</h3>
-                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">HTML / SCSS / TypeScript / Angular</p>
-              </div>
-              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">02</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Mobile Apps ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-12">
-        <span class="section-label">Mobile Apps</span>
-        <div class="section-label-divider"></div>
-        <span class="text-[10px] font-bold tabular-nums" style="color: var(--fg); opacity: 0.25;">03</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <!-- 03 BolusManager -->
-        <div>
-          <a routerLink="/projects" fragment="project-bolusmanager" class="block group">
-            <div class="project-placeholder mb-5 aspect-[4/5] p-8">
-              <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light max-h-full max-w-full object-contain">
-              <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark max-h-full max-w-full object-contain">
-            </div>
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="display-font text-2xl font-bold mb-1" style="color: var(--fg);">BolusManager</h3>
-                <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.5;">Kotlin / Jetpack Compose / Room</p>
-              </div>
-              <span class="display-font text-sm font-bold shrink-0 mt-0.5" style="color: var(--fg); opacity: 0.2;">03</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
+      <li>
+        <a routerLink="/projects" fragment="project-portfolio" class="repo-card">
+          <div class="repo-shot project-placeholder">
+            <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light">
+            <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark">
+          </div>
+          <div class="repo-body">
+            <p class="repo-kind">web</p>
+            <h3 class="repo-name">portfolio</h3>
+            <p class="repo-desc">Diese Seite. Responsiv, mit Light- und Dark-Mode und Fokus auf Zugänglichkeit.</p>
+            <ul class="repo-langs" aria-label="Technologien">
+              <li><i style="background:#dd0031"></i>Angular</li>
+              <li><i style="background:#3178c6"></i>TypeScript</li>
+              <li><i style="background:#38bdf8"></i>Tailwind CSS</li>
+            </ul>
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
 </section>
