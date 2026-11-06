@@ -601,3 +601,65 @@ h1, h2, h3, h4, h5, h6, .display-font {
 [data-theme="dark"] .group:focus-within label {
   color: var(--fg) !important;
 }
+
+/* ── Commit-Log direction: shared terminal styling ── */
+.page-prompt,
+.footer-prompt {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.page-heading {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.page-heading-label,
+.section-label,
+.project-link,
+.btn-outline,
+.footer-social,
+.footer-bottom,
+.nav-mobile a,
+.uppercase.tracking-widest {
+  font-family: var(--font-mono);
+}
+
+/* Section labels read like code comments: "// Hard Skills" */
+.section-label {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.55;
+}
+
+.section-label::before {
+  content: '// ';
+  color: var(--accent);
+}
+
+.category-heading::before {
+  content: '## ';
+  color: var(--accent);
+}
+
+.btn-outline::before,
+.project-link::before {
+  content: '> ';
+  opacity: 0.5;
+}
+
+.footer-cta-headline {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.footer-social a {
+  border-radius: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}

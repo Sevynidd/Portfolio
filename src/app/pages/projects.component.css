@@ -26,8 +26,8 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   cursor: pointer;
-  border-radius: 999px;
-  font-family: var(--font-body);
+  border-radius: 0;
+  font-family: var(--font-mono);
   transition: opacity 0.2s, border-color 0.2s, background 0.2s, color 0.2s;
 }
 

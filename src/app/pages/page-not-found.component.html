@@ -1,21 +1,15 @@
-<section
-  class="flex flex-col items-center justify-center px-4 text-center"
-  style="min-height: calc(100vh - var(--nav-height)); background: var(--bg); color: var(--fg);"
->
-  <p class="text-[10px] uppercase tracking-widest font-bold mb-6" style="color: var(--fg); opacity: 0.4;">Fehler</p>
+<section class="nf">
+  <div class="nf-term" role="group" aria-label="Fehlermeldung">
+    <p class="nf-line"><span class="nf-ps">karina&#64;portfolio:~$</span> cd {{ path }}</p>
+    <p class="nf-line nf-err">bash: cd: {{ path }}: Datei oder Verzeichnis nicht gefunden</p>
+    <p class="nf-line nf-dim">exit code 404</p>
+  </div>
 
-  <h1
-    class="display-font font-bold leading-none tracking-tight mb-0"
-    style="font-size: clamp(8rem, 22vw, 18rem); color: var(--fg); line-height: 0.9;"
-  >404</h1>
+  <h1 class="display-font nf-code">404</h1>
+  <p class="nf-text">Diese Seite gibt es nicht. Vielleicht hilft einer dieser Befehle:</p>
 
-  <div
-    class="w-full max-w-xs mt-10 pt-10"
-    style="border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);"
-  >
-    <p class="text-base font-light mb-10" style="color: var(--fg); opacity: 0.6;">
-      Diese Seite wurde nicht gefunden.
-    </p>
-    <a routerLink="/" class="btn-outline">Zur Startseite</a>
+  <div class="nf-actions">
+    <a routerLink="/" class="btn-outline">cd ~</a>
+    <a routerLink="/projects" class="btn-outline">ls projekte/</a>
   </div>
 </section>
