@@ -4,292 +4,181 @@
     <!-- Page heading -->
     <div class="page-heading-row">
       <div>
-        <p class="page-prompt"><span aria-hidden="true">$</span> cd ~/ueber-mich</p>
+        <p class="page-prompt"><span aria-hidden="true">$</span> cd ~/ueber-mich &amp;&amp; cat README.md</p>
         <h1 class="display-font page-heading">Schön, dich<br>kennenzulernen.</h1>
       </div>
-      <span class="page-heading-label">Über mich</span>
     </div>
 
-    <!-- ── Bio ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Vorstellung</span>
-        <div class="section-label-divider"></div>
-      </div>
+    <div class="readme-layout">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <div>
-          @if (profilePicUrl(); as pic) {
-            <img
-              [src]="pic"
-              alt="Profilbild"
-              loading="lazy"
-              class="w-3/4 h-auto cursor-zoom-in"
-              style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);"
-              (click)="lightbox.open(pic, 'Profilbild')"
-            >
-          } @else {
-            <div class="project-placeholder w-3/4 aspect-square">
-              <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
-            </div>
-          }
-        </div>
-        <div class="font-light leading-relaxed" style="color: var(--fg);">
-          <p class="mb-8">
-            Ich bin Karina, Softwareentwicklerin mit einem Faible für alles Neue und Spannende.
-            Seit fast fünf Jahren arbeite ich in diesem Feld und habe in dieser Zeit ein breites
-            Verständnis für unterschiedlichste Technologien und Arbeitsweisen entwickelt.
-          </p>
-          <p class="mb-8">
-            Neben meiner beruflichen Tätigkeit arbeite ich an eigenen Hobby-Projekten — von kleinen
-            Websites bis hin zu vollständigen Anwendungen. Dabei lerne ich gerne neue Technologien
-            kennen und suche nach kreativen Lösungen, was sich auch in den Projekten zeigt, die ich
-            hier auf
-            <a routerLink="/projects" fragment="project-portfolio" class="underline underline-offset-4 transition" style="color: var(--accent);">diesem Portfolio</a>
-            vorstelle.
-          </p>
-          <p>
-            Den Einstieg in die Softwareentwicklung fand ich über das Ausprobieren — kleine Skripte,
-            die einen Alltagsablauf automatisieren, oder eine App, die es in der Form noch nicht gab.
-            Dieser Antrieb ist geblieben: Am liebsten löse ich Probleme, die mir oder Menschen in
-            meinem Umfeld tatsächlich begegnen, so wie bei
-            <a routerLink="/projects" fragment="project-bolusmanager" class="underline underline-offset-4 transition" style="color: var(--accent);">BolusManager</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ Kategorie: Beruflich ══ -->
-    <div class="category-heading-row">
-      <h2 class="display-font category-heading">Fachliches</h2>
-      <p class="category-heading-sub">Das hier ist relevant, wenn du überlegst, mit mir zusammenzuarbeiten — wie ich arbeite, was ich kann und woran ich gerade dranbleibe.</p>
-    </div>
-
-    <!-- ── Wie ich arbeite ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Wie ich arbeite</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
-        @for (principle of workingPrinciples; track principle.title) {
-          <div>
-            <h3 class="display-font text-lg font-bold mb-2" style="color: var(--fg);">{{ principle.title }}</h3>
-            <p class="text-sm leading-relaxed font-light" style="color: var(--fg); opacity: 0.65;">{{ principle.description }}</p>
-          </div>
+      <!-- ── Profil-Sidebar ── -->
+      <aside class="profile" aria-label="Profil">
+        @if (profilePicUrl(); as pic) {
+          <button type="button" class="profile-avatar" (click)="lightbox.open(pic, 'Profilbild')" aria-label="Profilbild vergrößern">
+            <img [src]="pic" alt="Profilbild von Karina Kock" loading="lazy">
+          </button>
+        } @else {
+          <div class="profile-avatar profile-avatar-fallback" aria-hidden="true">KK</div>
         }
-      </div>
-    </div>
-
-    <!-- ── Hard Skills ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Hard Skills</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12">
 
         <div>
-          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Programmiersprachen</div>
-          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-            <li>Delphi / Pascal</li>
-            <li>Python</li>
-            <li>Kotlin</li>
-            <li>Java</li>
-          </ul>
+          <p class="profile-name">Karina Kock</p>
+          <p class="profile-handle">&#64;Sevynidd</p>
         </div>
 
-        <div>
-          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Frameworks</div>
-          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-            <li class="text-[10px] uppercase tracking-widest" style="opacity: 0.4;">Mobile</li>
-            <li>Jetpack Compose</li>
-            <li>Room</li>
-            <li class="text-[10px] uppercase tracking-widest pt-2" style="opacity: 0.4;">Web</li>
-            <li>Angular</li>
-            <li>Tailwind CSS</li>
-          </ul>
+        <p class="profile-bio">Softwareentwicklerin mit einem Faible für alles Neue und Spannende.</p>
+
+        <ul class="profile-facts">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Full-Stack bei SP_Data
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Entwickelt seit 2021
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Deutsch · Englisch
+          </li>
+        </ul>
+
+        <div class="profile-actions">
+          <a href="https://github.com/Sevynidd" target="_blank" rel="noopener noreferrer" class="profile-btn">github.com/Sevynidd</a>
+          <a routerLink="/contact" class="profile-btn profile-btn-primary">kontakt --nachricht</a>
         </div>
+      </aside>
 
-        <div>
-          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Datenbanken</div>
-          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-            <li>MS SQL Server</li>
-            <li>MySQL</li>
-            <li>PostgreSQL</li>
-          </ul>
-        </div>
+      <!-- ── README ── -->
+      <article class="readme">
+        <header class="readme-file">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          README.md
+        </header>
 
-        <div class="space-y-10">
-          <div>
-            <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Tools</div>
-            <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-              <li>Subversion</li>
-              <li>Git</li>
-              <li>Jira</li>
-            </ul>
-          </div>
-          <div>
-            <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Sprachen</div>
-            <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-              <li>Deutsch</li>
-              <li>Englisch</li>
-            </ul>
-          </div>
-        </div>
+        <div class="readme-body">
 
-      </div>
-    </div>
+          <!-- Hi -->
+          <section class="md-section" aria-labelledby="md-hi">
+            <h2 id="md-hi" class="md-h">Hi, ich bin Karina</h2>
+            <div class="md-prose">
+              <p>
+                Ich bin Softwareentwicklerin und arbeite seit fast fünf Jahren in diesem Feld. In der Zeit
+                habe ich ein breites Verständnis für unterschiedlichste Technologien und Arbeitsweisen entwickelt.
+              </p>
+              <p>
+                Neben dem Job arbeite ich an eigenen Projekten, von kleinen Websites bis zu vollständigen
+                Anwendungen. Ein Beispiel ist
+                <a routerLink="/projects" fragment="project-portfolio">dieses Portfolio</a>.
+              </p>
+              <p>
+                Mein Einstieg war das Ausprobieren: kleine Skripte, die einen Alltagsablauf automatisieren,
+                oder eine App, die es so noch nicht gab. Dieser Antrieb ist geblieben. Am liebsten löse ich
+                Probleme, die mir oder Menschen in meinem Umfeld wirklich begegnen, so wie bei
+                <a routerLink="/projects" fragment="project-bolusmanager">BolusManager</a>.
+              </p>
+            </div>
+          </section>
 
-    <!-- ── Skills-Timeline ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Skills-Timeline</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        @for (era of skillsTimeline; track era.title) {
-          <div class="skills-era">
-            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ era.range }}</p>
-            <p class="text-[10px] uppercase tracking-widest font-semibold mb-4" style="color: var(--fg); opacity: 0.4;">{{ era.context }}</p>
-            <h3 class="text-base font-bold mb-4" style="color: var(--fg);">{{ era.title }}</h3>
-            <div class="flex flex-wrap gap-2">
-              @for (skill of era.skills; track skill) {
-                <span class="skill-chip">{{ skill }}</span>
+          <!-- Wie ich arbeite -->
+          <section class="md-section" aria-labelledby="md-work">
+            <h2 id="md-work" class="md-h">Wie ich arbeite</h2>
+            <blockquote class="md-quote">
+              @for (principle of workingPrinciples; track principle.title) {
+                <p><strong>{{ principle.title }}.</strong> {{ principle.description }}</p>
               }
+            </blockquote>
+          </section>
+
+          <!-- Stack -->
+          <section class="md-section" aria-labelledby="md-stack">
+            <h2 id="md-stack" class="md-h">Stack</h2>
+            <div class="md-table-wrap">
+              <table class="md-table">
+                <thead>
+                  <tr><th scope="col">Tech</th><th scope="col">Bereich</th><th scope="col">Eingesetzt in</th></tr>
+                </thead>
+                <tbody>
+                  @for (row of stack; track row.tech) {
+                    <tr><td>{{ row.tech }}</td><td>{{ row.category }}</td><td>{{ row.usedIn }}</td></tr>
+                  }
+                </tbody>
+              </table>
             </div>
-          </div>
-        }
-      </div>
-    </div>
+            <p class="md-more-label">Außerdem:</p>
+            <ul class="md-badges">
+              @for (skill of moreSkills; track skill) {
+                <li>{{ skill }}</li>
+              }
+            </ul>
+          </section>
 
-    <!-- ── Soft Skills ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Soft Skills</span>
-        <div class="section-label-divider"></div>
-      </div>
+          <!-- Lernen -->
+          <section class="md-section" aria-labelledby="md-learn">
+            <h2 id="md-learn" class="md-h">Aktuell am Lernen</h2>
+            <ul class="md-tasks">
+              @for (item of readingList; track item.title) {
+                <li>
+                  <span class="md-check" aria-hidden="true"></span>
+                  <div>
+                    <p class="md-task-title">
+                      @if (item.url) {
+                        <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+                      } @else {
+                        {{ item.title }}
+                      }
+                      <span class="md-task-type">{{ item.type }}</span>
+                    </p>
+                    <p class="md-task-desc">{{ item.description }}</p>
+                  </div>
+                </li>
+              }
+            </ul>
+          </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
-
-        <div>
-          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Agiles Arbeiten</div>
-          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-            <li>Scrum</li>
-            <li>Kanban</li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="text-[10px] uppercase tracking-widest font-bold mb-5" style="color: var(--fg); opacity: 0.4;">Lernbereitschaft</div>
-          <ul class="space-y-2.5 text-sm font-semibold" style="color: var(--fg);">
-            <li>Neue Technologien und Frameworks</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── Aktuell am Lernen ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Aktuell am Lernen</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        @for (item of readingList; track item.title) {
-          <div class="reading-card">
-            <span class="text-[10px] uppercase tracking-widest font-bold mb-3 inline-block" style="color: var(--accent);">{{ item.type }}</span>
-            <h3 class="text-base font-bold mb-2 leading-snug" style="color: var(--fg);">{{ item.title }}</h3>
-            <p class="text-sm font-light leading-relaxed mb-3" style="color: var(--fg); opacity: 0.65;">{{ item.description }}</p>
-            @if (item.url) {
-              <a [href]="item.url" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top: 0;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Ansehen
-              </a>
-            }
-          </div>
-        }
-      </div>
-    </div>
-
-    <!-- ══ Kategorie: Privat ══ -->
-    <div class="category-heading-row">
-      <h2 class="display-font category-heading">Persönliches</h2>
-      <p class="category-heading-sub">Und das mache ich, wenn ich nicht gerade programmiere.</p>
-    </div>
-
-    <!-- ── Hobbies ── -->
-    <div>
-      <div class="section-label-row mb-14">
-        <span class="section-label">Hobbies</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      <!-- Gaming -->
-      <div class="mb-10">
-        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Gaming</p>
-        <p class="text-sm font-light" style="color: var(--fg); opacity: 0.65;">Von Koop-Abenteuern wie Warframe und Deep Rock Galactic bis zu gruseligen Runden Phasmophobia – am liebsten mit Freunden und viel Chaos.</p>
-      </div>
-
-      <!-- Musik -->
-      <div class="mb-10">
-        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Musik</p>
-        <p class="text-sm font-light" style="color: var(--fg); opacity: 0.65;">Begleitet mich beim Programmieren genauso wie beim Entspannen – quer durch die Genres.</p>
-      </div>
-
-      <!-- Häkeln -->
-      <div class="mb-10">
-        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Häkeln</p>
-        <p class="text-sm font-light mb-4" style="color: var(--fg); opacity: 0.65;">Kleine Projekte zum Abschalten – von Amigurumi bis Deko für Zuhause.</p>
-        @if (haekelnImages().length > 0) {
-          <div class="flex gap-3 overflow-x-auto pb-2 hobby-scroll">
-            @for (image of haekelnImages(); track image.id) {
-              <div class="shrink-0 w-36 aspect-square overflow-hidden cursor-zoom-in" style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);" (click)="lightbox.open(image.fullUrl, image.altText)">
-                <img
-                  [src]="image.thumbUrl"
-                  [alt]="image.altText"
-                  loading="lazy"
-                  class="w-full h-full object-cover"
-                >
+          <!-- Offline -->
+          <section class="md-section" aria-labelledby="md-offline">
+            <h2 id="md-offline" class="md-h">Offline</h2>
+            <dl class="md-hobbies">
+              <div>
+                <dt>Gaming</dt>
+                <dd>Von Koop-Abenteuern wie Warframe und Deep Rock Galactic bis zu gruseligen Runden Phasmophobia, am liebsten mit Freunden und viel Chaos.</dd>
               </div>
-            }
-          </div>
-        } @else {
-          <div class="project-placeholder aspect-square w-36">
-            <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
-          </div>
-        }
-      </div>
-
-      <!-- Zeichnen -->
-      <div>
-        <p class="text-sm font-semibold mb-1" style="color: var(--fg);">Zeichnen</p>
-        <p class="text-sm font-light mb-4" style="color: var(--fg); opacity: 0.65;">Skizzieren als kreativer Ausgleich zum Code – meist digital, manchmal analog.</p>
-        @if (zeichnenImages().length > 0) {
-          <div class="flex gap-3 overflow-x-auto pb-2 hobby-scroll">
-            @for (image of zeichnenImages(); track image.id) {
-              <div class="shrink-0 w-36 aspect-square overflow-hidden cursor-zoom-in" style="border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);" (click)="lightbox.open(image.fullUrl, image.altText)">
-                <img
-                  [src]="image.thumbUrl"
-                  [alt]="image.altText"
-                  loading="lazy"
-                  class="w-full h-full object-cover"
-                >
+              <div>
+                <dt>Musik</dt>
+                <dd>Begleitet mich beim Programmieren genauso wie beim Entspannen, quer durch die Genres.</dd>
               </div>
-            }
-          </div>
-        } @else {
-          <div class="project-placeholder aspect-square w-36">
-            <span class="text-[10px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.3;">Bild folgt</span>
-          </div>
-        }
-      </div>
-    </div>
+              <div>
+                <dt>Häkeln</dt>
+                <dd>Kleine Projekte zum Abschalten, von Amigurumi bis Deko für Zuhause.</dd>
+                @if (haekelnImages().length > 0) {
+                  <div class="md-gallery hobby-scroll">
+                    @for (image of haekelnImages(); track image.id) {
+                      <button type="button" (click)="lightbox.open(image.fullUrl, image.altText)" [attr.aria-label]="image.altText + ' vergrößern'">
+                        <img [src]="image.thumbUrl" [alt]="image.altText" loading="lazy">
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+              <div>
+                <dt>Zeichnen</dt>
+                <dd>Skizzieren als kreativer Ausgleich zum Code, meist digital, manchmal analog.</dd>
+                @if (zeichnenImages().length > 0) {
+                  <div class="md-gallery hobby-scroll">
+                    @for (image of zeichnenImages(); track image.id) {
+                      <button type="button" (click)="lightbox.open(image.fullUrl, image.altText)" [attr.aria-label]="image.altText + ' vergrößern'">
+                        <img [src]="image.thumbUrl" [alt]="image.altText" loading="lazy">
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+            </dl>
+          </section>
 
+        </div>
+      </article>
+    </div>
   </div>
 </section>
