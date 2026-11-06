@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { SeoService } from '../services/seo.service';
 
@@ -11,6 +11,8 @@ import { SeoService } from '../services/seo.service';
   styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent {
+  protected readonly path = inject(Router).url;
+
   constructor() {
     inject(SeoService).update({
       title: 'Seite nicht gefunden',

@@ -9,6 +9,14 @@
   --card-bg: #fff;
   --card-shadow: 0 2px 16px rgba(60,60,100,0.07);
   --nav-height: 4.5rem;
+
+  /* Commit-Log direction: mono display, humanist sans body */
+  --font-display: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --hash: #a16207;        /* commit hash / year colour */
+  --muted: color-mix(in srgb, var(--fg) 55%, transparent);
+  --line: color-mix(in srgb, var(--fg) 12%, transparent);
 }
 
 [data-theme="dark"] {
@@ -20,6 +28,7 @@
   --accent: #a5b4fc;
   --card-bg: #23263a;
   --card-shadow: 0 2px 16px rgba(20,20,40,0.25);
+  --hash: #e3b45f;
 }
 
 body {
@@ -27,12 +36,12 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--fg);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   transition: background 0.2s, color 0.2s;
 }
 
 h1, h2, h3, h4, h5, h6, .display-font {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
 }
 
 /* ── Site layout ── */
@@ -73,7 +82,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -112,6 +121,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
 }
 
 .nav-links a {
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -213,77 +223,6 @@ h1, h2, h3, h4, h5, h6, .display-font {
 @media (max-width: 767px) {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-}
-
-/* ── Footer ── */
-.site-footer {
-  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: var(--bg);
-}
-
-.footer-cta {
-  text-align: center;
-  padding: 5rem 1.5rem 4rem;
-}
-
-.footer-cta-headline {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.25rem, 4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1;
-  margin: 0 0 2.5rem;
-  color: var(--fg);
-  letter-spacing: -0.02em;
-}
-
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--accent);
-  text-decoration: none;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.footer-social a:hover {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.footer-bottom {
-  border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--fg);
-  opacity: 0.5;
-}
-
-@media (max-width: 640px) {
-  .footer-bottom {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
 }
 
 /* ── Shared page heading (cv / projects / about / contact) ── */
@@ -414,7 +353,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
   padding: 1rem 3rem;
   cursor: pointer;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
@@ -445,7 +384,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
   padding: 0.75rem 0;
   font-size: 1.125rem;
   color: var(--fg);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   outline: none;
   resize: none;
   transition: border-color 0.2s;
@@ -554,7 +493,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
   border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
   border-radius: 4px;
   color: var(--fg);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.7;
   white-space: pre;
@@ -591,3 +530,53 @@ h1, h2, h3, h4, h5, h6, .display-font {
 [data-theme="dark"] .group:focus-within label {
   color: var(--fg) !important;
 }
+
+/* ── Commit-Log direction: shared terminal styling ── */
+.page-prompt {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.page-heading {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.page-heading-label,
+.section-label,
+.project-link,
+.btn-outline,
+.nav-mobile a,
+.uppercase.tracking-widest {
+  font-family: var(--font-mono);
+}
+
+/* Section labels read like code comments: "// Hard Skills" */
+.section-label {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.55;
+}
+
+.section-label::before {
+  content: '// ';
+  color: var(--accent);
+}
+
+.category-heading::before {
+  content: '## ';
+  color: var(--accent);
+}
+
+.btn-outline::before,
+.project-link::before {
+  content: '> ';
+  opacity: 0.5;
+}
+

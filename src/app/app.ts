@@ -29,6 +29,7 @@ export class App {
 
   protected readonly title = signal('angular-portfolio');
   protected isMenuOpen = signal(false);
+  protected readonly year = new Date().getFullYear();
   protected isDark = signal(
     this.document.documentElement.getAttribute('data-theme') === 'dark'
   );
@@ -53,6 +54,11 @@ export class App {
 
   toggleMenu() {
     this.isMenuOpen.update(v => !v);
+  }
+
+  scrollToTop() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   }
 
   closeMenu() {

@@ -3,96 +3,72 @@
 
     <!-- Page heading -->
     <div class="page-heading-row">
-      <h1 class="display-font page-heading">LEBENSLAUF</h1>
-      <a
-        href="assets/cv/Karina-Kock-Lebenslauf.pdf"
-        download="Karina-Kock-Lebenslauf.pdf"
-        class="cv-download-btn"
-      >
+      <div>
+        <p class="page-prompt"><span aria-hidden="true">$</span> git log --graph --all</p>
+        <h1 class="display-font page-heading">Lebenslauf</h1>
+      </div>
+      <a href="assets/cv/Karina-Kock-Lebenslauf.pdf" download="Karina-Kock-Lebenslauf.pdf" class="cv-download-btn">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        PDF Herunterladen
+        lebenslauf.pdf
       </a>
     </div>
 
-    <!-- ── Berufserfahrung ── -->
-    <div class="mb-20">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Berufserfahrung</span>
-        <div class="section-label-divider"></div>
-      </div>
+    <!-- ── Git graph ── -->
+    <ol class="git-graph" aria-label="Werdegang, neuester Eintrag zuerst">
+      @for (entry of log; track entry.title) {
+        <li class="graph-row" [attr.data-graph]="entry.graph">
+          <div class="graph-lane" aria-hidden="true">
+            <span class="graph-node"></span>
+          </div>
 
-      @for (entry of berufserfahrung; track entry.title; let last = $last) {
-        <div
-          class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6"
-          [class.mb-12]="!last"
-          [class.pb-12]="!last"
-          [class.border-b]="!last"
-          style="border-color: color-mix(in srgb, var(--fg) 8%, transparent);"
-        >
-          <div>
-            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ formatRange(entry) }}</p>
-            <p class="text-[10px] uppercase tracking-widest font-semibold mb-1" style="color: var(--fg); opacity: 0.3;">{{ formatDuration(entry) }}</p>
-            <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">{{ entry.company }}</p>
+          <div class="graph-when">
+            <p class="graph-range">{{ formatRange(entry) }}</p>
+            <p class="graph-duration">{{ formatDuration(entry) }}</p>
           </div>
-          <div class="timeline-content">
-            <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">{{ entry.title }}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">{{ entry.description }}</p>
+
+          <div class="graph-what">
+            <h2 class="graph-title">
+              <span class="graph-type">{{ entry.type }}:</span> {{ entry.title }}
+              @if (entry.ref) {
+                <span class="graph-ref" [class.graph-ref-branch]="entry.graph === 'branch'">{{ entry.ref }}</span>
+              }
+            </h2>
+            <p class="graph-company">
+              {{ entry.company }}
+              @if (entry.graph === 'branch') {
+                <span class="graph-merged">· 2024 in main gemergt</span>
+              }
+            </p>
+            <p class="graph-desc">{{ entry.description }}</p>
           </div>
-        </div>
+        </li>
       }
-    </div>
+    </ol>
 
-    <!-- ── Ausbildung ── -->
-    <div class="mb-20">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Schulausbildung</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      @for (entry of schulausbildung; track entry.title; let last = $last) {
-        <div
-          class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6"
-          [class.mb-12]="!last"
-          [class.pb-12]="!last"
-          [class.border-b]="!last"
-          style="border-color: color-mix(in srgb, var(--fg) 8%, transparent);"
-        >
-          <div>
-            <p class="display-font text-sm font-bold mb-1" style="color: var(--fg);">{{ formatRange(entry) }}</p>
-            <p class="text-[10px] uppercase tracking-widest font-semibold mb-1" style="color: var(--fg); opacity: 0.3;">{{ formatDuration(entry) }}</p>
-            <p class="text-[11px] uppercase tracking-widest font-semibold" style="color: var(--fg); opacity: 0.45;">{{ entry.company }}</p>
-          </div>
-          <div class="timeline-content">
-            <h3 class="display-font text-xl font-bold mb-3" style="color: var(--fg);">{{ entry.title }}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">{{ entry.description }}</p>
-          </div>
-        </div>
-      }
-    </div>
-
-    <!-- ── Zertifikate ── -->
+    <!-- ── Zertifikate als Tags ── -->
     @if (certificates(); as certs) {
       @if (certs.length > 0) {
-        <div>
-          <div class="section-label-row mb-14">
-            <span class="section-label">Zertifikate</span>
+        <section class="cv-tags" aria-labelledby="cv-tags-title">
+          <div class="section-label-row mb-8">
+            <h2 id="cv-tags-title" class="section-label">Zertifikate</h2>
             <div class="section-label-divider"></div>
           </div>
+          <p class="cv-tags-cmd"><span aria-hidden="true">$</span> git tag -l</p>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ul class="cv-tag-list">
             @for (cert of certs; track cert.name) {
-              <a [href]="certificateUrl(cert.name)" target="_blank" rel="noopener noreferrer" class="certificate-card">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <span class="flex-1">
-                  <span class="certificate-name">{{ cert.name }}</span>
+              <li>
+                <a [href]="certificateUrl(cert.name)" target="_blank" rel="noopener noreferrer" class="cv-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                  <span class="cv-tag-name">{{ cert.name }}</span>
                   @if (cert.size) {
-                    <span class="certificate-size">{{ formatSize(cert.size) }}</span>
+                    <span class="cv-tag-size">{{ formatSize(cert.size) }}</span>
                   }
-                </span>
-              </a>
+                </a>
+              </li>
             }
-          </div>
-        </div>
+          </ul>
+        </section>
       }
     }
 

@@ -32,11 +32,10 @@ function createMockImages(count: number, label: string): ImmichImage[] {
   });
 }
 
-interface SkillEra {
-  range: string;
-  context: string;
-  title: string;
-  skills: string[];
+interface StackRow {
+  tech: string;
+  category: string;
+  usedIn: string;
 }
 
 interface WorkingPrinciple {
@@ -94,26 +93,20 @@ export class AboutComponent implements OnInit {
     },
   ];
 
-  readonly skillsTimeline: SkillEra[] = [
-    {
-      range: '2018 – 2021',
-      context: 'August-Griese-Berufskolleg',
-      title: 'Abitur - Schwerpunkt Informatik',
-      skills: ['Informatik-Grundlagen', 'Datenbanken', 'Java'],
-    },
-    {
-      range: '2021 – 2024',
-      context: 'SP_Data GmbH · Ausbildung',
-      title: 'Fachinformatikerin Anwendungsentwicklung',
-      skills: ['Delphi / Pascal', 'MS SQL Server', 'Software-Wartung'],
-    },
-    {
-      range: 'Seit 2024',
-      context: 'SP_Data GmbH',
-      title: 'Full-Stack Softwareentwicklerin',
-      skills: ['Delphi / Pascal', 'MS SQL Server'],
-    },
+  /** Technologies with the context they were actually used in. */
+  readonly stack: StackRow[] = [
+    { tech: 'Delphi / Pascal', category: 'Sprache', usedIn: 'SP_Data, täglich seit der Ausbildung 2021' },
+    { tech: 'MS SQL Server', category: 'Datenbank', usedIn: 'SP_Data, seit 2021' },
+    { tech: 'Angular', category: 'Web', usedIn: 'Lumi Dashboard, dieses Portfolio' },
+    { tech: 'Tailwind CSS', category: 'Web', usedIn: 'Dieses Portfolio' },
+    { tech: 'Kotlin', category: 'Sprache', usedIn: 'BolusManager' },
+    { tech: 'Jetpack Compose', category: 'Mobile', usedIn: 'BolusManager' },
+    { tech: 'Room', category: 'Mobile', usedIn: 'BolusManager, lokale Datenhaltung' },
+    { tech: 'Java', category: 'Sprache', usedIn: 'Abitur mit Schwerpunkt Informatik' },
   ];
+
+  /** Further skills without a single project to point to. */
+  readonly moreSkills: string[] = ['Python', 'MySQL', 'PostgreSQL', 'Git', 'Subversion', 'Jira', 'Scrum', 'Kanban'];
 
   readonly readingList: ReadingItem[] = [
     {

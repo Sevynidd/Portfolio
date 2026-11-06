@@ -3,34 +3,39 @@
 
     <!-- Page heading -->
     <div class="page-heading-row">
-      <h1 class="display-font page-heading">PROJEKTE</h1>
+      <div>
+        <p class="page-prompt"><span aria-hidden="true">$</span> ls ~/projekte</p>
+        <h1 class="display-font page-heading">Projekte</h1>
+      </div>
       <span class="page-heading-label">{{ resultCount() }} Projekt{{ resultCount() === 1 ? '' : 'e' }}</span>
     </div>
 
     <!-- ── Filter & Suche ── -->
-    <div class="project-filter-bar mb-16">
-      <div class="project-filter-chips">
-        @for (category of categories; track category) {
-          <button
-            type="button"
-            class="filter-chip"
-            [class.filter-chip-active]="activeCategory() === category"
-            (click)="setCategory(category)"
-          >
-            {{ category }}
-          </button>
-        }
-      </div>
+    <div class="repo-toolbar">
       <div class="project-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input
           type="search"
+          id="project-search"
           [ngModel]="searchTerm()"
           (ngModelChange)="searchTerm.set($event)"
-          placeholder="Nach Technologie suchen…"
+          placeholder="Nach Technologie suchen …"
           aria-label="Projekte durchsuchen"
           class="project-search-input"
         >
+      </div>
+      <div class="repo-seg" role="group" aria-label="Nach Kategorie filtern">
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="repo-seg-btn"
+            [class.repo-seg-active]="activeCategory() === category"
+            [attr.aria-pressed]="activeCategory() === category"
+            (click)="setCategory(category)"
+          >
+            {{ category }} <span class="repo-seg-count">{{ categoryCount(category) }}</span>
+          </button>
+        }
       </div>
     </div>
 
@@ -38,152 +43,60 @@
       <p class="project-empty-state">Keine Projekte gefunden. Passe Filter oder Suche an.</p>
     }
 
-    <!-- ── Websites ── -->
-    @if (visibleWebsitesCount() > 0) {
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Websites</span>
-        <div class="section-label-divider"></div>
-      </div>
-
-      @if (isVisible('portfolio')) {
-      <!-- 01 Dieses Portfolio -->
-      <div
-        id="project-portfolio"
-        class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 mb-12 pb-12"
-        style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
-      >
-        <div class="project-placeholder aspect-[4/5] cursor-zoom-in">
-          <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Portfolio_light.png', 'Screenshot dieses Portfolios')">
-          <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Portfolio_dark.png', 'Screenshot dieses Portfolios')">
-        </div>
-        <div class="flex flex-col justify-between py-2">
-          <div>
-            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">01</span>
-            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Dieses Portfolio</h2>
-            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">TypeScript / Angular / Tailwind CSS</p>
-            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-              Eine eigenständig konzipierte und entwickelte Portfolio-Website, umgesetzt mit
-              Angular und TypeScript sowie gestaltet mit Tailwind CSS. Das responsive
-              Editorial-Design unterstützt Light- und Dark-Mode und legt besonderen Wert auf
-              Zugänglichkeit sowie eine konsistente Darstellung auf allen Bildschirmgrößen.
-            </p>
-            <a href="https://github.com/Sevynidd/Portfolio" target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-              GitHub
-            </a>
-            <div class="toggle-row">
-              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('portfolio')" [attr.aria-expanded]="isExpanded('portfolio')">
-                {{ isExpanded('portfolio') ? 'Case Study schließen' : 'Case Study' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('portfolio') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <button type="button" class="case-study-toggle" (click)="toggleDemo('portfolio')" [attr.aria-expanded]="isDemoExpanded('portfolio')">
-                {{ isDemoExpanded('portfolio') ? 'Demo schließen' : 'Demo' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('portfolio') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        @if (isExpanded('portfolio') || isDemoExpanded('portfolio')) {
-          <div class="case-study md:col-span-2">
-            @if (isExpanded('portfolio')) {
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('portfolio')">
-                <div>
-                  <span class="case-study-label">Herausforderung</span>
-                  <p class="case-study-text">Bestehende Vorlagen wirkten generisch. Ziel war eine eigenständige, editorial wirkende Seite mit klarer Typografie und einem echten Light-/Dark-Modus statt reiner Farbinvertierung.</p>
-                </div>
-                <div>
-                  <span class="case-study-label">Ansatz</span>
-                  <p class="case-study-text">Aufbau mit Angular (Standalone Components, Signals) und Tailwind CSS. Theming läuft über CSS-Variablen wie <code>--bg</code>, <code>--fg</code> und <code>--accent</code>, sodass jede Komponente automatisch auf den Modus reagiert.</p>
-                </div>
-                <div>
-                  <span class="case-study-label">Ergebnis</span>
-                  <p class="case-study-text">Eine vollständig responsive Seite mit Lightbox, Kontaktformular und Case Studies wie dieser — berufsbegleitend als eigenständiges Projekt umgesetzt.</p>
-                </div>
-              </div>
-            }
-
-            @if (isDemoExpanded('portfolio')) {
-              <div class="demo-box">
-                <p class="demo-label">Live-Demo · Theming über CSS-Variablen</p>
-                <p class="demo-hint">Wechsle oben rechts den Theme-Toggle — diese Kacheln greifen live auf dieselben CSS-Variablen zu wie die gesamte Seite.</p>
-                <div class="flex gap-3 flex-wrap">
-                  <div class="swatch" style="background: var(--bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--bg</div>
-                  <div class="swatch" style="background: var(--fg); color: var(--bg);">--fg</div>
-                  <div class="swatch" style="background: var(--accent); color: var(--bg);">--accent</div>
-                  <div class="swatch" style="background: var(--card-bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--card-bg</div>
-                </div>
-              </div>
-            }
-          </div>
-        }
-      </div>
-      }
+    <div class="repo-list">
 
       @if (isVisible('lumi')) {
-      <!-- 02 Lumi Dashboard -->
-      <div id="project-discordbot" class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
-        <div class="project-placeholder aspect-[4/5] cursor-zoom-in">
-          <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Lumi_light.png', 'Screenshot des Lumi Dashboards')">
-          <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark w-full h-full object-cover object-top" (click)="lightbox.open('assets/images/projects/Lumi_dark.png', 'Screenshot des Lumi Dashboards')">
-        </div>
-        <div class="flex flex-col justify-between py-2">
-          <div>
-            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">02</span>
-            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">Lumi Dashboard</h2>
-            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">HTML / SCSS / TypeScript / Angular</p>
-            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-              Ein Web-Dashboard für den Discord-Bot „Lumi”, das ich gemeinsam mit
-              Norman Höhn entwickle, damit Serverbetreiber ihre Community direkt im
-              Browser verwalten können. Mitglieder lassen sich moderieren, individuelle
-              Embeds und Panels gestalten sowie Berechtigungen feingranular vergeben —
-              einzelne Module wie Tickets, Tutorials oder Geburtstage sind unabhängig
-              voneinander aktivierbar.
-            </p>
-            <div class="flex flex-wrap gap-x-6 gap-y-2">
-              <a href="https://www.luminanetwork.de/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                Website
-              </a>
-              <a href="mailto:kontakt@luminanetwork.de" class="project-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-                kontakt@luminanetwork.de
-              </a>
-            </div>
-            <div class="toggle-row">
-              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('lumi')" [attr.aria-expanded]="isExpanded('lumi')">
-                {{ isExpanded('lumi') ? 'Case Study schließen' : 'Case Study' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('lumi') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <button type="button" class="case-study-toggle" (click)="toggleDemo('lumi')" [attr.aria-expanded]="isDemoExpanded('lumi')">
-                {{ isDemoExpanded('lumi') ? 'Demo schließen' : 'Demo' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('lumi') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-            </div>
+      <article id="project-discordbot" class="project-anchor repo-row">
+        <div class="repo-main">
+          <p class="repo-kind">web</p>
+          <h2 class="repo-name">lumi-dashboard</h2>
+          <p class="repo-title">Lumi Dashboard</p>
+          <p class="repo-desc">Ein Web-Dashboard für den Discord-Bot „Lumi“, das ich gemeinsam mit Norman Höhn entwickle. Serverbetreiber moderieren Mitglieder, gestalten Embeds und Panels und vergeben Berechtigungen direkt im Browser. Module wie Tickets, Tutorials oder Geburtstage lassen sich einzeln aktivieren.</p>
+          <ul class="repo-langs" aria-label="Technologien">
+            <li><i style="background:#dd0031"></i>Angular</li>
+            <li><i style="background:#3178c6"></i>TypeScript</li>
+            <li><i style="background:#c6538c"></i>SCSS</li>
+            <li><i style="background:#e34c26"></i>HTML</li>
+          </ul>
+          <div class="repo-actions">
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isExpanded('lumi')" (click)="toggleCaseStudy('lumi')" [attr.aria-expanded]="isExpanded('lumi')">
+              README <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isDemoExpanded('lumi')" (click)="toggleDemo('lumi')" [attr.aria-expanded]="isDemoExpanded('lumi')">
+              demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <a href="https://www.luminanetwork.de/" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
           </div>
         </div>
+        <button type="button" class="repo-shot project-placeholder" (click)="openShot('Lumi', 'Screenshot des Lumi Dashboards')" aria-label="Screenshot des Lumi Dashboards vergrößern">
+          <img src="assets/images/projects/Lumi_light.png" alt="Screenshot des Lumi Dashboards" class="theme-light">
+          <img src="assets/images/projects/Lumi_dark.png" alt="Screenshot des Lumi Dashboards" class="theme-dark">
+        </button>
 
         @if (isExpanded('lumi') || isDemoExpanded('lumi')) {
-          <div class="case-study md:col-span-2">
-            @if (isExpanded('lumi')) {
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('lumi')">
+          <div class="repo-readme">
+            <p class="repo-readme-file">lumi-dashboard / README.md</p>
+            <div class="repo-readme-body">
+              @if (isExpanded('lumi')) {
+              <div class="cs-grid">
                 <div>
-                  <span class="case-study-label">Herausforderung</span>
+                  <h3 class="cs-h">Herausforderung</h3>
                   <p class="case-study-text">Serverbetreiber sollten komplexe Embeds und Panels bauen und Rechte feingranular vergeben können — ohne Discord-Entwicklerkenntnisse und ohne vom Funktionsumfang erschlagen zu werden.</p>
                 </div>
                 <div>
-                  <span class="case-study-label">Ansatz</span>
+                  <h3 class="cs-h">Ansatz</h3>
                   <p class="case-study-text">Ein modulares Berechtigungssystem macht einzelne Features wie Tickets, Tutorials oder Geburtstage unabhängig voneinander aktivierbar, ergänzt durch einen visuellen Embed-Editor mit Live-Vorschau — gemeinsam mit Norman Höhn entwickelt.</p>
                 </div>
                 <div>
-                  <span class="case-study-label">Ergebnis</span>
+                  <h3 class="cs-h">Ergebnis</h3>
                   <p class="case-study-text">Serverbetreiber der Lumina Network Community verwalten ihre komplette Konfiguration direkt im Browser statt über Slash-Commands im Discord-Client.</p>
                 </div>
               </div>
-            }
-
-            @if (isDemoExpanded('lumi')) {
+              }
+              @if (isDemoExpanded('lumi')) {
               <div class="demo-box">
                 <p class="demo-label">Live-Demo · Embed-Vorschau</p>
                 <p class="demo-hint">So gestalten Serverbetreiber im Lumi Dashboard ein Embed — tippe, um die Vorschau rechts live zu aktualisieren.</p>
@@ -228,77 +141,64 @@
                   </div>
                 </div>
               </div>
-            }
+              }
+            </div>
           </div>
         }
-      </div>
+      </article>
       }
-    </div>
-    }
-
-    @if (visibleMobileCount() > 0) {
-    <!-- ── Mobile Apps ── -->
-    <div class="mb-24">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Mobile Apps</span>
-        <div class="section-label-divider"></div>
-      </div>
 
       @if (isVisible('bolus')) {
-      <!-- 03 BolusManager -->
-      <div id="project-bolusmanager" class="project-anchor grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10">
-        <div class="project-placeholder aspect-[4/5] p-8 cursor-zoom-in">
-          <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light max-h-full max-w-full object-contain" (click)="lightbox.open('assets/images/projects/Bolusmanager_light.png', 'Screenshot der BolusManager-App')">
-          <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark max-h-full max-w-full object-contain" (click)="lightbox.open('assets/images/projects/Bolusmanager_dark.png', 'Screenshot der BolusManager-App')">
-        </div>
-        <div class="flex flex-col justify-between py-2">
-          <div>
-            <span class="display-font text-[4rem] font-bold leading-none mb-4 block" style="color: var(--fg); opacity: 0.07;">03</span>
-            <h2 class="display-font text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: var(--fg);">BolusManager</h2>
-            <p class="text-[11px] uppercase tracking-widest font-semibold mb-6" style="color: var(--fg); opacity: 0.45;">Kotlin / Jetpack Compose / Room</p>
-            <p class="text-sm leading-relaxed" style="color: var(--fg); opacity: 0.65;">
-              Eine native Android-App zur Planung von Insulin-Bolusdosen, entwickelt mit Kotlin
-              und Jetpack Compose (Material 3) sowie lokaler Datenhaltung über Room. Sie verwaltet
-              persönliche Korrekturfaktoren und Tageszeitpläne, berechnet normale und aufgeteilte
-              Boli in Echtzeit und speichert häufig genutzte Kohlenhydratmengen als Schnellzugriff.
-            </p>
+      <article id="project-bolusmanager" class="project-anchor repo-row">
+        <div class="repo-main">
+          <p class="repo-kind">android</p>
+          <h2 class="repo-name">bolus-manager</h2>
+          <p class="repo-title">BolusManager</p>
+          <p class="repo-desc">Eine native Android-App zur Planung von Insulin-Bolusdosen mit Kotlin, Jetpack Compose (Material 3) und Room. Sie verwaltet Korrekturfaktoren und Tageszeitpläne, berechnet normale und aufgeteilte Boli in Echtzeit und speichert häufige Kohlenhydratmengen als Schnellzugriff.</p>
+          <ul class="repo-langs" aria-label="Technologien">
+            <li><i style="background:#a97bff"></i>Kotlin</li>
+            <li><i style="background:#4285f4"></i>Jetpack Compose</li>
+            <li><i style="background:#3ddc84"></i>Room</li>
+          </ul>
+          <div class="repo-actions">
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isExpanded('bolus')" (click)="toggleCaseStudy('bolus')" [attr.aria-expanded]="isExpanded('bolus')">
+              README <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isDemoExpanded('bolus')" (click)="toggleDemo('bolus')" [attr.aria-expanded]="isDemoExpanded('bolus')">
+              demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
             <a href="https://github.com/Sevynidd/Bolus-Manager" target="_blank" rel="noopener noreferrer" class="project-link">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               GitHub
             </a>
-            <div class="toggle-row">
-              <button type="button" class="case-study-toggle" (click)="toggleCaseStudy('bolus')" [attr.aria-expanded]="isExpanded('bolus')">
-                {{ isExpanded('bolus') ? 'Case Study schließen' : 'Case Study' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isExpanded('bolus') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <button type="button" class="case-study-toggle" (click)="toggleDemo('bolus')" [attr.aria-expanded]="isDemoExpanded('bolus')">
-                {{ isDemoExpanded('bolus') ? 'Demo schließen' : 'Demo' }}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="isDemoExpanded('bolus') ? 'rotate(180deg)' : 'none'" style="transition: transform 0.25s;"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-            </div>
           </div>
         </div>
+        <button type="button" class="repo-shot project-placeholder repo-shot-phone" (click)="openShot('Bolusmanager', 'Screenshot der BolusManager-App')" aria-label="Screenshot der BolusManager-App vergrößern">
+          <img src="assets/images/projects/Bolusmanager_light.png" alt="Screenshot der BolusManager-App" class="theme-light">
+          <img src="assets/images/projects/Bolusmanager_dark.png" alt="Screenshot der BolusManager-App" class="theme-dark">
+        </button>
 
         @if (isExpanded('bolus') || isDemoExpanded('bolus')) {
-          <div class="case-study md:col-span-2">
-            @if (isExpanded('bolus')) {
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8" [class.mb-10]="isDemoExpanded('bolus')">
+          <div class="repo-readme">
+            <p class="repo-readme-file">bolus-manager / README.md</p>
+            <div class="repo-readme-body">
+              @if (isExpanded('bolus')) {
+              <div class="cs-grid">
                 <div>
-                  <span class="case-study-label">Herausforderung</span>
+                  <h3 class="cs-h">Herausforderung</h3>
                   <p class="case-study-text">Bestehende Insulin-Rechner waren entweder zu simpel — keine aufgeteilten Boli — oder zu unübersichtlich für den schnellen Alltagseinsatz.</p>
                 </div>
                 <div>
-                  <span class="case-study-label">Ansatz</span>
+                  <h3 class="cs-h">Ansatz</h3>
                   <p class="case-study-text">Native Android-App mit Kotlin und Jetpack Compose (Material 3), lokale Datenhaltung über Room für volle Offline-Fähigkeit. Die Berechnung basiert auf individuellen Korrekturfaktoren und Tageszeitplänen.</p>
                 </div>
                 <div>
-                  <span class="case-study-label">Ergebnis</span>
+                  <h3 class="cs-h">Ergebnis</h3>
                   <p class="case-study-text">Die Zeit für eine Bolus-Berechnung im Alltag reduziert sich auf wenige Sekunden. Die Demo unten zeigt vereinfacht, wie die App aus Kohlenhydraten und Blutzuckerwert eine Dosis ableitet.</p>
                 </div>
               </div>
-            }
-
-            @if (isDemoExpanded('bolus')) {
+              }
+              @if (isDemoExpanded('bolus')) {
               <div class="demo-box">
                 <p class="demo-label">Live-Demo · Wie BolusManager eine Insulin-Dosis berechnet</p>
                 <p class="demo-hint">
@@ -374,41 +274,112 @@
                   </div>
                 </div>
               </div>
-            }
+              }
+            </div>
           </div>
         }
-      </div>
+      </article>
       }
+
+      @if (isVisible('portfolio')) {
+      <article id="project-portfolio" class="project-anchor repo-row">
+        <div class="repo-main">
+          <p class="repo-kind">web</p>
+          <h2 class="repo-name">portfolio</h2>
+          <p class="repo-title">Dieses Portfolio</p>
+          <p class="repo-desc">Eine eigenständig konzipierte Portfolio-Website mit Angular, TypeScript und Tailwind CSS. Responsiv, mit echtem Light- und Dark-Mode und besonderem Wert auf Zugänglichkeit.</p>
+          <ul class="repo-langs" aria-label="Technologien">
+            <li><i style="background:#dd0031"></i>Angular</li>
+            <li><i style="background:#3178c6"></i>TypeScript</li>
+            <li><i style="background:#38bdf8"></i>Tailwind CSS</li>
+          </ul>
+          <div class="repo-actions">
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isExpanded('portfolio')" (click)="toggleCaseStudy('portfolio')" [attr.aria-expanded]="isExpanded('portfolio')">
+              README <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isDemoExpanded('portfolio')" (click)="toggleDemo('portfolio')" [attr.aria-expanded]="isDemoExpanded('portfolio')">
+              demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <a href="https://github.com/Sevynidd/Portfolio" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <button type="button" class="repo-shot project-placeholder" (click)="openShot('Portfolio', 'Screenshot dieses Portfolios')" aria-label="Screenshot dieses Portfolios vergrößern">
+          <img src="assets/images/projects/Portfolio_light.png" alt="Screenshot dieses Portfolios" class="theme-light">
+          <img src="assets/images/projects/Portfolio_dark.png" alt="Screenshot dieses Portfolios" class="theme-dark">
+        </button>
+
+        @if (isExpanded('portfolio') || isDemoExpanded('portfolio')) {
+          <div class="repo-readme">
+            <p class="repo-readme-file">portfolio / README.md</p>
+            <div class="repo-readme-body">
+              @if (isExpanded('portfolio')) {
+              <div class="cs-grid">
+                <div>
+                  <h3 class="cs-h">Herausforderung</h3>
+                  <p class="case-study-text">Bestehende Vorlagen wirkten generisch. Ziel war eine eigenständige, editorial wirkende Seite mit klarer Typografie und einem echten Light-/Dark-Modus statt reiner Farbinvertierung.</p>
+                </div>
+                <div>
+                  <h3 class="cs-h">Ansatz</h3>
+                  <p class="case-study-text">Aufbau mit Angular (Standalone Components, Signals) und Tailwind CSS. Theming läuft über CSS-Variablen wie <code>--bg</code>, <code>--fg</code> und <code>--accent</code>, sodass jede Komponente automatisch auf den Modus reagiert.</p>
+                </div>
+                <div>
+                  <h3 class="cs-h">Ergebnis</h3>
+                  <p class="case-study-text">Eine vollständig responsive Seite mit Lightbox, Kontaktformular und Case Studies wie dieser — berufsbegleitend als eigenständiges Projekt umgesetzt.</p>
+                </div>
+              </div>
+              }
+              @if (isDemoExpanded('portfolio')) {
+              <div class="demo-box">
+                <p class="demo-label">Live-Demo · Theming über CSS-Variablen</p>
+                <p class="demo-hint">Wechsle oben rechts den Theme-Toggle — diese Kacheln greifen live auf dieselben CSS-Variablen zu wie die gesamte Seite.</p>
+                <div class="flex gap-3 flex-wrap">
+                  <div class="swatch" style="background: var(--bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--bg</div>
+                  <div class="swatch" style="background: var(--fg); color: var(--bg);">--fg</div>
+                  <div class="swatch" style="background: var(--accent); color: var(--bg);">--accent</div>
+                  <div class="swatch" style="background: var(--card-bg); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);">--card-bg</div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        }
+      </article>
+      }
+
     </div>
-    }
 
     <!-- ── GitHub-Repositories ── -->
-    <div class="mt-8">
-      <div class="section-label-row mb-14">
-        <span class="section-label">Weitere Repositories</span>
+    <section class="more-repos" aria-labelledby="more-repos-title">
+      <div class="section-label-row mb-8">
+        <h2 id="more-repos-title" class="section-label">Weitere Repositories</h2>
         <div class="section-label-divider"></div>
       </div>
 
       @if (github() === undefined) {
-        <p class="project-empty-state" style="padding: 1rem 0;">Lade GitHub-Repositories…</p>
+        <p class="project-empty-state" style="padding: 1rem 0;">Lade GitHub-Repositories …</p>
       } @else {
         @if (github(); as data) {
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <ul class="more-repo-list">
             @for (repo of data.repos; track repo.name) {
-              <a [href]="repo.htmlUrl" target="_blank" rel="noopener noreferrer" class="github-repo-card">
-                <div class="flex items-start justify-between gap-3 mb-2">
-                  <h3 class="display-font text-base font-bold" style="color: var(--fg);">{{ repo.name }}</h3>
-                  @if (repo.stars > 0) {
-                    <span class="github-repo-stars">★ {{ repo.stars }}</span>
-                  }
-                </div>
-                <p class="text-sm font-light leading-relaxed mb-3" style="color: var(--fg); opacity: 0.65;">{{ repo.description || 'Keine Beschreibung vorhanden.' }}</p>
-                @if (repo.language) {
-                  <span class="skill-chip">{{ repo.language }}</span>
-                }
-              </a>
+              <li>
+                <a [href]="repo.htmlUrl" target="_blank" rel="noopener noreferrer" class="more-repo">
+                  <span class="more-repo-name">{{ repo.name }}</span>
+                  <span class="more-repo-desc">{{ repo.description || 'Keine Beschreibung vorhanden.' }}</span>
+                  <span class="more-repo-meta">
+                    @if (repo.language) {
+                      <span><i [style.background]="languageColor(repo.language)"></i>{{ repo.language }}</span>
+                    }
+                    @if (repo.stars > 0) {
+                      <span>★ {{ repo.stars }}</span>
+                    }
+                  </span>
+                </a>
+              </li>
             }
-          </div>
+          </ul>
           <a [href]="data.profile.htmlUrl" target="_blank" rel="noopener noreferrer" class="project-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
             Alle {{ data.profile.publicRepos }} Repositories auf GitHub
@@ -417,7 +388,7 @@
           <p class="project-empty-state" style="padding: 1rem 0;">GitHub-Repositories konnten gerade nicht geladen werden.</p>
         }
       }
-    </div>
+    </section>
 
   </div>
 </section>
