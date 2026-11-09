@@ -281,6 +281,124 @@
       </article>
       }
 
+      @if (isVisible('bloom')) {
+      <article id="project-bloomseason" class="project-anchor repo-row">
+        <div class="repo-main">
+          <p class="repo-kind">android</p>
+          <h2 class="repo-name">bloomseason</h2>
+          <p class="repo-title">BloomSeason</p>
+          <p class="repo-desc">Eine persönliche, lokale Perioden-App für Android, die den Zyklus als Abfolge von Jahreszeiten erzählt. Gebaut mit Kotlin, Jetpack Compose und Room: Kalender, Vorhersage als Zeitfenster, Statistik, Widgets und eine Kurzeinstellungs-Kachel. Alle Daten bleiben auf dem Gerät.</p>
+          <ul class="repo-langs" aria-label="Technologien">
+            <li><i style="background:#a97bff"></i>Kotlin</li>
+            <li><i style="background:#4285f4"></i>Jetpack Compose</li>
+            <li><i style="background:#3ddc84"></i>Room</li>
+          </ul>
+          <div class="repo-actions">
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isExpanded('bloom')" (click)="toggleCaseStudy('bloom')" [attr.aria-expanded]="isExpanded('bloom')">
+              README <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button type="button" class="repo-btn" [class.repo-btn-active]="isDemoExpanded('bloom')" (click)="toggleDemo('bloom')" [attr.aria-expanded]="isDemoExpanded('bloom')">
+              demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <a href="https://github.com/Sevynidd/BloomSeason" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="repo-shot project-placeholder repo-shot-phone" style="cursor: default;">
+          <img src="assets/images/projects/Bloomseason_light.svg" alt="Entwurf des BloomSeason-Widgets im Frühlingsdesign" class="theme-light">
+          <img src="assets/images/projects/Bloomseason_dark.svg" alt="Entwurf des BloomSeason-Widgets im Frühlingsdesign" class="theme-dark">
+        </div>
+
+        @if (isExpanded('bloom') || isDemoExpanded('bloom')) {
+          <div class="repo-readme">
+            <p class="repo-readme-file">bloomseason / README.md</p>
+            <div class="repo-readme-body">
+              @if (isExpanded('bloom')) {
+              <div class="cs-grid">
+                <div>
+                  <h3 class="cs-h">Herausforderung</h3>
+                  <p class="case-study-text">Viele Zyklus-Apps sind laut, rosa und sammeln Daten in der Cloud. Ich wollte eine ruhige App, die nur mir gehört und in der Gesundheitsdaten das Gerät nie verlassen.</p>
+                </div>
+                <div>
+                  <h3 class="cs-h">Ansatz</h3>
+                  <p class="case-study-text">Die Logik (Periodenerkennung, Statistik, Vorhersage, Phasen) steckt in einem eigenen Kotlin-Modul ohne Android-Abhängigkeit und ist mit Unit-Tests abgesichert. Die App darüber nutzt Jetpack Compose, Room und DataStore, ohne Internetberechtigung und ohne Backup. Die vier Phasen erscheinen als Jahreszeiten, Vorhersagen als Zeitfenster statt als exaktes Datum.</p>
+                </div>
+                <div>
+                  <h3 class="cs-h">Ergebnis</h3>
+                  <p class="case-study-text">Eine Open-Source-App (GPL-3.0) mit Kalender, Statistik, Widgets pro Jahreszeit, Kurzeinstellungs-Kachel und PDF-Bericht für die Ärztin. Updates laufen über Obtainium direkt aus dem Repository.</p>
+                </div>
+              </div>
+              }
+              @if (isDemoExpanded('bloom')) {
+              <div class="demo-box">
+                <p class="demo-label">Live-Demo · Wie BloomSeason den Zyklus als Jahreszeiten erzählt</p>
+                <p class="demo-hint">
+                  Jede Phase des Zyklus bekommt in BloomSeason eine Jahreszeit. Die Demo bildet die Phasenlogik vereinfacht nach:
+                  Der Eisprung liegt etwa 14 Tage vor der nächsten Periode, die Vorhersage erscheint als Zeitfenster statt als
+                  exaktes Datum. Alle Werte sind erfunden, es werden keine Daten gespeichert. Reine Demo, keine medizinische Beratung.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 items-start">
+                  <div class="space-y-6">
+                    <div class="demo-field">
+                      <label class="demo-field-label" for="bloom-cycle">Zykluslänge</label>
+                      <p class="demo-field-hint">Tage von einer Periode bis zur nächsten.</p>
+                      <div class="demo-field-input-row">
+                        <input id="bloom-cycle" name="bloomCycle" [ngModel]="cycleLength()" (ngModelChange)="cycleLength.set(+$event)" type="range" min="21" max="40" class="bloom-range">
+                        <span class="demo-field-unit bloom-value">{{ cycleLength() }} Tage</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label" for="bloom-period">Periodenlänge</label>
+                      <p class="demo-field-hint">Wie viele Tage die Blutung dauert.</p>
+                      <div class="demo-field-input-row">
+                        <input id="bloom-period" name="bloomPeriod" [ngModel]="periodLength()" (ngModelChange)="periodLength.set(+$event)" type="range" min="2" max="7" class="bloom-range">
+                        <span class="demo-field-unit bloom-value">{{ periodLength() }} Tage</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label" for="bloom-day">Heutiger Zyklustag</label>
+                      <p class="demo-field-hint">Tag 1 ist der erste Tag der Periode.</p>
+                      <div class="demo-field-input-row">
+                        <input id="bloom-day" name="bloomDay" [ngModel]="bloom().day" (ngModelChange)="cycleDay.set(+$event)" type="range" min="1" [max]="cycleLength()" class="bloom-range">
+                        <span class="demo-field-unit bloom-value">Tag {{ bloom().day }}</span>
+                      </div>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label" for="bloom-var">Schwankung</label>
+                      <p class="demo-field-hint">Wie unregelmäßig die letzten Zyklen waren. Je mehr, desto breiter das Zeitfenster.</p>
+                      <div class="demo-field-input-row">
+                        <input id="bloom-var" name="bloomVar" [ngModel]="variation()" (ngModelChange)="variation.set(+$event)" type="range" min="0" max="5" class="bloom-range">
+                        <span class="demo-field-unit bloom-value">± {{ variation() }} Tage</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bolus-result" aria-live="polite">
+                    <div class="bloom-season" [attr.data-season]="bloom().season">
+                      <span class="bloom-season-name">{{ bloom().seasonName }}</span>
+                      <span class="bloom-season-phase">{{ bloom().phase }}</span>
+                    </div>
+                    <div class="bloom-bar" role="img" [attr.aria-label]="'Zyklus mit vier Jahreszeiten, heute Tag ' + bloom().day">
+                      @for (part of bloom().parts; track part.season) {
+                        <span class="bloom-bar-part" [attr.data-season]="part.season" [style.flex-grow]="part.days"></span>
+                      }
+                      <span class="bloom-bar-today" [style.left.%]="bloom().todayPercent"></span>
+                    </div>
+                    <div class="bolus-result-row bolus-result-total">
+                      <span>Nächste Periode</span>
+                      <strong>{{ bloom().forecast }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        }
+      </article>
+      }
+
       @if (isVisible('portfolio')) {
       <article id="project-portfolio" class="project-anchor repo-row">
         <div class="repo-main">

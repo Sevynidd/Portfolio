@@ -518,3 +518,69 @@
   font-size: 1.35rem;
   color: var(--accent);
 }
+
+/* BloomSeason demo: cycle as seasons */
+.bloom-range {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.bloom-value {
+  min-width: 4.5rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--fg);
+}
+
+.bloom-season {
+  --s: #64748b;
+  display: grid;
+  gap: 0.2rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--s);
+}
+
+.bloom-season[data-season='winter'] { --s: #60a5fa; }
+.bloom-season[data-season='spring'] { --s: #4ade80; }
+.bloom-season[data-season='summer'] { --s: #fbbf24; }
+.bloom-season[data-season='autumn'] { --s: #d97706; }
+
+.bloom-season-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--s);
+}
+
+.bloom-season-phase {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.bloom-bar {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  height: 0.7rem;
+  margin: 0.25rem 0;
+}
+
+.bloom-bar-part { flex-basis: 0; border-radius: 2px; background: #64748b; }
+.bloom-bar-part[data-season='winter'] { background: #60a5fa; }
+.bloom-bar-part[data-season='spring'] { background: #4ade80; }
+.bloom-bar-part[data-season='summer'] { background: #fbbf24; }
+.bloom-bar-part[data-season='autumn'] { background: #d97706; }
+
+.bloom-bar-today {
+  position: absolute;
+  top: -0.3rem;
+  bottom: -0.3rem;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--fg);
+  box-shadow: 0 0 0 2px var(--card-bg);
+  transition: left 0.2s;
+}
