@@ -99,9 +99,9 @@ export class AboutComponent implements OnInit {
     { tech: 'MS SQL Server', category: 'Datenbank', usedIn: 'SP_Data, seit 2021' },
     { tech: 'Angular', category: 'Web', usedIn: 'Lumi Dashboard, dieses Portfolio' },
     { tech: 'Tailwind CSS', category: 'Web', usedIn: 'Dieses Portfolio' },
-    { tech: 'Kotlin', category: 'Sprache', usedIn: 'BolusManager' },
-    { tech: 'Jetpack Compose', category: 'Mobile', usedIn: 'BolusManager' },
-    { tech: 'Room', category: 'Mobile', usedIn: 'BolusManager, lokale Datenhaltung' },
+    { tech: 'Kotlin', category: 'Sprache', usedIn: 'BolusManager, BloomSeason' },
+    { tech: 'Jetpack Compose', category: 'Mobile', usedIn: 'BolusManager, BloomSeason' },
+    { tech: 'Room', category: 'Mobile', usedIn: 'BolusManager, BloomSeason, lokale Datenhaltung' },
     { tech: 'Java', category: 'Sprache', usedIn: 'Abitur mit Schwerpunkt Informatik' },
   ];
 
@@ -118,13 +118,13 @@ export class AboutComponent implements OnInit {
     {
       type: 'Praxis',
       title: 'Kotlin Coroutines',
-      description: 'Asynchrone Datenverarbeitung abseits von Jetpack Compose — relevant für den nächsten BolusManager-Ausbau.',
+      description: 'Asynchrone Datenverarbeitung abseits von Jetpack Compose: Room und DataStore in BloomSeason und BolusManager arbeiten mit Coroutines und Flow, das will ich sicherer beherrschen.',
       url: 'https://kotlinlang.org/docs/coroutines-overview.html',
     },
     {
       type: 'Konzept',
       title: 'Clean Architecture in kleinen Projekten',
-      description: 'Wie viel Struktur sich für Hobby-Projekte lohnt, ohne sie zu überladen.',
+      description: 'Wie viel Struktur sich für Hobby-Projekte lohnt, ohne sie zu überladen. In BloomSeason steckt die Logik in einem eigenen Kotlin-Modul ohne Android, das ist mein Testlauf dafür.',
     },
   ];
 

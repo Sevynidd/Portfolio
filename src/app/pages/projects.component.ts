@@ -16,7 +16,8 @@ interface ProjectMeta {
 const PROJECTS_META: ProjectMeta[] = [
   { id: 'portfolio', title: 'Dieses Portfolio', category: 'Websites', tags: ['TypeScript', 'Angular', 'Tailwind CSS'] },
   { id: 'lumi', title: 'Lumi Dashboard', category: 'Websites', tags: ['HTML', 'SCSS', 'TypeScript', 'Angular'] },
-  { id: 'bolus', title: 'BolusManager', category: 'Mobile Apps', tags: ['Kotlin', 'Jetpack Compose', 'Room'] }
+  { id: 'bolus', title: 'BolusManager', category: 'Mobile Apps', tags: ['Kotlin', 'Jetpack Compose', 'Room'] },
+  { id: 'bloom', title: 'BloomSeason', category: 'Mobile Apps', tags: ['Kotlin', 'Jetpack Compose', 'Room'] }
 ];
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -151,6 +152,58 @@ export class ProjectsComponent {
   });
 
   readonly totalBolus = computed(() => this.mealBolus() + this.correctionBolus());
+
+  // ── BloomSeason: Zyklus als Jahreszeiten (vereinfachte Demo-Logik, erfundene Werte) ──
+  readonly cycleLength = signal(28);
+  readonly periodLength = signal(5);
+  readonly cycleDay = signal(10);
+  readonly variation = signal(2);
+
+  readonly bloom = computed(() => {
+    const cycle = this.cycleLength();
+    const period = Math.min(this.periodLength(), cycle);
+    const day = Math.min(this.cycleDay(), cycle);
+    const spread = this.variation();
+
+    // Eisprung etwa 14 Tage vor der nächsten Periode, Sommer = Tag davor bis Tag danach
+    const ovulation = cycle - 14;
+    const summerStart = Math.max(period + 1, ovulation - 1);
+    const summerEnd = Math.min(cycle, Math.max(summerStart, ovulation + 1));
+
+    const seasonOf = (d: number): 'winter' | 'spring' | 'summer' | 'autumn' =>
+      d <= period ? 'winter' : d < summerStart ? 'spring' : d <= summerEnd ? 'summer' : 'autumn';
+
+    const names = {
+      winter: ['Winter', 'Menstruation · Rückzug und Ruhe'],
+      spring: ['Frühling', 'Follikelphase · die Energie kommt zurück'],
+      summer: ['Sommer', 'Eisprung · Höhepunkt und Offenheit'],
+      autumn: ['Herbst', 'Lutealphase · Abschluss und Vorbereitung']
+    } as const;
+
+    const season = seasonOf(day);
+    const daysLeft = cycle - day + 1;
+    const from = Math.max(1, daysLeft - spread);
+    const to = daysLeft + spread;
+    const unit = to === 1 ? 'Tag' : 'Tagen';
+    const forecast = from === to ? `in ${to} ${unit}` : `in ${from}–${to} Tagen`;
+
+    const parts = [
+      { season: 'winter', days: period },
+      { season: 'spring', days: summerStart - period - 1 },
+      { season: 'summer', days: summerEnd - summerStart + 1 },
+      { season: 'autumn', days: cycle - summerEnd }
+    ].filter((part) => part.days > 0);
+
+    return {
+      day,
+      season,
+      seasonName: names[season][0],
+      phase: names[season][1],
+      forecast,
+      parts,
+      todayPercent: ((day - 0.5) / cycle) * 100
+    };
+  });
 
   // ── Lumi Dashboard: interaktive Embed-Vorschau ──
   readonly embedTitle = signal('Willkommen auf dem Server!');
