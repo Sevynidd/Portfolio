@@ -326,7 +326,8 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.2rem 0.7rem;
+  position: relative;
+  padding: 0.2rem 0.7rem 0.2rem 1.6rem;
   border-radius: 999px;
   color: var(--c);
   border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
@@ -344,7 +345,14 @@
 }
 
 .issue-label-chip input:checked + span::before {
-  content: '✓ ';
+  content: '✓';
+}
+
+/* Reserve the checkmark slot so chips never change width (no reflow on select) */
+.issue-label-chip span::before {
+  content: '';
+  position: absolute;
+  left: 0.65rem;
 }
 
 .issue-label-chip input:focus-visible + span {
